@@ -4,12 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import vshare.common.service.SecurityService;
+import vshare.common.service.Biz;
 
 @Controller
 public class LoginController {
     @Autowired
-    SecurityService securityService;
+    Biz biz;
 
     @GetMapping(path = "login")
     String getLoginUI() {
@@ -19,6 +19,6 @@ public class LoginController {
     @GetMapping(path = "welcome")
     @ResponseBody
     String welcome() {
-        return "welcome to web".concat(securityService.getLoggedInAuthorities().toString());
+        return "welcome to web".concat(biz.getLoggedInAuthorities().toString());
     }
 }
