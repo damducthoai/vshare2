@@ -78,7 +78,7 @@
         <td></td>
         <td></td>
 </table>
-<!--<div id="friend-list">
+<!--<div id="friend-list" >
         <a href="/">
                     <i class="fa fa-music" aria-hidden="true"></i> <span>Music</span>
                 </a>
