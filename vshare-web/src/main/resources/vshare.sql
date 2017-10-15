@@ -26,7 +26,7 @@ insert into authority values(2, "ROLE_USER");
 
 DROP TABLE IF EXISTS storage;
 CREATE TABLE `storage` (
-  `storage_id`   BIGINT(20),
+  `storage_id`   BIGINT(20) NOT NULL AUTO_INCREMENT,
   `user_id`      BIGINT(20),
   `max_size`     BIGINT(20),
   `current_size` BIGINT(20),
