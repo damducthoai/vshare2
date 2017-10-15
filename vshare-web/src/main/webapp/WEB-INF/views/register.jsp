@@ -11,48 +11,58 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="${contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
     <link href="${contextPath}/resources/css/common.css" rel="stylesheet">
+    <link href="${contextPath}/resources/js/bootstrap.min.js" rel="stylesheet">
 </head>
 <body>
-<form>
-    <div class="col-md-12 form-group">
-        <div class="col-md-4">
-            <label class="control-label">Username <strong class="cl-force">*</strong></label>
-        </div>
-        <div class="col-md-8">
-            <input type="text" class="form-control w-100">
-        </div>
-    </div>
-    <div class="col-md-12 form-group">
-        <div class="col-md-4">
-            <label class="control-label">Email <strong class="cl-force">*</strong></label>
-        </div>
-        <div class="col-md-8">
-            <input type="text" class="form-control w-100">
-        </div>
-    </div>
-    <div class="col-md-12 form-group">
-        <div class="col-md-4">
-            <label class="control-label">Password <strong class="cl-force">*</strong></label>
-        </div>
-        <div class="col-md-8 ">
-            <input type="text" class="form-control w-100">
-        </div>
-    </div>
-    <div class="col-md-12 form-group">
-        <div class="col-md-4">
-            <label class="control-label">Confirm password <strong class="cl-force">*</strong></label>
-        </div>
-        <div class="col-md-8">
-            <input type="text" class="form-control w-100">
-        </div>
-    </div>
-</form>
-<div class="text-right">
-    <button type="button" class="btn btn-default" data-dismiss="modal">Sign up</button>
-</div>
+<div class="container">
+    <div class="row">
+        <form>
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <div class="col-md-12 form-group">
+                    <div class="col-md-4">
+                        <label class="control-label">Username <strong class="cl-force">*</strong></label>
+                    </div>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control w-100">
+                    </div>
+                </div>
+                <div class="col-md-12 form-group">
+                    <div class="col-md-4">
+                        <label class="control-label">Email <strong class="cl-force">*</strong></label>
+                    </div>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control w-100">
+                    </div>
+                </div>
+                <div class="col-md-12 form-group">
+                    <div class="col-md-4">
+                        <label class="control-label">Password <strong class="cl-force">*</strong></label>
+                    </div>
+                    <div class="col-md-8 ">
+                        <input type="text" class="form-control w-100">
+                    </div>
+                </div>
+                <div class="col-md-12 form-group">
+                    <div class="col-md-4">
+                        <label class="control-label">Confirm password <strong class="cl-force">*</strong></label>
+                    </div>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control w-100">
+                    </div>
+                </div>
+                <div class="text-right">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Sign up</button>
+                </div>
+            </div>
+            <div class="col-md-2"></div>
+        </form>
 
+    </div>
+</div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="${contextPath}/resources/js/bootstrap.min.js"></script>
 <script src="${contextPath}/resources/css/common.css"></script>
+<script src="${contextPath}/resources/css/bootstrap.min.css"></script>
 </body>
 </html>
