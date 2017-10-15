@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface FolderManager {
     List<FolderEntity> getAll();
+
+    List<FolderEntity> getOwnFolder(Long parentId);
 }

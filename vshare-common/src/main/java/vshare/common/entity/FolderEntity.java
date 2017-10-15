@@ -6,7 +6,7 @@ import javax.persistence.*;
 @Table(name = "folder", schema = "vshare", catalog = "")
 public class FolderEntity {
     private long folderId;
-    private String folderParent;
+    private Long folderParent;
     private String folderName;
     private Long storageId;
     private String privacy;
@@ -23,12 +23,12 @@ public class FolderEntity {
     }
 
     @Basic
-    @Column(name = "folder_parent", nullable = true, length = -1)
-    public String getFolderParent() {
+    @Column(name = "folder_parent", nullable = true)
+    public Long getFolderParent() {
         return folderParent;
     }
 
-    public void setFolderParent(String folderParent) {
+    public void setFolderParent(Long folderParent) {
         this.folderParent = folderParent;
     }
 
