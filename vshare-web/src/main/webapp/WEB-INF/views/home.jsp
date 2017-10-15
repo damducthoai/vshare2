@@ -6,6 +6,10 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
 <html>
 <head>
     <title>My Vshare</title>
@@ -64,6 +68,7 @@
 
 
 <table id="folder-list">
+
     <tr>
         <td>name</td>
         <td>size</td>
@@ -73,10 +78,12 @@
 <hr>
 
 <table id="file-list">
+    <c:forEach var="file" items="${files}">
     <tr>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td>${file.fileOriginalName}</td>
+        <td>${file.filePhysicalName}</td>
+        <td>update</td>
+        </c:forEach>
 </table>
 <!--<div id="friend-list" >
         <a href="/">
