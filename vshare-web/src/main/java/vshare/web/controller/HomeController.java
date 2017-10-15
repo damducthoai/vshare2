@@ -48,10 +48,11 @@ public class HomeController extends BaseController {
         StorageEntity storageEntity = storageRepository.findByUserId(userEntity.getUserId());
         Collection<FileEntity> listFile = fileRepository.findAllByStorageId(storageEntity.getStorageId());
 
-        List<FolderEntity> listFolder = folderController.getFolderList();
+        //List<FolderEntity> listFolder = folderController.getFolderList();
+        List<FolderEntity> folders = folderRepository.findAllByFolderParentAndStorageId(curFolderId, storageEntity.getStorageId());
 
         model.addAttribute("files", listFile);
-        model.addAttribute("folders", listFolder);
+        model.addAttribute("folders", folders);
         model.addAttribute("curlFolderId", curFolderId);
         return "home";
     }
