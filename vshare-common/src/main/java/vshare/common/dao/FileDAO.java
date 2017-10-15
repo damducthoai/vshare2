@@ -6,7 +6,8 @@ import vshare.common.entity.FileEntity;
  * Created by Dell on 10/15/2017.
  */
 public interface FileDAO {
-    boolean addFile(FileEntity fileEntity);
+
+    FileEntity addFile(FileEntity fileEntity);
 
     boolean updateFile(FileEntity fileEntity);
 

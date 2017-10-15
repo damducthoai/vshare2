@@ -1,5 +1,6 @@
 package vshare.common.dao.impl;
 
+import org.springframework.stereotype.Service;
 import vshare.common.dao.FileDAO;
 import vshare.common.entity.FileEntity;
 import vshare.common.repository.FileRepository;
@@ -7,12 +8,12 @@ import vshare.common.repository.FileRepository;
 /**
  * Created by Dell on 10/15/2017.
  */
+@Service
 public class FileDAOImpl implements FileDAO {
     FileRepository fileRepository;
     @Override
-    public boolean addFile(FileEntity fileEntity) {
-        fileRepository.save(fileEntity);
-        return true;
+    public FileEntity addFile(FileEntity fileEntity) {
+        return fileRepository.saveAndFlush(fileEntity);
     }
 
     @Override
