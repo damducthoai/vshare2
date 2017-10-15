@@ -11,7 +11,7 @@ public class RegisterController extends BaseController {
     @GetMapping
     String getRegisterUI() {
         // TODO
-        return "";
+        return "register";
     }
 
     @PostMapping
