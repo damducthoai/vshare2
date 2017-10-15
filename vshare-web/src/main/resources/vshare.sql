@@ -23,3 +23,46 @@ insert into authority values(1, "admin");
 insert into authority values(1, "ROLE_USER");
 insert into authority values(2, "user");
 insert into authority values(2, "ROLE_USER");
+
+DROP TABLE IF EXISTS storage;
+CREATE TABLE `storage` (
+  `storage_id`   BIGINT(20),
+  `user_id`      BIGINT(20),
+  `max_size`     BIGINT(20),
+  `current_size` BIGINT(20),
+  PRIMARY KEY (`storage_id`),
+  FOREIGN KEY (user_id) REFERENCES user (user_id)
+)
+  ENGINE = InnoDB
+  DEFAULT CHARSET = utf8;
+
+CREATE TABLE `folder` (
+  `folder_id`     BIGINT(20)   NOT NULL AUTO_INCREMENT,
+  `folder_parent` LONG                  DEFAULT NULL,
+  `folder_name`   VARCHAR(250) NOT NULL,
+  `storage_id`    BIGINT(20)            DEFAULT NULL,
+  `privacy`       VARCHAR(250)          DEFAULT NULL,
+  `status`        VARCHAR(250)          DEFAULT NULL,
+  PRIMARY KEY (`folder_id`),
+  FOREIGN KEY (storage_id) REFERENCES storage (storage_id)
+)
+  ENGINE = InnoDB
+  DEFAULT CHARSET = utf8;
+
+DROP TABLE IF EXISTS file;
+CREATE TABLE `file` (
+  `file_id`            BIGINT(20) NOT NULL AUTO_INCREMENT,
+  `file_original_name` VARCHAR(250)        DEFAULT NULL,
+  `file_physical_name` VARCHAR(250)        DEFAULT NULL,
+  `file_address`       VARCHAR(250)        DEFAULT NULL,
+  `storage_id`         BIGINT(20)          DEFAULT NULL,
+  `folder_id`          BIGINT(20)          DEFAULT NULL,
+  `privacy`            VARCHAR(250)        DEFAULT NULL,
+  `status`             VARCHAR(250)        DEFAULT NULL,
+  `file_size`          BIGINT(20),
+  PRIMARY KEY (`file_id`),
+  FOREIGN KEY (folder_id) REFERENCES folder (folder_id),
+  FOREIGN KEY (storage_id) REFERENCES storage (storage_id)
+)
+  ENGINE = InnoDB
+  DEFAULT CHARSET = utf8;
