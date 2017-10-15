@@ -42,6 +42,7 @@ public class HomeController extends BaseController {
 
     @GetMapping
     String getHomeUI(Model model) {
+        Long curFolderId = null;
         String userName = biz.getLoggedInUserName();
         UserEntity userEntity = userRepository.findByUserName(userName);
         StorageEntity storageEntity = storageRepository.findByUserId(userEntity.getUserId());
@@ -51,17 +52,19 @@ public class HomeController extends BaseController {
 
         model.addAttribute("files", listFile);
         model.addAttribute("folders", listFolder);
-
+        model.addAttribute("curlFolderId", curFolderId);
         return "home";
     }
 
     @GetMapping(value = "/{child}")
     String getChildFolder(Model model, @PathVariable("child") Long folderId) {
+        Long curFolderId = folderId;
         long storageId = storageManager.getLoggedInStorageId();
         List<FolderEntity> folders = folderRepository.findAllByFolderParentAndStorageId(folderId, storageId);
         List<FileEntity> files = fileRepository.findAllByFolderId(folderId);
         model.addAttribute("folders", folders);
         model.addAttribute("files", files);
+        model.addAttribute("curlFolderId", curFolderId);
         return "home";
     }
 }

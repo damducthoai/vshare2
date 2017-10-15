@@ -9,7 +9,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-
+<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 <html>
 <head>
     <title>My Vshare</title>
@@ -33,6 +33,11 @@
 </head>
 
 <body>
+<form action="${contextPath}/folders" method="post">
+    <input type="text" placeholder="folder nae" name="folderName"/>
+    <input type="hidden" value="${curlFolderId}" name="parrentId"/>
+    <button>Create folder</button>
+</form>
 <div id="tool-box">
     <h4>Add new folder</h4>
 
