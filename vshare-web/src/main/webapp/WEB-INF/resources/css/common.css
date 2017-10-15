@@ -54,3 +54,68 @@ body {
 .form-group {
     margin-bottom: 10px;
 }
+
+/*Anh TU*/
+*, html {
+    box-sizing: border-box;
+}
+
+button {
+    padding: 8px 15px;
+}
+
+#tool-box {
+    width: 59%;
+    margin: 20px auto;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+#tool-box table{
+    width: 100%;
+    border: none;
+}
+
+#tool-box input{
+    width: 100%;
+    padding: 8px;
+    outline: none;
+    background-color: #ebebeb;
+    border: 1px solid #ccc;
+}
+
+#folder-list {
+    width: 59%;
+    margin: 20px auto;
+    border-collapse: collapse;
+
+}
+
+
+#folder-list td {
+    padding: 5px;
+    width: 90px;
+}
+
+#folder-list tr:nth-of-type(1) td{
+    cursor: pointer;
+}
+
+
+/*file list*/
+#file-list {
+    width: 59%;
+    margin: 20px auto;
+    border-collapse: collapse;
+
+}
+
+
+#file-list td {
+    padding: 5px;
+    width: 90px;
+}
+
+hr{
+    width: 59%;
+}
