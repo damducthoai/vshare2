@@ -1,14 +1,16 @@
 package vshare.common.dao.impl;
 
-import jdk.nashorn.internal.objects.annotations.Getter;
+import org.springframework.stereotype.Service;
 import vshare.common.dao.UserDAO;
 import vshare.common.entity.UserEntity;
 import vshare.common.repository.UserRepository;
 import vshare.common.returncode.StatusCode;
 
+@Service
 public class UserDAOImpl implements UserDAO {
 
     UserRepository userRepository;
+
     @Override
     public int addUser(UserEntity userEntity) {
         userRepository.save(userEntity);
