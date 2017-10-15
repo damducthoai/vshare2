@@ -1,15 +1,17 @@
 package vshare.web.controller;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 @RequestMapping(path = "upload")
+@CrossOrigin("*")
 public class UploadController extends BaseController {
+    @Value("${upload.dir}")
+    private String uploadDir;
+
     @GetMapping
     String getUploadUI() {
         return "upload";
