@@ -38,6 +38,11 @@
     <input type="hidden" value="${curlFolderId}" name="parrentId"/>
     <button>Create folder</button>
 </form>
+<form action="${contextPath}/upload" method="post" enctype="multipart/form-data">
+    <input type="hidden" value="${curlFolderId}" name="folderId"/>
+    <input type="file" name="file"/>
+    <button>Upload file</button>
+</form>
 <div id="tool-box">
     <h4>Add new folder</h4>
 
@@ -92,6 +97,17 @@
 </table>
 
 <hr>
+
+<ul>
+    <c:forEach var="file" items="${files}">
+        <li class="item-file item">
+                ${file.fileOriginalName}
+        </li>
+    </c:forEach>
+    <c:forEach var="folder" items="${folders}">
+        <li class="item-folder item">${folder.folderName}</li>
+    </c:forEach>
+</ul>
 
 <table id="file-list">
     <c:forEach var="file" items="${files}">

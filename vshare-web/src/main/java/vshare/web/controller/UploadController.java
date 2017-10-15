@@ -41,6 +41,8 @@ public class UploadController extends BaseController {
         UserEntity userEntity = userRepository.findByUserName(biz.getLoggedInUserName());
         StorageEntity storageEntity = storageRepository.findByUserId(userEntity.getUserId());
         fileEntity.setStorageId(storageEntity.getStorageId());
+        fileEntity.setFolderId(folderId);
+        fileEntity.setStorageId(storageEntity.getStorageId());
         fileRepository.saveAndFlush(fileEntity);
         return fileEntity;
     }
