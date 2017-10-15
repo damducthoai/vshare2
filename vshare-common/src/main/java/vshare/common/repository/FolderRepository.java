@@ -1,7 +1,7 @@
 package vshare.common.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import vshare.common.entity.AuthorityEntity;
+import org.springframework.stereotype.Repository;
 import vshare.common.entity.FolderEntity;
 
 import java.util.List;
@@ -9,6 +9,9 @@ import java.util.List;
 /**
  * Created by Dell on 10/15/2017.
  */
+@Repository
 public interface FolderRepository extends JpaRepository<FolderEntity, Long> {
+    List<FolderEntity> findAllByStorageId(long storageId);
 
+    List<FolderEntity> findAllByFolderId(Long folderId);
 }

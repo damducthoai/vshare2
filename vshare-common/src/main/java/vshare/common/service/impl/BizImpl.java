@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import vshare.common.dao.FileDAO;
 import vshare.common.entity.FileEntity;
+import vshare.common.entity.UserEntity;
 import vshare.common.service.Biz;
 import vshare.common.service.SecurityService;
 import vshare.common.service.UploadService;
@@ -46,6 +47,16 @@ public class BizImpl implements Biz {
     @Override
     public String getLoggedInUserName() {
         return securityService.getLoggedInUserName();
+    }
+
+    @Override
+    public long getLoggedInUserId() {
+        return securityService.getLoggedInUserId();
+    }
+
+    @Override
+    public UserEntity getLoggedInUser() {
+        return securityService.getLoggedInUser();
     }
 
     @Override
