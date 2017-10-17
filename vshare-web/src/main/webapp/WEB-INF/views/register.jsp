@@ -16,7 +16,7 @@
 <body>
 <div class="container">
     <div class="row">
-        <form>
+        <form action="registration" method="post">
             <div class="col-md-2"></div>
             <div class="col-md-8">
                 <div class="col-md-12 form-group">
@@ -24,7 +24,7 @@
                         <label class="control-label">Username <strong class="cl-force">*</strong></label>
                     </div>
                     <div class="col-md-8">
-                        <input type="text" class="form-control w-100">
+                        <input type="text" class="form-control w-100" name="userName">
                     </div>
                 </div>
                 <div class="col-md-12 form-group">
@@ -32,7 +32,7 @@
                         <label class="control-label">Email <strong class="cl-force">*</strong></label>
                     </div>
                     <div class="col-md-8">
-                        <input type="text" class="form-control w-100">
+                        <input type="text" class="form-control w-100" name="userEmail">
                     </div>
                 </div>
                 <div class="col-md-12 form-group">
@@ -40,7 +40,7 @@
                         <label class="control-label">Password <strong class="cl-force">*</strong></label>
                     </div>
                     <div class="col-md-8 ">
-                        <input type="text" class="form-control w-100">
+                        <input type="text" class="form-control w-100" name="userPassword">
                     </div>
                 </div>
                 <div class="col-md-12 form-group">
@@ -48,11 +48,11 @@
                         <label class="control-label">Confirm password <strong class="cl-force">*</strong></label>
                     </div>
                     <div class="col-md-8">
-                        <input type="text" class="form-control w-100">
+                        <input type="text" class="form-control w-100" name="userConfirmPassword">
                     </div>
                 </div>
                 <div class="text-right">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">Sign up</button>
+                    <button type="submit" class="btn btn-primary" data-dismiss="modal">Sign up</button>
                 </div>
             </div>
             <div class="col-md-2"></div>
