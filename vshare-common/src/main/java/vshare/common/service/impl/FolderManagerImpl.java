@@ -25,8 +25,12 @@ public class FolderManagerImpl implements FolderManager {
 
     @Override
     public FolderEntity createFolder(Long parrentId, String name) {
-        FolderEntity folderEntity = new FolderEntity();
         long storageId = storageManager.getStorageId();
+
+        if (folderRepository.findByStorageIdAndFolderParentAndFolderName(storageId, parrentId, name) != null)
+            return null;
+
+        FolderEntity folderEntity = new FolderEntity();
 
         folderEntity.setFolderParent(parrentId);
         folderEntity.setFolderName(name);

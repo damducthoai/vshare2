@@ -1,7 +1,5 @@
 package vshare.web.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,24 +9,12 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import vshare.common.binding.FileUploadInfo;
 import vshare.common.entity.FileEntity;
-import vshare.common.repository.FileRepository;
-import vshare.common.repository.StorageRepository;
-import vshare.common.repository.UserRepository;
 
 import javax.validation.Valid;
 
 @Controller
 @RequestMapping(path = "upload")
 public class UploadController extends BaseController {
-    @Value("${upload.dir}")
-    private String uploadDir;
-    @Autowired
-    UserRepository userRepository;
-    @Autowired
-    FileRepository fileRepository;
-
-    @Autowired
-    StorageRepository storageRepository;
 
     @GetMapping
     String getUploadUI(Model model) {
