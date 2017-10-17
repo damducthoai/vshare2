@@ -7,7 +7,7 @@ import vshare.common.service.UniqueStringService;
 import java.util.Date;
 import java.util.concurrent.atomic.AtomicLong;
 
-@Service
+@Service("uniqueStringService")
 public class UniqueStringServiceImpl implements UniqueStringService {
     public static final String BASE_STRING = String.valueOf(new Date());
     private static final AtomicLong ATOMIC_LONG = new AtomicLong();

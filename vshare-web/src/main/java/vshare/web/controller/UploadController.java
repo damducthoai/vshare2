@@ -2,19 +2,23 @@ package vshare.web.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpRequest;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
+import vshare.common.binding.FileUploadInfo;
 import vshare.common.entity.FileEntity;
-import vshare.common.entity.StorageEntity;
-import vshare.common.entity.UserEntity;
 import vshare.common.repository.FileRepository;
 import vshare.common.repository.StorageRepository;
 import vshare.common.repository.UserRepository;
 
+import javax.validation.Valid;
+
 @Controller
 @RequestMapping(path = "upload")
-@CrossOrigin("*")
 public class UploadController extends BaseController {
     @Value("${upload.dir}")
     private String uploadDir;
@@ -27,23 +31,25 @@ public class UploadController extends BaseController {
     StorageRepository storageRepository;
 
     @GetMapping
-    String getUploadUI() {
+    String getUploadUI(Model model) {
+        model.addAttribute("file", new FileUploadInfo());
         return "upload";
     }
 
     @PostMapping
     @ResponseBody
-    FileEntity processUpload(@RequestParam("file") MultipartFile multipartFile, @RequestParam(value = "folderId", required = false) Long folderId) {
-        FileEntity fileEntity = biz.httpUpload(multipartFile);
-        if (folderId != null) {
-            fileEntity.setFolderId(folderId);
+    ResponseEntity<FileEntity> process(@Valid @ModelAttribute("file") FileUploadInfo info, BindingResult result, HttpRequest req) {
+
+        ResponseEntity<FileEntity> res = null;
+
+        FileEntity file = null;
+
+        if (result.hasErrors()) {
+            res = new ResponseEntity<FileEntity>(HttpStatus.BAD_REQUEST);
+        } else {
+            file = uploadFile(info.getParrentId(), info.getFile());
+            res = new ResponseEntity<FileEntity>(file, HttpStatus.OK);
         }
-        UserEntity userEntity = userRepository.findByUserName(biz.getLoggedInUserName());
-        StorageEntity storageEntity = storageRepository.findByUserId(userEntity.getUserId());
-        fileEntity.setStorageId(storageEntity.getStorageId());
-        fileEntity.setFolderId(folderId);
-        fileEntity.setStorageId(storageEntity.getStorageId());
-        fileRepository.saveAndFlush(fileEntity);
-        return fileEntity;
+        return res;
     }
 }

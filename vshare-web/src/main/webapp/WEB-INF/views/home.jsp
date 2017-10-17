@@ -30,18 +30,9 @@
 
 <body>
 
-<form:form action="${contextPath}/folders" method="post" id="createFolder" modelAttribute="newFolder">
-    <form:hidden path="parrentId" value="${curlFolderId}"/>
-    <form:label path="name">Folder Name</form:label>
-    <form:input path="name"/>
-    <button>Create Folder</button>
-</form:form>
+<jsp:include page="create_folder.jsp"/>
 
-<form action="${contextPath}/upload" method="post" enctype="multipart/form-data" id="uploadFile">
-    <input type="hidden" value="${curlFolderId}" name="folderId"/>
-    <input type="file" name="file"/>
-    <button>Upload file</button>
-</form>
+<jsp:include page="upload_file.jsp"/>
 <script>
     $('#createFolder').submit(function () {
         $(this).ajaxSubmit();

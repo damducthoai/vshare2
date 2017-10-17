@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.multipart.MultipartFile;
 import vshare.common.binding.ActionResult;
 import vshare.common.binding.NewFolder;
 import vshare.common.binding.RegisterInfo;
@@ -35,6 +36,11 @@ public class BaseController implements FileManager, FolderManager, RegistrationS
     @Override
     public List<FileEntity> getFiles(Long folderId) {
         return fileManager.getFiles(folderId);
+    }
+
+    @Override
+    public FileEntity uploadFile(Long folderId, MultipartFile file) {
+        return fileManager.uploadFile(folderId, file);
     }
 
     @Override
