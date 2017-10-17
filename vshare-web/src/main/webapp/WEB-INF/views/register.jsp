@@ -6,49 +6,60 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
+<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+
 <html>
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <link href="${contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
     <link href="${contextPath}/resources/css/common.css" rel="stylesheet">
     <link href="${contextPath}/resources/js/bootstrap.min.js" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
 </head>
 <body>
 <div class="container">
     <div class="row">
-        <form action="registration" method="post">
+        <form:form action="registration" method="post" enctype="application/x-www-form-urlencoded"
+                   modelAttribute="user">
             <div class="col-md-2"></div>
             <div class="col-md-8">
                 <div class="col-md-12 form-group">
                     <div class="col-md-4">
-                        <label class="control-label">Username <strong class="cl-force">*</strong></label>
+                        <form:label path="userName" cssClass="control-label">User name</form:label>
                     </div>
                     <div class="col-md-8">
-                        <input type="text" class="form-control w-100" name="userName">
+                        <form:input path="userName" cssClass="form-control w-100"/>
                     </div>
                 </div>
                 <div class="col-md-12 form-group">
                     <div class="col-md-4">
-                        <label class="control-label">Email <strong class="cl-force">*</strong></label>
+                        <form:label path="userEmail" cssClass="control-label">Email</form:label>
                     </div>
                     <div class="col-md-8">
-                        <input type="text" class="form-control w-100" name="userEmail">
+                        <form:input path="userEmail" cssClass="form-control w-100"/>
                     </div>
                 </div>
                 <div class="col-md-12 form-group">
                     <div class="col-md-4">
-                        <label class="control-label">Password <strong class="cl-force">*</strong></label>
+                        <form:label path="userPassword">Password</form:label>
                     </div>
                     <div class="col-md-8 ">
-                        <input type="text" class="form-control w-100" name="userPassword">
+                        <form:input path="userPassword" cssClass="form-control w-100"/>
                     </div>
                 </div>
                 <div class="col-md-12 form-group">
                     <div class="col-md-4">
-                        <label class="control-label">Confirm password <strong class="cl-force">*</strong></label>
+                        <form:label path="userConfirmPassword" cssClass="control-label">Confirm Password</form:label>
                     </div>
                     <div class="col-md-8">
-                        <input type="text" class="form-control w-100" name="userConfirmPassword">
+                        <form:input path="userConfirmPassword" cssClass="form-control w-100"/>
                     </div>
                 </div>
                 <div class="text-right">
@@ -56,13 +67,8 @@
                 </div>
             </div>
             <div class="col-md-2"></div>
-        </form>
-
+        </form:form>
     </div>
 </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src="${contextPath}/resources/js/bootstrap.min.js"></script>
-<script src="${contextPath}/resources/css/common.css"></script>
-<script src="${contextPath}/resources/css/bootstrap.min.css"></script>
 </body>
 </html>

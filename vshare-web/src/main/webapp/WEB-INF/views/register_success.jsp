@@ -11,6 +11,6 @@
     <title>Register Success</title>
 </head>
 <body>
-
+You have registed successfully
 </body>
 </html>

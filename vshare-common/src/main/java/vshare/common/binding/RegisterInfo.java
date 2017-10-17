@@ -1,9 +1,21 @@
 package vshare.common.binding;
 
+
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
 public class RegisterInfo {
+    @NotNull(message = "Email cannot be null")
+    @NotEmpty
     private String userEmail;
+    @NotNull
+    @NotEmpty
     private String userName;
+    @NotNull
+    @NotEmpty
     private String userPassword;
+    @NotNull
+    @NotEmpty
     private String userConfirmPassword;
 
     public String getUserEmail() {
