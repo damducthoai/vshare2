@@ -8,6 +8,10 @@ import java.util.Collection;
 
 public interface SecurityService {
 
+    long getUserId();
+
+    String getUserName();
+
     Authentication getLoggedInAuthentication();
 
     String getLoggedInUserName();

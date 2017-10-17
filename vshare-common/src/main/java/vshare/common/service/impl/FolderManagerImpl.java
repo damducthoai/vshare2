@@ -5,22 +5,21 @@ import org.springframework.stereotype.Service;
 import vshare.common.entity.FolderEntity;
 import vshare.common.repository.FolderRepository;
 import vshare.common.service.FolderManager;
+import vshare.common.service.StorageManager;
 
 import java.util.List;
 
-@Service
+@Service(value = "folderManager")
 public class FolderManagerImpl implements FolderManager {
     @Autowired
     FolderRepository folderRepository;
 
-    @Override
-    public List<FolderEntity> getAll() {
-        return null;
-    }
+    @Autowired
+    StorageManager storageManager;
 
     @Override
-    public List<FolderEntity> getOwnFolder(Long parentId) {
-        return folderRepository.findAllByFolderParent(parentId);
+    public List<FolderEntity> getFolders(Long folderId) {
+        long storageId = storageManager.getStorageId();
+        return folderRepository.findAllByStorageIdAndFolderParent(storageId, folderId);
     }
-
 }

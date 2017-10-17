@@ -35,11 +35,18 @@
 </head>
 
 <body>
+
 <form action="${contextPath}/folders" method="post" id="createFolder">
     <input type="text" placeholder="folder nae" name="folderName"/>
     <input type="hidden" value="${curlFolderId}" name="parrentId"/>
     <button>Create folder</button>
 </form>
+
+<%--<form:form modelAttribute="uploadInfo" id="uploadFile" enctype="multipart/form-data" action="/upload" method="post">
+    &lt;%&ndash;<form:input path="file" type="file"/>&ndash;%&gt;
+    <input type="file" name="uploadInfo.file"/>
+    <form:hidden path="folderId">${curlFolderId}</form:form>
+</form:form>--%>
 
 <form action="${contextPath}/upload" method="post" enctype="multipart/form-data" id="uploadFile">
     <input type="hidden" value="${curlFolderId}" name="folderId"/>

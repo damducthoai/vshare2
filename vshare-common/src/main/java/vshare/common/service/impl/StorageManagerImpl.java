@@ -6,7 +6,7 @@ import vshare.common.repository.StorageRepository;
 import vshare.common.service.SecurityService;
 import vshare.common.service.StorageManager;
 
-@Service
+@Service(value = "storageManager")
 public class StorageManagerImpl implements StorageManager {
     @Autowired
     private SecurityService securityService;
@@ -17,6 +17,12 @@ public class StorageManagerImpl implements StorageManager {
     @Override
     public long getLoggedInStorageId() {
         long userId = securityService.getLoggedInUserId();
+        return storageRepository.findByUserId(userId).getStorageId();
+    }
+
+    @Override
+    public long getStorageId() {
+        long userId = securityService.getUserId();
         return storageRepository.findByUserId(userId).getStorageId();
     }
 }

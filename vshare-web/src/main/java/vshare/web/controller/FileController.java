@@ -2,9 +2,8 @@ package vshare.web.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+import vshare.common.binding.UploadFileInfo;
 import vshare.common.entity.FileEntity;
 import vshare.common.service.FileManager;
 
@@ -19,7 +18,13 @@ public class FileController extends BaseController {
     @GetMapping
     @ResponseBody
     public List<FileEntity> getFiles() {
-        return fileManager.getOwnFiles(null);
+        return null;
+    }
+
+    @PostMapping
+    public FileEntity uploadFile(@ModelAttribute(value = "uploadInfo") UploadFileInfo fileInfo) {
+
+        return new FileEntity();
     }
 
 

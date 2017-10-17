@@ -11,7 +11,7 @@ import vshare.common.service.SecurityService;
 
 import java.util.Collection;
 
-@Service
+@Service(value = "securityService")
 public class SecurityServiceImpl implements SecurityService {
     @Autowired
     private UserRepository userRepository;
@@ -38,6 +38,19 @@ public class SecurityServiceImpl implements SecurityService {
     @Override
     public Collection<SimpleGrantedAuthority> getLoggedInAuthorities() {
         return (Collection<SimpleGrantedAuthority>) getLoggedInAuthentication().getAuthorities();
+    }
+
+    @Override
+    public long getUserId() {
+        String userName = getUserName();
+        return userRepository.findByUserName(userName).getUserId();
+    }
+
+    @Override
+    public String getUserName() {
+        Authentication authentication = getLoggedInAuthentication();
+        String currentUserName = authentication.getName();
+        return currentUserName;
     }
 
     @Override

@@ -5,7 +5,5 @@ import vshare.common.entity.FolderEntity;
 import java.util.List;
 
 public interface FolderManager {
-    List<FolderEntity> getAll();
-
-    List<FolderEntity> getOwnFolder(Long parentId);
+    List<FolderEntity> getFolders(Long folderId);
 }

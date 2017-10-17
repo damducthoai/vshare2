@@ -9,7 +9,7 @@ import vshare.common.service.StorageManager;
 
 import java.util.List;
 
-@Service
+@Service(value = "fileManager")
 public class FileManagerImpl implements FileManager {
 
     @Autowired
@@ -19,7 +19,8 @@ public class FileManagerImpl implements FileManager {
     FileRepository fileRepository;
 
     @Override
-    public List<FileEntity> getOwnFiles(Long folderId) {
-        return fileRepository.findAllByFolderId(folderId);
+    public List<FileEntity> getFiles(Long folderId) {
+        long storageId = storageManager.getStorageId();
+        return fileRepository.findAllByStorageIdAndFolderId(storageId, folderId);
     }
 }

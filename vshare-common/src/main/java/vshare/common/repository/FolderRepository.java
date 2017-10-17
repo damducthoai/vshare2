@@ -17,7 +17,7 @@ public interface FolderRepository extends JpaRepository<FolderEntity, Long> {
 
     List<FolderEntity> findAllByFolderParent(Long parentId);
 
-    List<FolderEntity> findAllByStorageIdAndAndFolderParent(long storageId, Long parentId);
+    List<FolderEntity> findAllByStorageIdAndFolderParent(long storageId, Long parentId);
 
     List<FolderEntity> findAllByFolderParentAndStorageId(Long parentId, long storageId);
 

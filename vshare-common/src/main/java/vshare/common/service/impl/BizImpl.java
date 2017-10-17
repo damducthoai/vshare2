@@ -40,6 +40,16 @@ public class BizImpl implements Biz {
     }
 
     @Override
+    public long getUserId() {
+        return securityService.getUserId();
+    }
+
+    @Override
+    public String getUserName() {
+        return securityService.getUserName();
+    }
+
+    @Override
     public Authentication getLoggedInAuthentication() {
         return securityService.getLoggedInAuthentication();
     }

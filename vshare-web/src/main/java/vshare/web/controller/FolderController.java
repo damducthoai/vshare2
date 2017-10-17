@@ -26,7 +26,7 @@ public class FolderController extends BaseController {
     @GetMapping
     @ResponseBody
     public List<FolderEntity> getFolderList() {
-        return folderManager.getOwnFolder(Long.valueOf(2));
+        return null;
     }
 
     @PostMapping

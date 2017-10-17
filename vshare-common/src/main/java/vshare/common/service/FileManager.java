@@ -5,5 +5,5 @@ import vshare.common.entity.FileEntity;
 import java.util.List;
 
 public interface FileManager {
-    List<FileEntity> getOwnFiles(Long folderId);
+    List<FileEntity> getFiles(Long folderId);
 }
