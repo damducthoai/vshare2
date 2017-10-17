@@ -30,17 +30,18 @@
 
 <body>
 
-<%--<form:form action="${contextPath}/folders" method="post" id="createFolder" modelAttribute="newFolder">
+<form:form action="${contextPath}/folders" method="post" id="createFolder" modelAttribute="newFolder">
     <form:hidden path="parrentId" value="${curlFolderId}"/>
     <form:label path="name">Folder Name</form:label>
     <form:input path="name"/>
     <button>Create Folder</button>
 </form:form>
+
 <form action="${contextPath}/upload" method="post" enctype="multipart/form-data" id="uploadFile">
     <input type="hidden" value="${curlFolderId}" name="folderId"/>
     <input type="file" name="file"/>
     <button>Upload file</button>
-</form>--%>
+</form>
 <script>
     $('#createFolder').submit(function () {
         $(this).ajaxSubmit();
@@ -52,91 +53,79 @@
     });
 </script>
 <div id="tool-box">
-
     <h4>Add new folder</h4>
+
+    <!--<table id="folder-table">
+            <tr>
+                <td>name</td>
+                <td><input type="text" id="folder-name"></td>
+            </tr>
+            <tr>
+                <td>type</td>
+                <td><input type="email" id="folder-type"></td>
+            </tr>
+            <tr>
+                <td>note</td>
+                <td><input type="text" id="folder-size"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <button id="btn-add" onclick="addFolder()">add new</button>
+
+                </td>
+            </tr>
+        </table>-->
     <td>
-        <button id="btn-add" data-toggle="modal" data-target="#add-folder">add new folder</button>
+        <button id="btn-add" data-toggle="modal" data-target="#add-folder">add new</button>
 
     </td>
 </div>
 
 <div id="tool-box">
     <h4>Upload File</h4>
-    <td>
-        <button id="btn-add" data-toggle="modal" data-target="#add-file">add new file</button>
-    </td>
 
-    <%--<form action="${contextPath}/upload" method="post" enctype="multipart/form-data" id="uploadFile">
+    <table>
         <tr>
-            <input type="hidden" value="${curlFolderId}" name="folderId"/>
-        <td><input type="file" name="file"/></td>
-        <td><button id="btn-upFile" >Upload file</button></td>
+            <td></td>
+            <td>
+                <button id="btn-upFile" onclick="uploadFile()">Upload File</button>
+
+            </td>
         </tr>
-    </form>--%>
+    </table>
 </div>
 
 
+<table id="folder-list">
 
-
-<table id="folder-list" class="table table-bordered table-hover">
-<thead>
     <tr>
-        <th>Name</th>
-        <th>Size</th>
-        <th>Update</th>
-        <th></th>
-    </tr>
-</thead>
-    <tbody>
-    <c:forEach var="file" items="${files}">
-        <tr>
-            <td class="item-folder"><a>file </a> ${file.fileOriginalName}</td>
-            <td>${file.filePhysicalName}</td>
-            <td>update</td>
-            <td><button onclick="deleteFile(file.id)">Delete</button></td>
-        </tr>
-    </c:forEach>
-    <c:forEach var="folder" items="${folders}">
-        <tr>
-        <td class="item-file"><a>folder </a> ${folder.folderName}</td>
-        <td></td>
-        <td>Update</td>
-        <td><button onclick="deleteRowFolder(folder.id)">Delete</button></td>
-        </tr>
-    </c:forEach>
-    </tbody>
+        <td>name</td>
+        <td>size</td>
+        <td>update</td>
 </table>
-
 
 <hr>
 
-<%--<ul>--%>
-    <%--<c:forEach var="file" items="${files}">--%>
-        <%--<li class="item-file item">--%>
-                <%--${file.fileOriginalName}--%>
-        <%--</li>--%>
-<%--</ul>--%>
+<ul>
+    <c:forEach var="file" items="${files}">
+        <li class="item-file item">
+                ${file.fileOriginalName}
+        </li>
+    </c:forEach>
+    <c:forEach var="folder" items="${folders}">
+        <li class="item-folder item">${folder.folderName}</li>
+    </c:forEach>
+</ul>
 
-<%--<ul>--%>
-    <%--</c:forEach>--%>
-    <%--<c:forEach var="folder" items="${folders}">--%>
-        <%--<li class="item-folder item">${folder.folderName}</li>--%>
-    <%--</c:forEach>--%>
-<%--</ul>--%>
-
-<%--<table id="file-list">--%>
-
-
-    <%--<c:forEach var="file" items="${files}">--%>
-    <%--<tr>--%>
-        <%--<td>${file.fileOriginalName}</td>--%>
-        <%--<td>${file.filePhysicalName}</td>--%>
-        <%--<td>update</td>--%>
-        <%--</c:forEach>--%>
-<%--</table>--%>
-
-
-
+<table id="file-list">
+    <c:forEach var="file" items="${files}">
+    <tr>
+        <td>${file.fileOriginalName}</td>
+        <td>${file.filePhysicalName}</td>
+        <td>update</td>
+        </c:forEach>
+</table>
 <!--<div id="friend-list" >
         <a href="/">
                     <i class="fa fa-music" aria-hidden="true"></i> <span>Music</span>
@@ -151,34 +140,36 @@
     <div class="modal-dialog">
 
         <!-- Popup content add-->
-        <form:form action="${contextPath}/folders" method="post" id="createFolder" modelAttribute="newFolder">
-            <form:hidden path="parrentId" value="${curlFolderId}"/>
-                <div class="modal-content">
-                    <form:hidden path="parrentId" value="${curlFolderId}"/>
-                    <form:label path="name">Folder Name</form:label>
-                    <form:input path="name"/>
-                    <button>Create Folder</button>
-                </div>
-        </form:form>
+        <div class="modal-content">
+            <div class="modal-header ">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Sign Up</h4>
+            </div>
+            <div class="modal-body ">
+                <table id="folder-table">
+                    <tr>
+                        <td>name</td>
+                        <td><input type="text" id="folder-name"></td>
+                    </tr>
+                    <tr>
+                        <td>type</td>
+                        <td><input type="email" id="folder-type"></td>
+                    </tr>
+                    <tr>
+                        <td>note</td>
+                        <td><input type="text" id="folder-size"></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="modal-footer mar-top-signup ">
+                <button id="btnAddFolder" type="button" class="btn btn-default" data-dismiss="modal"
+                        onclick="addFolder()">add new
+                </button>
+            </div>
+        </div>
+
     </div>
 </div>
-
-<div class="modal fade" id="add-file" role="dialog">
-    <div class="modal-dialog">
-
-        <!-- Popup content add-->
-
-        <form action="${contextPath}/upload" method="post" enctype="multipart/form-data" id="uploadFile">
-            <tr>
-                <input type="hidden" value="${curlFolderId}" name="folderId"/>
-                <td><input type="file" name="file"/></td>
-                <td><button id="btn-upFile" >Upload file</button></td>
-            </tr>
-        </form>
-    </div>
-</div>
-
-
 
 <script src="${contextPath}/resources/js/app.js"></script>
 </body>

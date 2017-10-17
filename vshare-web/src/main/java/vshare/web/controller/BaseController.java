@@ -1,15 +1,14 @@
 package vshare.web.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.multipart.MultipartFile;
 import vshare.common.binding.ActionResult;
 import vshare.common.binding.NewFolder;
 import vshare.common.binding.RegisterInfo;
 import vshare.common.entity.FileEntity;
 import vshare.common.entity.FolderEntity;
-import vshare.common.service.Biz;
 import vshare.common.service.FileManager;
 import vshare.common.service.FolderManager;
 import vshare.common.service.RegistrationService;
@@ -29,12 +28,14 @@ public class BaseController implements FileManager, FolderManager, RegistrationS
     @Resource(name = "registrationService")
     RegistrationService registrationService;
 
-    @Autowired
-    protected Biz biz;
-
     @Override
     public List<FileEntity> getFiles(Long folderId) {
         return fileManager.getFiles(folderId);
+    }
+
+    @Override
+    public FileEntity uploadFile(Long folderId, MultipartFile file) {
+        return fileManager.uploadFile(folderId, file);
     }
 
     @Override
