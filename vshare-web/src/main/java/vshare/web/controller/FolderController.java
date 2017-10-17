@@ -3,6 +3,7 @@ package vshare.web.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import vshare.common.binding.NewFolder;
 import vshare.common.entity.FolderEntity;
 import vshare.common.repository.FolderRepository;
 import vshare.common.service.FolderManager;
@@ -31,6 +32,12 @@ public class FolderController extends BaseController {
 
     @PostMapping
     @ResponseBody
+    public String createFolder(@ModelAttribute("newFolder") NewFolder newFolder) {
+        FolderEntity folderEntity = createFolder(newFolder.getParrentId(), newFolder.getName());
+        return "okay";
+    }
+    /*@PostMapping
+    @ResponseBody
     public String createFolder(@RequestParam("parrentId") Long parrentId, @RequestParam("folderName") String folderName) {
         FolderEntity folderEntity = new FolderEntity();
         folderEntity.setFolderParent(parrentId);
@@ -39,5 +46,5 @@ public class FolderController extends BaseController {
         folderEntity.setStorageId(storageId);
         folderRepository.save(folderEntity);
         return "xinc";
-    }
+    }*/
 }

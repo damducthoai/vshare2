@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface FolderManager {
     List<FolderEntity> getFolders(Long folderId);
+
+    FolderEntity createFolder(Long parrentId, String name);
 }

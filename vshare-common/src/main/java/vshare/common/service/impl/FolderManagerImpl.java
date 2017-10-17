@@ -22,4 +22,17 @@ public class FolderManagerImpl implements FolderManager {
         long storageId = storageManager.getStorageId();
         return folderRepository.findAllByStorageIdAndFolderParent(storageId, folderId);
     }
+
+    @Override
+    public FolderEntity createFolder(Long parrentId, String name) {
+        FolderEntity folderEntity = new FolderEntity();
+        long storageId = storageManager.getStorageId();
+
+        folderEntity.setFolderParent(parrentId);
+        folderEntity.setFolderName(name);
+        folderEntity.setStorageId(storageId);
+        folderRepository.save(folderEntity);
+
+        return folderRepository.findByStorageIdAndFolderParentAndFolderName(storageId, parrentId, name);
+    }
 }

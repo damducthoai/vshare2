@@ -2,8 +2,10 @@ package vshare.web.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import vshare.common.binding.ActionResult;
+import vshare.common.binding.NewFolder;
 import vshare.common.binding.RegisterInfo;
 import vshare.common.entity.FileEntity;
 import vshare.common.entity.FolderEntity;
@@ -40,6 +42,11 @@ public class BaseController implements FileManager, FolderManager, RegistrationS
         return folderManager.getFolders(folderId);
     }
 
+    @Override
+    public FolderEntity createFolder(Long parrentId, String name) {
+        return folderManager.createFolder(parrentId, name);
+    }
+
     protected RegisterInfo getRegisterModel() {
         return new RegisterInfo();
     }
@@ -47,5 +54,12 @@ public class BaseController implements FileManager, FolderManager, RegistrationS
     @Override
     public ActionResult createAccount(RegisterInfo info) {
         return registrationService.createAccount(info);
+    }
+
+    protected void prepareHomeModel(Model model, Long curFolderId) {
+        model.addAttribute("files", getFiles(curFolderId));
+        model.addAttribute("folders", getFolders(curFolderId));
+        model.addAttribute("curlFolderId", curFolderId);
+        model.addAttribute("newFolder", new NewFolder());
     }
 }

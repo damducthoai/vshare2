@@ -12,22 +12,16 @@
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 <html>
 <head>
-    <title>My Vshare</title>
+    <title>Home</title>
 
-    <%--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="${contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
-    <link href="${contextPath}/resources/css/common.css" rel="stylesheet">
-    <link href="${contextPath}/resources/js/bootstrap.min.js" rel="stylesheet">
---%>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <link href="${contextPath}/resources/css/common.css" rel="stylesheet">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-    <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-    <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.js"></script>
@@ -36,17 +30,12 @@
 
 <body>
 
-<form action="${contextPath}/folders" method="post" id="createFolder">
-    <input type="text" placeholder="folder nae" name="folderName"/>
-    <input type="hidden" value="${curlFolderId}" name="parrentId"/>
-    <button>Create folder</button>
-</form>
-
-<%--<form:form modelAttribute="uploadInfo" id="uploadFile" enctype="multipart/form-data" action="/upload" method="post">
-    &lt;%&ndash;<form:input path="file" type="file"/>&ndash;%&gt;
-    <input type="file" name="uploadInfo.file"/>
-    <form:hidden path="folderId">${curlFolderId}</form:form>
-</form:form>--%>
+<form:form action="${contextPath}/folders" method="post" id="createFolder" modelAttribute="newFolder">
+    <form:hidden path="parrentId" value="${curlFolderId}"/>
+    <form:label path="name">Folder Name</form:label>
+    <form:input path="name"/>
+    <button>Create Folder</button>
+</form:form>
 
 <form action="${contextPath}/upload" method="post" enctype="multipart/form-data" id="uploadFile">
     <input type="hidden" value="${curlFolderId}" name="folderId"/>
@@ -54,11 +43,11 @@
     <button>Upload file</button>
 </form>
 <script>
-    $('#createFolder').submit(function() {
+    $('#createFolder').submit(function () {
         $(this).ajaxSubmit();
         return false;
     });
-    $('#uploadFile').submit(function() {
+    $('#uploadFile').submit(function () {
         $(this).ajaxSubmit();
         return false;
     });
@@ -173,7 +162,9 @@
                 </table>
             </div>
             <div class="modal-footer mar-top-signup ">
-                <button id="btnAddFolder" type="button" class="btn btn-default" data-dismiss="modal" onclick="addFolder()">add new</button>
+                <button id="btnAddFolder" type="button" class="btn btn-default" data-dismiss="modal"
+                        onclick="addFolder()">add new
+                </button>
             </div>
         </div>
 
