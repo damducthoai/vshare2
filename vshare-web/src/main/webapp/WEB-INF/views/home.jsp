@@ -30,19 +30,32 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.js"></script>
+
 </head>
 
 <body>
-<form action="${contextPath}/folders" method="post">
+<form action="${contextPath}/folders" method="post" id="createFolder">
     <input type="text" placeholder="folder nae" name="folderName"/>
     <input type="hidden" value="${curlFolderId}" name="parrentId"/>
     <button>Create folder</button>
 </form>
-<form action="${contextPath}/upload" method="post" enctype="multipart/form-data">
+
+<form action="${contextPath}/upload" method="post" enctype="multipart/form-data" id="uploadFile">
     <input type="hidden" value="${curlFolderId}" name="folderId"/>
     <input type="file" name="file"/>
     <button>Upload file</button>
 </form>
+<script>
+    $('#createFolder').submit(function() {
+        $(this).ajaxSubmit();
+        return false;
+    });
+    $('#uploadFile').submit(function() {
+        $(this).ajaxSubmit();
+        return false;
+    });
+</script>
 <div id="tool-box">
     <h4>Add new folder</h4>
 
