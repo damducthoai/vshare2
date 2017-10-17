@@ -81,9 +81,9 @@
 <table id="folder-list" class="table table-bordered table-hover">
 <thead>
     <tr>
-        <th>name</th>
-        <th>size</th>
-        <th>update</th>
+        <th>Name</th>
+        <th>Size</th>
+        <th>Update</th>
         <th></th>
     </tr>
 </thead>
