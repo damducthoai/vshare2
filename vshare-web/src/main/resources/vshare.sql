@@ -66,3 +66,21 @@ CREATE TABLE `file` (
 )
   ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
+
+DROP TABLE IF EXISTS server;
+CREATE TABLE server (
+  server_ip       VARCHAR(255) NOT NULL,
+  server_size     BIGINT(20)   NOT NULL,
+  server_user     VARCHAR(255) NOT NULL,
+  server_password VARCHAR(255),
+  PRIMARY KEY (server_ip)
+);
+
+DROP TABLE IF EXISTS file_server_meta;
+CREATE TABLE file_server_meta (
+  server_ip VARCHAR(255) NOT NULL,
+  file_id   BIGINT(20)   NOT NULL,
+  PRIMARY KEY (server_ip, file_id),
+  FOREIGN KEY (server_ip) REFERENCES server (server_ip),
+  FOREIGN KEY (file_id) REFERENCES file (file_id)
+);
