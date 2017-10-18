@@ -54,3 +54,9 @@ body {
 .form-group {
     margin-bottom: 10px;
 }
+.mar-top-lb{
+    margin-top:9px;
+}
+.no-padding{
+    padding: 0 !important;
+}

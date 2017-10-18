@@ -21,7 +21,7 @@
             <div class="col-md-8">
                 <div class="col-md-12 form-group">
                     <div class="col-md-4">
-                        <label class="control-label">Username <strong class="cl-force">*</strong></label>
+                        <label class="control-label mar-top-lb">Username <strong class="cl-force">*</strong></label>
                     </div>
                     <div class="col-md-8">
                         <input type="text" class="form-control w-100">
@@ -29,7 +29,7 @@
                 </div>
                 <div class="col-md-12 form-group">
                     <div class="col-md-4">
-                        <label class="control-label">Email <strong class="cl-force">*</strong></label>
+                        <label class="control-label mar-top-lb">Email <strong class="cl-force">*</strong></label>
                     </div>
                     <div class="col-md-8">
                         <input type="text" class="form-control w-100">
@@ -37,7 +37,7 @@
                 </div>
                 <div class="col-md-12 form-group">
                     <div class="col-md-4">
-                        <label class="control-label">Password <strong class="cl-force">*</strong></label>
+                        <label class="control-label mar-top-lb">Password <strong class="cl-force">*</strong></label>
                     </div>
                     <div class="col-md-8 ">
                         <input type="text" class="form-control w-100">
@@ -45,7 +45,7 @@
                 </div>
                 <div class="col-md-12 form-group">
                     <div class="col-md-4">
-                        <label class="control-label">Confirm password <strong class="cl-force">*</strong></label>
+                        <label class="control-label mar-top-lb">Confirm password <strong class="cl-force">*</strong></label>
                     </div>
                     <div class="col-md-8">
                         <input type="text" class="form-control w-100">
