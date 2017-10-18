@@ -8,6 +8,7 @@ import vshare.common.service.StorageManager;
 
 @Service(value = "storageManager")
 public class StorageManagerImpl implements StorageManager {
+
     @Autowired
     private SecurityService securityService;
 

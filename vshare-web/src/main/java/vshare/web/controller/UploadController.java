@@ -1,6 +1,5 @@
 package vshare.web.controller;
 
-import org.springframework.http.HttpRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -24,7 +23,7 @@ public class UploadController extends BaseController {
 
     @PostMapping
     @ResponseBody
-    ResponseEntity<FileEntity> process(@Valid @ModelAttribute("file") FileUploadInfo info, BindingResult result, HttpRequest req) {
+    ResponseEntity<FileEntity> process(@Valid @ModelAttribute("file") FileUploadInfo info, BindingResult result) {
 
         ResponseEntity<FileEntity> res = null;
 
