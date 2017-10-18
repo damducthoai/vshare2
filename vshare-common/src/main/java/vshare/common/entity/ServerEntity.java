@@ -6,8 +6,10 @@ import javax.persistence.*;
 @Table(name = "server", schema = "vshare", catalog = "")
 public class ServerEntity {
     private String serverIp;
-    private Long serverSize;
+    private long serverSize;
+    private long serverUseableSize;
     private String serverUser;
+    private String serverAlias;
     private String serverPassword;
 
     @Id
@@ -22,12 +24,22 @@ public class ServerEntity {
 
     @Basic
     @Column(name = "server_size", nullable = false)
-    public Long getServerSize() {
+    public long getServerSize() {
         return serverSize;
     }
 
-    public void setServerSize(Long serverSize) {
+    public void setServerSize(long serverSize) {
         this.serverSize = serverSize;
+    }
+
+    @Basic
+    @Column(name = "server_useable_size", nullable = false)
+    public long getServerUseableSize() {
+        return serverUseableSize;
+    }
+
+    public void setServerUseableSize(long serverUseableSize) {
+        this.serverUseableSize = serverUseableSize;
     }
 
     @Basic
@@ -38,6 +50,16 @@ public class ServerEntity {
 
     public void setServerUser(String serverUser) {
         this.serverUser = serverUser;
+    }
+
+    @Basic
+    @Column(name = "server_alias", nullable = false, length = 255)
+    public String getServerAlias() {
+        return serverAlias;
+    }
+
+    public void setServerAlias(String serverAlias) {
+        this.serverAlias = serverAlias;
     }
 
     @Basic
@@ -57,9 +79,11 @@ public class ServerEntity {
 
         ServerEntity that = (ServerEntity) o;
 
+        if (serverSize != that.serverSize) return false;
+        if (serverUseableSize != that.serverUseableSize) return false;
         if (serverIp != null ? !serverIp.equals(that.serverIp) : that.serverIp != null) return false;
-        if (serverSize != null ? !serverSize.equals(that.serverSize) : that.serverSize != null) return false;
         if (serverUser != null ? !serverUser.equals(that.serverUser) : that.serverUser != null) return false;
+        if (serverAlias != null ? !serverAlias.equals(that.serverAlias) : that.serverAlias != null) return false;
         if (serverPassword != null ? !serverPassword.equals(that.serverPassword) : that.serverPassword != null)
             return false;
 
@@ -69,8 +93,10 @@ public class ServerEntity {
     @Override
     public int hashCode() {
         int result = serverIp != null ? serverIp.hashCode() : 0;
-        result = 31 * result + (serverSize != null ? serverSize.hashCode() : 0);
+        result = 31 * result + (int) (serverSize ^ (serverSize >>> 32));
+        result = 31 * result + (int) (serverUseableSize ^ (serverUseableSize >>> 32));
         result = 31 * result + (serverUser != null ? serverUser.hashCode() : 0);
+        result = 31 * result + (serverAlias != null ? serverAlias.hashCode() : 0);
         result = 31 * result + (serverPassword != null ? serverPassword.hashCode() : 0);
         return result;
     }

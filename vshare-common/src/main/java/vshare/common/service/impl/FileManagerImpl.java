@@ -49,6 +49,7 @@ public class FileManagerImpl implements FileManager, ApplicationEventPublisherAw
     public FileEntity uploadFile(Long folderId, MultipartFile file) {
         FileEntity fileEntity = null;
         String physicalName = uniqueStringService.getUniqueString();
+        long size = file.getSize();
         try {
             byte[] data = file.getBytes();
 
@@ -77,7 +78,7 @@ public class FileManagerImpl implements FileManager, ApplicationEventPublisherAw
             e.printStackTrace();
         } finally {
             if (fileEntity != null) {
-                publisher.publishEvent(new NewFileEvent(this, physicalName));
+                publisher.publishEvent(new NewFileEvent(this, physicalName, size));
             }
             return fileEntity;
         }

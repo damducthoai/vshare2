@@ -5,28 +5,84 @@ import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPReply;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Service;
 import vshare.common.binding.NewFileEvent;
+import vshare.common.entity.FileServerMetaEntity;
+import vshare.common.entity.ServerEntity;
+import vshare.common.repository.FileRepository;
+import vshare.common.repository.FileServerMetaRepository;
+import vshare.common.repository.ServerRepository;
 import vshare.common.service.StorageService;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.List;
+import java.util.Map;
 
 @Service("storageService")
 public class StorageServiceImpl implements StorageService, ApplicationListener<NewFileEvent> {
 
+    @Resource(name = "serverRepository")
+    ServerRepository serverRepository;
+
+    @Resource(name = "fileServerMetaRepository")
+    FileServerMetaRepository fileServerMetaRepository;
+
+    @Resource(name = "fileRepository")
+    FileRepository fileRepository;
+
+    List<ServerEntity> serverList;
+
+    @Value("${upload.dir}")
+    String uploadDir;
+
+    @Resource(name = "servers")
+    Map<String, Long> servers;
+
+    @Resource(name = "waitingFiles")
+    Map<String, Long> waitingFiles;
+
     private static final Logger LOGGER = LoggerFactory.getLogger(StorageServiceImpl.class);
 
-    FTPClient ftpClient;
+    FTPClient ftpClient = new FTPClient();
+
+    @PostConstruct
+    public void postInit() {
+        serverList = serverRepository.findAll();
+        for (ServerEntity server : serverList) {
+            servers.put(server.getServerIp(), server.getServerUseableSize());
+        }
+    }
 
     @Override
     public void onApplicationEvent(NewFileEvent event) {
-
+        boolean success = false;
+        String serveServer = null;
+        for (ServerEntity s : serverList) {
+            if (s.getServerUseableSize() > event.getSize()) {
+                serveServer = s.getServerIp();
+                File file = new File(String.format("%s/%s", uploadDir, event.getName()));
+                success = upload(s.getServerIp(), s.getServerUser(), s.getServerPassword(), file);
+                break;
+            }
+        }
+        if (!success) {
+            waitingFiles.put(event.getName(), event.getSize());
+        } else {
+            long id = fileRepository.findByFilePhysicalName(event.getName()).getFileId();
+            FileServerMetaEntity meta = new FileServerMetaEntity();
+            meta.setFileId(id);
+            meta.setServerIp(serveServer);
+            fileServerMetaRepository.save(meta);
+        }
     }
 
-    private boolean upload(String host, String username, String password, String uploadDir, File file) {
+    private boolean upload(String host, String username, String password, File file) {
         boolean status = false;
         int reply;
         try {
@@ -47,7 +103,7 @@ public class StorageServiceImpl implements StorageService, ApplicationListener<N
 
             FileInputStream inputStream = new FileInputStream(file);
 
-            ftpClient.storeFile(uploadDir + file.getName(), inputStream);
+            ftpClient.storeFile(file.getName(), inputStream);
 
             inputStream.close();
 

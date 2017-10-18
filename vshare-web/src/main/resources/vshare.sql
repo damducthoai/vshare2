@@ -36,6 +36,8 @@ CREATE TABLE `storage` (
   ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
 
+INSERT INTO storage (user_id, max_size, current_size) VALUES (1, 999999999, 0);
+
 CREATE TABLE `folder` (
   `folder_id`     BIGINT(20)   NOT NULL AUTO_INCREMENT,
   `folder_parent` BIGINT(20)            DEFAULT NULL,
@@ -69,10 +71,12 @@ CREATE TABLE `file` (
 
 DROP TABLE IF EXISTS server;
 CREATE TABLE server (
-  server_ip       VARCHAR(255) NOT NULL,
-  server_size     BIGINT(20)   NOT NULL,
-  server_user     VARCHAR(255) NOT NULL,
-  server_password VARCHAR(255),
+  server_ip           VARCHAR(255) NOT NULL,
+  server_size         BIGINT(20)   NOT NULL,
+  server_useable_size BIGINT(20)   NOT NULL,
+  server_user         VARCHAR(255) NOT NULL,
+  server_alias        VARCHAR(255) NOT NULL,
+  server_password     VARCHAR(255),
   PRIMARY KEY (server_ip)
 );
 
