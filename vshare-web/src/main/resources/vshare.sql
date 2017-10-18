@@ -38,7 +38,7 @@ CREATE TABLE `storage` (
 
 CREATE TABLE `folder` (
   `folder_id`     BIGINT(20)   NOT NULL AUTO_INCREMENT,
-  `folder_parent` LONG                  DEFAULT NULL,
+  `folder_parent` BIGINT(20)            DEFAULT NULL,
   `folder_name`   VARCHAR(250) NOT NULL,
   `storage_id`    BIGINT(20)            DEFAULT NULL,
   `privacy`       VARCHAR(250)          DEFAULT NULL,
