@@ -54,6 +54,14 @@ body {
 .form-group {
     margin-bottom: 10px;
 }
+<<<<<<< HEAD
+.mar-top-lb{
+    margin-top:9px;
+}
+.no-padding{
+    padding: 0 !important;
+}
+=======
 
 /*Anh TU*/
 *, html {
@@ -119,3 +127,4 @@ button {
 hr{
     width: 59%;
 }
+>>>>>>> 983fd2b94cc811e6365bf56c26c8c700ec26b024
