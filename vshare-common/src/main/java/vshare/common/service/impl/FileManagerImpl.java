@@ -7,10 +7,14 @@ import org.springframework.context.ApplicationEventPublisherAware;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
+import vshare.common.binding.DownloadRole;
 import vshare.common.binding.NewFileEvent;
 import vshare.common.entity.FileEntity;
+import vshare.common.entity.PremiumDataEntity;
 import vshare.common.repository.FileRepository;
+import vshare.common.repository.PremiumDataRepository;
 import vshare.common.service.FileManager;
+import vshare.common.service.SecurityService;
 import vshare.common.service.StorageManager;
 import vshare.common.service.UniqueStringService;
 
@@ -19,6 +23,7 @@ import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.List;
 
 @Service(value = "fileManager")
@@ -37,6 +42,12 @@ public class FileManagerImpl implements FileManager, ApplicationEventPublisherAw
 
     @Resource(name = "storageManager")
     StorageManager storageManager;
+
+    @Resource(name = "securityService")
+    SecurityService securityService;
+
+    @Resource(name = "premiumDataRepository")
+    PremiumDataRepository premiumDataRepository;
 
     @Override
     public List<FileEntity> getFiles(Long folderId) {
@@ -87,6 +98,45 @@ public class FileManagerImpl implements FileManager, ApplicationEventPublisherAw
     @Override
     public FileEntity getFile(String physicalName) {
         return fileRepository.findByFilePhysicalName(physicalName);
+    }
+
+    @Override
+    public String download(String physicalName) {
+        DownloadRole role = getDownloadRole();
+        return null;
+    }
+
+    @Override
+    public DownloadRole getDownloadRole() {
+        String downloadUrl = null;
+        DownloadRole role = DownloadRole.NORMAL;
+        long userId;
+        PremiumDataEntity premiumData = null;
+        try {
+            userId = securityService.getUserId();
+            premiumData = premiumDataRepository.findOne(userId);
+            if (premiumData != null && premiumData.getDueTo().toLocalDate().isAfter(LocalDate.now())) {
+                role = DownloadRole.VIP;
+            }
+        } catch (Exception e) {
+            role = DownloadRole.GUEST;
+        } finally {
+            switch (role) {
+                case VIP:
+                    downloadUrl = "vip URL";
+                    break;
+                case GUEST:
+                    downloadUrl = "guest URL";
+                    break;
+                case NORMAL:
+                    downloadUrl = "normal URL";
+                    break;
+                default:
+                    downloadUrl = "default URL";
+                    break;
+            }
+            return role;
+        }
     }
 
     @Override

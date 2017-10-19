@@ -54,6 +54,11 @@ public class SecurityServiceImpl implements SecurityService {
     }
 
     @Override
+    public UserEntity getUser() {
+        return userRepository.findByUserName(getUserName());
+    }
+
+    @Override
     public Authentication getLoggedInAuthentication() {
         return SecurityContextHolder.getContext().getAuthentication();
     }

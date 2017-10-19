@@ -12,6 +12,8 @@ public interface SecurityService {
 
     String getUserName();
 
+    UserEntity getUser();
+
     Authentication getLoggedInAuthentication();
 
     String getLoggedInUserName();

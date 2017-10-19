@@ -11,11 +11,6 @@ import vshare.common.entity.FileEntity;
 public class DownloadController extends BaseController {
     @PostMapping
     String download(@ModelAttribute("file") FileEntity file) {
-        // TODO
-        String res = null;
-        if (getFile(file.getFilePhysicalName()) != null) {
-            res = "redirect:/home";
-        }
-        return res;
+        return download(file.getFilePhysicalName());
     }
 }

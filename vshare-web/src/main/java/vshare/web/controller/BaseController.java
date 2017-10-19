@@ -1,10 +1,12 @@
 package vshare.web.controller;
 
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.multipart.MultipartFile;
 import vshare.common.binding.ActionResult;
+import vshare.common.binding.DownloadRole;
 import vshare.common.binding.NewFolder;
 import vshare.common.binding.RegisterInfo;
 import vshare.common.entity.*;
@@ -12,6 +14,7 @@ import vshare.common.repository.PremiumCardRepository;
 import vshare.common.service.*;
 
 import javax.annotation.Resource;
+import java.util.Collection;
 import java.util.List;
 
 @Controller
@@ -35,6 +38,10 @@ public class BaseController implements FileManager, FolderManager, ServerManager
     @Resource(name = "premiumCardRepository")
     PremiumCardRepository premiumCardRepository;
 
+    @Resource(name = "securityService")
+    SecurityService securityService;
+
+
     @Override
     public List<FileEntity> getFiles(Long folderId) {
         return fileManager.getFiles(folderId);
@@ -48,6 +55,16 @@ public class BaseController implements FileManager, FolderManager, ServerManager
     @Override
     public FileEntity getFile(String physicalName) {
         return fileManager.getFile(physicalName);
+    }
+
+    @Override
+    public String download(String physicalName) {
+        return fileManager.download(physicalName);
+    }
+
+    @Override
+    public DownloadRole getDownloadRole() {
+        return fileManager.getDownloadRole();
     }
 
     @Override
@@ -118,5 +135,13 @@ public class BaseController implements FileManager, FolderManager, ServerManager
 
     protected PremiumCardEntity getPremiumCardByCode(String code) {
         return premiumCardRepository.findByCardCode(code);
+    }
+
+    protected UserEntity getUser() {
+        return securityService.getUser();
+    }
+
+    protected Collection<SimpleGrantedAuthority> getAuthorities() {
+        return securityService.getLoggedInAuthorities();
     }
 }
