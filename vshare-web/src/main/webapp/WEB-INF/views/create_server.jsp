@@ -10,16 +10,69 @@
   Time: 8:01 AM
   To change this template use File | Settings | File Templates.
 --%>
-<form:form method="post" action="${contextPath}/servers/${serverIp}" modelAttribute="server" id="${formId}">
-    <form:label path="serverIp">Server Ip</form:label>
-    <form:input path="serverIp"/><br>
-    <form:label path="serverSize">Server Size</form:label>
-    <form:input path="serverSize" type="number"/><br>
-    <form:label path="serverUser">User name</form:label>
-    <form:input path="serverUser"/><br>
-    <form:label path="serverPassword">Server Password</form:label>
-    <form:input path="serverPassword"/><br>
-    <form:label path="serverAlias">Alias</form:label>
-    <form:input path="serverAlias"/><br>
-    <button>${action}</button>
-</form:form>
+<div class="container">
+    <div class="row">
+        <fieldset>
+            <legend>Thông tin</legend>
+            <form:form method="post" action="${contextPath}/servers/${serverIp}" modelAttribute="server" id="${formId}">
+                <div class="col-md-12">
+                    <div class="col-md-6 form-group ">
+                        <div class="col-md-4 no-padding">
+                            <form:label path="serverIp" cssClass="control-label mar-top-lb">Server Ip</form:label>
+                        </div>
+                        <div class="col-md-8">
+                            <form:input path="serverIp" cssClass="form-control w-100"/>
+                        </div>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <div class="col-md-4 no-padding">
+                            <form:label path="serverSize" cssClass="control-label mar-top-lb">Server Size</form:label>
+                        </div>
+                        <div class="col-md-8">
+                            <form:input path="serverSize" type="number" cssClass="form-control w-100"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-6 form-group ">
+                        <div class="col-md-4 no-padding">
+                            <form:label path="serverUser" cssClass="control-label mar-top-lb">User name</form:label>
+                        </div>
+                        <div class="col-md-8">
+                            <form:input path="serverUser" cssClass="form-control w-100"/>
+                        </div>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <div class="col-md-4 no-padding">
+                            <form:label path="serverPassword" cssClass="control-label mar-top-lb">Server Password</form:label>
+                        </div>
+                        <div class="col-md-8">
+                            <form:input path="serverPassword" cssClass="form-control w-100"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-6 form-group ">
+                        <div class="col-md-4 no-padding">
+                            <form:label path="serverAlias" cssClass="control-label mar-top-lb">Alias</form:label>
+                        </div>
+                        <div class="col-md-8">
+                            <form:input path="serverAlias" cssClass="form-control w-100"/>
+                        </div>
+                    </div>
+                    <div class="col-md-6 form-group">
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-6 form-group ">
+                    </div>
+                    <div class="col-md-6 form-group text-right">
+                        <button class="btn btn-primary ch-bt-com">${action}</button>
+                    </div>
+                </div>
+            </form:form>
+        </fieldset>
+
+
+
+

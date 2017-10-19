@@ -32,11 +32,7 @@
             <div class="col-md-8">
                 <div class="col-md-12 form-group">
                     <div class="col-md-4">
-<<<<<<< HEAD
-                        <label class="control-label mar-top-lb">Username <strong class="cl-force">*</strong></label>
-=======
-                        <form:label path="userName" cssClass="control-label">User name</form:label>
->>>>>>> 983fd2b94cc811e6365bf56c26c8c700ec26b024
+                        <form:label path="userName" cssClass="control-label mar-top-lb">User name <strong class="cl-force">*</strong></form:label>
                     </div>
                     <div class="col-md-8">
                         <form:input path="userName" cssClass="form-control w-100"/>
@@ -44,11 +40,7 @@
                 </div>
                 <div class="col-md-12 form-group">
                     <div class="col-md-4">
-<<<<<<< HEAD
-                        <label class="control-label mar-top-lb">Email <strong class="cl-force">*</strong></label>
-=======
-                        <form:label path="userEmail" cssClass="control-label">Email</form:label>
->>>>>>> 983fd2b94cc811e6365bf56c26c8c700ec26b024
+                        <form:label path="userEmail" cssClass="control-label mar-top-lb">Email <strong class="cl-force">*</strong></form:label>
                     </div>
                     <div class="col-md-8">
                         <form:input path="userEmail" cssClass="form-control w-100"/>
@@ -56,11 +48,7 @@
                 </div>
                 <div class="col-md-12 form-group">
                     <div class="col-md-4">
-<<<<<<< HEAD
-                        <label class="control-label mar-top-lb">Password <strong class="cl-force">*</strong></label>
-=======
-                        <form:label path="userPassword">Password</form:label>
->>>>>>> 983fd2b94cc811e6365bf56c26c8c700ec26b024
+                        <form:label path="userPassword" cssClass="control-label mar-top-lb">Password <strong class="cl-force">*</strong></form:label>
                     </div>
                     <div class="col-md-8 ">
                         <form:input path="userPassword" cssClass="form-control w-100"/>
@@ -68,18 +56,14 @@
                 </div>
                 <div class="col-md-12 form-group">
                     <div class="col-md-4">
-<<<<<<< HEAD
-                        <label class="control-label mar-top-lb">Confirm password <strong class="cl-force">*</strong></label>
-=======
-                        <form:label path="userConfirmPassword" cssClass="control-label">Confirm Password</form:label>
->>>>>>> 983fd2b94cc811e6365bf56c26c8c700ec26b024
+                        <form:label path="userConfirmPassword" cssClass="control-label mar-top-lb">Confirm Password</form:label>
                     </div>
                     <div class="col-md-8">
                         <form:input path="userConfirmPassword" cssClass="form-control w-100"/>
                     </div>
                 </div>
                 <div class="text-right">
-                    <button type="submit" class="btn btn-primary" data-dismiss="modal">Sign up</button>
+                    <button type="submit" cssClass="btn btn-primary" data-dismiss="modal">Sign up</button>
                 </div>
             </div>
             <div class="col-md-2"></div>
