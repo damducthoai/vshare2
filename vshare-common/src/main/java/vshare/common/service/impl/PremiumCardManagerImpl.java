@@ -15,6 +15,7 @@ import vshare.common.service.UniqueStringService;
 
 import javax.annotation.Resource;
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.Calendar;
 
 @Service("premiumCardManager")
@@ -56,7 +57,7 @@ public class PremiumCardManagerImpl implements PremiumCardManager {
         boolean success = false;
         long userId = securityService.getUserId();
         PremiumCardEntity card = premiumCardRepository.findByCardCode(code);
-        if (card != null || !card.getCardStatus().equals(PremiumCard.STATUS_USED)) {
+        if (card != null && card.getCardStatus().equals(PremiumCard.STATUS_AVAILABLE)) {
 
             card.setLastModified(new Date(Calendar.getInstance().getTime().getTime()));
             card.setCardStatus(PremiumCard.STATUS_USED);
@@ -84,5 +85,38 @@ public class PremiumCardManagerImpl implements PremiumCardManager {
             success = true;
         }
         return success;
+    }
+
+    @Override
+    public boolean upgradePremium(long size) {
+
+        boolean success = false;
+
+        long userId = securityService.getUserId();
+
+        PremiumDataEntity premiumData = premiumDataRepository.findOne(userId);
+
+        if (premiumData != null && premiumData.getPoint() > size) {
+            LocalDate localDate;
+            if (premiumData.getDueTo() == null) {
+                localDate = LocalDate.now().plusDays(size / 1000);
+            } else {
+                localDate = premiumData.getDueTo().toLocalDate();
+                localDate = localDate.plusDays(size / 1000);
+            }
+            Date dueDate = Date.valueOf(localDate);
+
+            premiumData.setDueTo(dueDate);
+            premiumData.setPoint(premiumData.getPoint() - size);
+            premiumDataRepository.save(premiumData);
+
+            success = true;
+        }
+        return success;
+    }
+
+    @Override
+    public PremiumDataEntity getPremiumData() {
+        return premiumDataRepository.findOne(securityService.getUserId());
     }
 }

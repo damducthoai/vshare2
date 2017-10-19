@@ -14,10 +14,18 @@
     <title>Upgrade</title>
 </head>
 <body>
-<form:form modelAttribute="card">
+<form:form modelAttribute="card" action="${contextPath}/upgrade" method="post">
     <form:label path="cardCode">Enter card code</form:label>
     <form:input path="cardCode"/>
+    <input type="hidden" name="upgrade" value="point"/>
     <button>Active</button>
+</form:form>
+<form:form modelAttribute="premiumSize" action="${contextPath}/upgrade" method="post">
+    <input type="hidden" name="upgrade" value="vip"/>
+    <form:select path="size">
+        <form:options items="${premiumSizeData}"></form:options>
+    </form:select>
+    <button>Update VIP</button>
 </form:form>
 </body>
 </html>

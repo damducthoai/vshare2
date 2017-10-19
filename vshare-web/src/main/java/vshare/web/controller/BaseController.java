@@ -7,10 +7,8 @@ import org.springframework.web.multipart.MultipartFile;
 import vshare.common.binding.ActionResult;
 import vshare.common.binding.NewFolder;
 import vshare.common.binding.RegisterInfo;
-import vshare.common.entity.FileEntity;
-import vshare.common.entity.FolderEntity;
-import vshare.common.entity.PremiumCardEntity;
-import vshare.common.entity.ServerEntity;
+import vshare.common.entity.*;
+import vshare.common.repository.PremiumCardRepository;
 import vshare.common.service.*;
 
 import javax.annotation.Resource;
@@ -33,6 +31,9 @@ public class BaseController implements FileManager, FolderManager, ServerManager
 
     @Resource(name = "premiumCardManager")
     PremiumCardManager premiumCardManager;
+
+    @Resource(name = "premiumCardRepository")
+    PremiumCardRepository premiumCardRepository;
 
     @Override
     public List<FileEntity> getFiles(Long folderId) {
@@ -103,5 +104,19 @@ public class BaseController implements FileManager, FolderManager, ServerManager
     @Override
     public boolean upgradePremium(String code) {
         return premiumCardManager.upgradePremium(code);
+    }
+
+    @Override
+    public boolean upgradePremium(long size) {
+        return premiumCardManager.upgradePremium(size);
+    }
+
+    @Override
+    public PremiumDataEntity getPremiumData() {
+        return premiumCardManager.getPremiumData();
+    }
+
+    protected PremiumCardEntity getPremiumCardByCode(String code) {
+        return premiumCardRepository.findByCardCode(code);
     }
 }
