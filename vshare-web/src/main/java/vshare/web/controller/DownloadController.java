@@ -14,7 +14,7 @@ public class DownloadController extends BaseController {
         // TODO
         String res = null;
         if (getFile(file.getFilePhysicalName()) != null) {
-            res = "redirect:https://stackoverflow.com/questions/1960240/jquery-ajax-submit-form";
+            res = "redirect:/home";
         }
         return res;
     }

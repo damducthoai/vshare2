@@ -87,3 +87,31 @@ CREATE TABLE file_server_meta (
   FOREIGN KEY (server_ip) REFERENCES server (server_ip),
   FOREIGN KEY (file_id) REFERENCES file (file_id)
 );
+
+DROP TABLE IF EXISTS premium_card;
+CREATE TABLE premium_card (
+  card_serial   VARCHAR(255) NOT NULL,
+  card_code     VARCHAR(255) NOT NULL,
+  created       DATETIME,
+  point         BIGINT(20),
+  last_modified DATETIME,
+  card_status   VARCHAR(100),
+  PRIMARY KEY (card_serial)
+);
+
+CREATE TABLE premium_card_log (
+  card_serial VARCHAR(255) NOT NULL,
+  user_id     BIGINT(20)   NOT NULL,
+  actived     DATETIME     NOT NULL,
+  FOREIGN KEY (card_serial) REFERENCES premium_card (card_serial),
+  FOREIGN KEY (user_id) REFERENCES user (user_id),
+  PRIMARY KEY (card_serial)
+);
+
+CREATE TABLE premium_data (
+  user_id BIGINT(20),
+  point   BIGINT(20),
+  dueTo   DATETIME,
+  PRIMARY KEY (user_id),
+  FOREIGN KEY (user_id) REFERENCES user (user_id)
+);
