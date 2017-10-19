@@ -62,8 +62,8 @@
                         <form:input path="userConfirmPassword" cssClass="form-control w-100"/>
                     </div>
                 </div>
-                <div class="text-right">
-                    <button type="submit" class="btn btn-primary padd-button" data-dismiss="modal">Sign up</button>
+                <div class="col-md-12 form-group text-right padd-button">
+                    <button type="submit" class="btn btn-primary " data-dismiss="modal">Sign up</button>
                 </div>
             </div>
             <div class="col-md-2"></div>

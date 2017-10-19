@@ -66,8 +66,8 @@
                 <div class="col-md-12">
                     <div class="col-md-6 form-group ">
                     </div>
-                    <div class="col-md-6 form-group text-right">
-                        <button class="btn btn-primary ch-bt-com padd-button">${action}</button>
+                    <div class="col-md-6 form-group text-right padd-button">
+                        <button class="btn btn-primary ch-bt-com ">${action}</button>
                     </div>
                 </div>
             </form:form>
