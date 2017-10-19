@@ -19,9 +19,8 @@ create table authority (
     primary key (user_id, authority),
     foreign key (user_id) references user(user_id)
 );
-insert into authority values(1, "admin");
 insert into authority values(1, "ROLE_USER");
-insert into authority values(2, "user");
+INSERT INTO authority VALUES (1, "ROLE_ADMIN");
 insert into authority values(2, "ROLE_USER");
 
 DROP TABLE IF EXISTS storage;

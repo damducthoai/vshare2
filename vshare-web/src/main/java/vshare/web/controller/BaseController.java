@@ -9,16 +9,18 @@ import vshare.common.binding.NewFolder;
 import vshare.common.binding.RegisterInfo;
 import vshare.common.entity.FileEntity;
 import vshare.common.entity.FolderEntity;
+import vshare.common.entity.ServerEntity;
 import vshare.common.service.FileManager;
 import vshare.common.service.FolderManager;
 import vshare.common.service.RegistrationService;
+import vshare.common.service.ServerManager;
 
 import javax.annotation.Resource;
 import java.util.List;
 
 @Controller
 @CrossOrigin
-public class BaseController implements FileManager, FolderManager, RegistrationService {
+public class BaseController implements FileManager, FolderManager, ServerManager, RegistrationService {
     @Resource(name = "fileManager")
     FileManager fileManager;
 
@@ -27,6 +29,9 @@ public class BaseController implements FileManager, FolderManager, RegistrationS
 
     @Resource(name = "registrationService")
     RegistrationService registrationService;
+
+    @Resource(name = "serverManager")
+    ServerManager serverManager;
 
     @Override
     public List<FileEntity> getFiles(Long folderId) {
@@ -62,5 +67,25 @@ public class BaseController implements FileManager, FolderManager, RegistrationS
         model.addAttribute("folders", getFolders(curFolderId));
         model.addAttribute("curlFolderId", curFolderId);
         model.addAttribute("newFolder", new NewFolder());
+    }
+
+    @Override
+    public List<ServerEntity> getServers() {
+        return serverManager.getServers();
+    }
+
+    @Override
+    public ServerEntity createServer(ServerEntity server) {
+        return serverManager.createServer(server);
+    }
+
+    @Override
+    public ServerEntity getServer(String serverIp) {
+        return serverManager.getServer(serverIp);
+    }
+
+    @Override
+    public ServerEntity updateServer(String serverIp, ServerEntity server) {
+        return serverManager.updateServer(serverIp, server);
     }
 }

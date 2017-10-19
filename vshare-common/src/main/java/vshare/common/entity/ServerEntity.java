@@ -1,15 +1,33 @@
 package vshare.common.entity;
 
+import com.sun.istack.internal.NotNull;
+
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name = "server", schema = "vshare", catalog = "")
 public class ServerEntity {
+    @NotBlank
+    @NotNull
+    @NotEmpty
     private String serverIp;
+    @Min(1000000000)
     private long serverSize;
     private long serverUseableSize;
+    @NotBlank
+    @NotNull
+    @NotEmpty
     private String serverUser;
+    @NotBlank
+    @NotNull
+    @NotEmpty
     private String serverAlias;
+    @NotBlank
+    @NotNull
+    @NotEmpty
     private String serverPassword;
 
     @Id
