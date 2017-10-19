@@ -29,7 +29,7 @@
 </head>
 
 <body>
-
+<jsp:include page="navigator.jsp"/>
 <%--<form:form action="${contextPath}/folders" method="post" id="createFolder" modelAttribute="newFolder">
     <form:hidden path="parrentId" value="${curlFolderId}"/>
     <form:label path="name">Folder Name</form:label>
