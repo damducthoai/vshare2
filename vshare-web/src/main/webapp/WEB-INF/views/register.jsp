@@ -63,7 +63,7 @@
                     </div>
                 </div>
                 <div class="text-right">
-                    <button type="submit" cssClass="btn btn-primary" data-dismiss="modal">Sign up</button>
+                    <button type="submit" class="btn btn-primary padd-button" data-dismiss="modal">Sign up</button>
                 </div>
             </div>
             <div class="col-md-2"></div>
