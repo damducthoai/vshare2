@@ -1,14 +1,14 @@
 package vshare.common.entity;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
+import java.sql.Date;
 
 @Entity
 @Table(name = "premium_data", schema = "vshare", catalog = "")
 public class PremiumDataEntity {
     private long userId;
     private Long point;
-    private Timestamp dueTo;
+    private Date dueTo;
 
     @Id
     @Column(name = "user_id", nullable = false)
@@ -32,11 +32,11 @@ public class PremiumDataEntity {
 
     @Basic
     @Column(name = "dueTo", nullable = true)
-    public Timestamp getDueTo() {
+    public Date getDueTo() {
         return dueTo;
     }
 
-    public void setDueTo(Timestamp dueTo) {
+    public void setDueTo(Date dueTo) {
         this.dueTo = dueTo;
     }
 

@@ -11,7 +11,8 @@
         <csrf disabled="true"/>
         <intercept-url pattern="/welcome" access="hasRole('ROLE_USER')"/>
         <intercept-url pattern="/servers" access="hasRole('ROLE_ADMIN')"/>
-        <form-login login-page="/login" default-target-url="/home" authentication-failure-url="/login?error"
+        <intercept-url pattern="/upgrade" access="hasRole('ROLE_USER')"/>
+        <form-login login-page="/login" default-target-url="/upgrade" authentication-failure-url="/login?error"
                     username-parameter="username" password-parameter="password" always-use-default-target="true"/>
         <logout logout-success-url="/login?logout" />
     </http>

@@ -9,18 +9,16 @@ import vshare.common.binding.NewFolder;
 import vshare.common.binding.RegisterInfo;
 import vshare.common.entity.FileEntity;
 import vshare.common.entity.FolderEntity;
+import vshare.common.entity.PremiumCardEntity;
 import vshare.common.entity.ServerEntity;
-import vshare.common.service.FileManager;
-import vshare.common.service.FolderManager;
-import vshare.common.service.RegistrationService;
-import vshare.common.service.ServerManager;
+import vshare.common.service.*;
 
 import javax.annotation.Resource;
 import java.util.List;
 
 @Controller
 @CrossOrigin
-public class BaseController implements FileManager, FolderManager, ServerManager, RegistrationService {
+public class BaseController implements FileManager, FolderManager, ServerManager, PremiumCardManager, RegistrationService {
     @Resource(name = "fileManager")
     FileManager fileManager;
 
@@ -32,6 +30,9 @@ public class BaseController implements FileManager, FolderManager, ServerManager
 
     @Resource(name = "serverManager")
     ServerManager serverManager;
+
+    @Resource(name = "premiumCardManager")
+    PremiumCardManager premiumCardManager;
 
     @Override
     public List<FileEntity> getFiles(Long folderId) {
@@ -92,5 +93,15 @@ public class BaseController implements FileManager, FolderManager, ServerManager
     @Override
     public ServerEntity updateServer(String serverIp, ServerEntity server) {
         return serverManager.updateServer(serverIp, server);
+    }
+
+    @Override
+    public PremiumCardEntity createPremiumCard(long point) {
+        return premiumCardManager.createPremiumCard(point);
+    }
+
+    @Override
+    public boolean upgradePremium(String code) {
+        return premiumCardManager.upgradePremium(code);
     }
 }

@@ -1,16 +1,16 @@
 package vshare.common.entity;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
+import java.sql.Date;
 
 @Entity
 @Table(name = "premium_card", schema = "vshare", catalog = "")
 public class PremiumCardEntity {
     private String cardSerial;
     private String cardCode;
-    private Timestamp created;
+    private Date created;
     private Long point;
-    private Timestamp lastModified;
+    private Date lastModified;
     private String cardStatus;
 
     @Id
@@ -35,11 +35,11 @@ public class PremiumCardEntity {
 
     @Basic
     @Column(name = "created", nullable = true)
-    public Timestamp getCreated() {
+    public Date getCreated() {
         return created;
     }
 
-    public void setCreated(Timestamp created) {
+    public void setCreated(Date created) {
         this.created = created;
     }
 
@@ -55,11 +55,11 @@ public class PremiumCardEntity {
 
     @Basic
     @Column(name = "last_modified", nullable = true)
-    public Timestamp getLastModified() {
+    public Date getLastModified() {
         return lastModified;
     }
 
-    public void setLastModified(Timestamp lastModified) {
+    public void setLastModified(Date lastModified) {
         this.lastModified = lastModified;
     }
 

@@ -17,4 +17,12 @@ public class UniqueStringServiceImpl implements UniqueStringService {
         long cur = ATOMIC_LONG.incrementAndGet();
         return DigestUtils.md5Hex(BASE_STRING.concat(Long.toString(cur)));
     }
+
+    @Override
+    public String getShortString() {
+        // TODO
+        return getUniqueString();
+    }
+
+
 }

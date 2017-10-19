@@ -92,9 +92,9 @@ DROP TABLE IF EXISTS premium_card;
 CREATE TABLE premium_card (
   card_serial   VARCHAR(255) NOT NULL,
   card_code     VARCHAR(255) NOT NULL,
-  created       DATETIME,
+  created       DATE,
   point         BIGINT(20),
-  last_modified DATETIME,
+  last_modified DATE,
   card_status   VARCHAR(100),
   PRIMARY KEY (card_serial)
 );
@@ -102,7 +102,7 @@ CREATE TABLE premium_card (
 CREATE TABLE premium_card_log (
   card_serial VARCHAR(255) NOT NULL,
   user_id     BIGINT(20)   NOT NULL,
-  actived     DATETIME     NOT NULL,
+  actived     DATE         NOT NULL,
   FOREIGN KEY (card_serial) REFERENCES premium_card (card_serial),
   FOREIGN KEY (user_id) REFERENCES user (user_id),
   PRIMARY KEY (card_serial)
@@ -111,7 +111,7 @@ CREATE TABLE premium_card_log (
 CREATE TABLE premium_data (
   user_id BIGINT(20),
   point   BIGINT(20),
-  dueTo   DATETIME,
+  dueTo   DATE,
   PRIMARY KEY (user_id),
   FOREIGN KEY (user_id) REFERENCES user (user_id)
 );
