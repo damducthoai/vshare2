@@ -85,6 +85,11 @@ public class FileManagerImpl implements FileManager, ApplicationEventPublisherAw
     }
 
     @Override
+    public FileEntity getFile(String physicalName) {
+        return fileRepository.findByFilePhysicalName(physicalName);
+    }
+
+    @Override
     public void setApplicationEventPublisher(ApplicationEventPublisher applicationEventPublisher) {
         this.publisher = applicationEventPublisher;
     }

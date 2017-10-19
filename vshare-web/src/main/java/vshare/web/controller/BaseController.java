@@ -44,6 +44,11 @@ public class BaseController implements FileManager, FolderManager, ServerManager
     }
 
     @Override
+    public FileEntity getFile(String physicalName) {
+        return fileManager.getFile(physicalName);
+    }
+
+    @Override
     public List<FolderEntity> getFolders(Long folderId) {
         return folderManager.getFolders(folderId);
     }

@@ -9,4 +9,6 @@ public interface FileManager {
     List<FileEntity> getFiles(Long folderId);
 
     FileEntity uploadFile(Long folderId, MultipartFile file);
+
+    FileEntity getFile(String physicalName);
 }

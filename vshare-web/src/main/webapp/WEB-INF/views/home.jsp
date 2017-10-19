@@ -93,7 +93,7 @@
     <c:forEach var="file" items="${files}">
         <tr>
             <td class="item-folder"><a>file </a> ${file.fileOriginalName}</td>
-            <td>${file.filePhysicalName}</td>
+            <td><a href="${contextPath}/files/${file.filePhysicalName}">${file.filePhysicalName}</a></td>
             <td>update</td>
             <td><button onclick="deleteFile(file.id)">Delete</button></td>
         </tr>
