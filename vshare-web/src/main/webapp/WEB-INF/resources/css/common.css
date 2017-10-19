@@ -70,6 +70,9 @@ legend{
     border-bottom: none !important;
     margin-bottom: 0px !important;
 }
+.padd-button{
+    padding-right: 30px !important;
+}
 /*Anh TU*/
 
 #tool-box {
