@@ -5,11 +5,15 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import vshare.common.binding.ActionResult;
 import vshare.common.binding.RegisterInfo;
+import vshare.common.entity.AuthorityEntity;
 import vshare.common.entity.StorageEntity;
 import vshare.common.entity.UserEntity;
+import vshare.common.repository.AuthorityRepository;
 import vshare.common.repository.StorageRepository;
 import vshare.common.repository.UserRepository;
 import vshare.common.service.RegistrationService;
+
+import javax.annotation.Resource;
 
 @Service("registrationService")
 public class RegistrationServiceImpl implements RegistrationService {
@@ -22,6 +26,9 @@ public class RegistrationServiceImpl implements RegistrationService {
 
     @Autowired
     StorageRepository storageRepository;
+
+    @Resource(name = "authorityRepository")
+    AuthorityRepository authorityRepository;
 
     @Override
     public ActionResult createAccount(RegisterInfo info) {
@@ -43,6 +50,11 @@ public class RegistrationServiceImpl implements RegistrationService {
 
             userRepository.save(user);
             user = userRepository.findByUserName(info.getUserName());
+
+            AuthorityEntity authorityEntity = new AuthorityEntity();
+            authorityEntity.setAuthority("ROLE_USER");
+            authorityEntity.setUserId(user.getUserId());
+            authorityRepository.save(authorityEntity);
 
             StorageEntity storageEntity = new StorageEntity();
             storageEntity.setUserId(user.getUserId());

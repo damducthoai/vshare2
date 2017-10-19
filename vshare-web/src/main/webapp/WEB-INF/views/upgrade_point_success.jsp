@@ -13,5 +13,6 @@
 <body>
 <h1>You just success buy ${card.point}</h1>
 <h3>Current account point: ${premiumData.point}</h3>
+<h3>Premium due day: ${premiumData.dueTo}</h3>
 </body>
 </html>
