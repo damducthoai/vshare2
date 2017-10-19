@@ -52,39 +52,8 @@
                     <td>Alias</td>
                     <td>Useable</td>
                 </tr>
-
                 </tfoot>
                 <tbody>
-                <tr>
-                    <td>Garrett Winters</td>
-                    <td>Accountant</td>
-                    <td>Tokyo</td>
-
-                </tr>
-                <tr>
-                    <td>Ashton Cox</td>
-                    <td>Junior Technical Author</td>
-                    <td>San Francisco</td>
-
-                </tr>
-                <tr>
-                    <td>Cedric Kelly</td>
-                    <td>Senior Javascript Developer</td>
-                    <td>Edinburgh</td>
-
-                </tr>
-                <tr>
-                    <td>Airi Satou</td>
-                    <td>Accountant</td>
-                    <td>Tokyo</td>
-
-                </tr>
-                <tr>
-                    <td>Brielle Williamson</td>
-                    <td>Integration Specialist</td>
-                    <td>New York</td>
-
-                </tr>
                 <c:forEach var="server" items="${servers}">
                     <tr>
                         <td><a href="${contextPath}/servers/${server.serverIp}">${server.serverIp}</a></td>
