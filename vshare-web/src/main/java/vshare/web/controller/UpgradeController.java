@@ -19,6 +19,7 @@ public class UpgradeController extends BaseController {
         model.addAttribute("card", new PremiumCardEntity());
         model.addAttribute("premiumSizeData", PremiumCard.UPGRADE_SIZE);
         model.addAttribute("premiumSize", new UpgradeInfo());
+        model.addAttribute("premiumData", getPremiumData());
         return "upgrade";
     }
 
