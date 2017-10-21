@@ -58,7 +58,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script>
     $(function () {
-        $("#download-file").hide();
+        $("#hide-logout").hide();
     });
 </script>
 </body>
