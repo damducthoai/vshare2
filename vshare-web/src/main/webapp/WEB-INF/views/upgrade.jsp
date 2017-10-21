@@ -21,8 +21,6 @@
 <body>
 <div class="container">
     <div class="row">
-        <button id="btn-add" data-toggle="modal" data-target="#add-card" class="btn btn-default">add new folder</button>
-        <button id="btn-add" data-toggle="modal" data-target="#add-premium" class="btn btn-default">add new file</button>
         <form:form modelAttribute="card" action="${contextPath}/upgrade" method="post">
             <div class="col-md-12 form-group">
                 <div class="col-md-3"></div>
@@ -48,9 +46,9 @@
             </div>
             <div class="col-md-3">
                 <input type="hidden" name="upgrade" value="vip"/>
-                <%--<form:select path="size" cssClass="form-control">--%>
-                    <%--<form:options items="${premiumSizeData}"></form:options>--%>
-                <%--</form:select>--%>
+                <form:select path="size" cssClass="form-control">
+                    <form:options items="${premiumSizeData}"></form:options>
+                </form:select>
             </div>
             <div class="col-md-2">
             </div>
@@ -68,28 +66,6 @@
                     <button class="btn btn-primary">Update VIP</button>
                 </div>
                 <div class="col-md-2"></div>
-            </div>
-        </form:form>
-    </div>
-</div>
-
-<div class="modal fade" id="add-card" role="dialog">
-    <div class="modal-dialog">
-        <!-- Popup content add-->
-        <form:form action="${contextPath}/folders" method="post" id="createFolder" modelAttribute="newFolder">
-            <form:hidden path="parrentId" value="${curlFolderId}"/>
-            <div class="modal-content">
-                <div class="modal-header ">
-                    <h4>aaa</h4>
-                </div>
-                <div class="modal-body">
-                    <form:hidden path="parrentId" value="${curlFolderId}"/>
-                    <form:label path="name">Folder Name</form:label>
-                    <form:input path="name"/>
-                </div>
-                <div class="modal-footer mar-top-signup ">
-                    <button class="btn btn-primary" onclick="closePopup()" class="btn btn-default">Create Folder</button>
-                </div>
             </div>
         </form:form>
     </div>
