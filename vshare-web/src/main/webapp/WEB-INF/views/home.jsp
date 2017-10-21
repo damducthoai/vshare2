@@ -160,6 +160,9 @@
             type: 'DELETE',
             success: function (response) {
                 // TODO
+            },
+            error: function (response) {
+                // TODO
             }
         });
     }
@@ -169,6 +172,9 @@
             url: "${contextPath}/files/" + fileId,
             type: 'DELETE',
             success: function (response) {
+                // TODO
+            },
+            error: function (response) {
                 // TODO
             }
         });
