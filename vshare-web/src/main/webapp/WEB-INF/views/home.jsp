@@ -107,11 +107,9 @@
 
 <div class="modal fade" id="add-folder" role="dialog">
     <div class="modal-dialog">
-
         <!-- Popup content add-->
         <form:form action="${contextPath}/folders" method="post" id="createFolder" modelAttribute="newFolder">
             <form:hidden path="parrentId" value="${curlFolderId}"/>
-
             <div class="modal-content">
                 <div class="modal-header ">
                     <h4>aaa</h4>
