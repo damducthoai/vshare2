@@ -20,6 +20,7 @@ public class UpgradeController extends BaseController {
         model.addAttribute("premiumSizeData", PremiumCard.UPGRADE_SIZE);
         model.addAttribute("premiumSize", new UpgradeInfo());
         model.addAttribute("premiumData", getPremiumData());
+        model.addAttribute("user", getUser());
         return "upgrade";
     }
 
@@ -28,13 +29,13 @@ public class UpgradeController extends BaseController {
         boolean success = upgradePremium(card.getCardCode());
         model.addAttribute("card", getPremiumCardByCode(card.getCardCode()));
         model.addAttribute("premiumData", getPremiumData());
-        return success ? "upgrade_point_success" : "upgrade_point_fail";
+        return "redirect:/upgrade";
     }
 
     @PostMapping(params = "upgrade=vip")
     String doUpgrage(Model model, @ModelAttribute("premiumSize") UpgradeInfo info) {
         boolean success = upgradePremium(info.getSize());
-        return "";
+        return "redirect:/upgrade";
     }
 
 }
