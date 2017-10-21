@@ -114,11 +114,28 @@
                     </td>
                     <td><a href="${contextPath}/files/${file.filePhysicalName}">${file.filePhysicalName}</a></td>
                     <td>
-                        <a class="btn icon-btn btn-delete" onclick="return deleteFile(${file.fileId})" id="${file.fileId}">
+                        <a data-toggle="modal" data-target="#delete-popup-file" class="btn icon-btn btn-delete" id="${file.fileId}">
                             <span class="glyphicon btn-glyphicon glyphicon-trash img-circle text-danger"></span>
                             Delete
                         </a>
                         <%--<button onclick="deleteFile(${file.fileId})" class="btn btn-default">Delete</button>--%>
+                        <div class="modal fade" id="delete-popup-file" role="dialog">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header ">
+                                        <h4>Are you sure?</h4>
+                                    </div>
+                                    <div class="modal-body text-center">
+                                        <button onclick="deleteFile(${file.fileId})" data-dismiss="modal" class="btn btn-primary">Accept</button>
+                                        <button data-dismiss="modal" class="btn btn-default">Cancel</button>
+                                    </div>
+                                    <div class="modal-footer mar-top-signup ">
+
+                                    </div>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
                     </td>
                 </tr>
             </c:forEach>
@@ -132,10 +149,29 @@
                     </td>
                     <td></td>
                     <td>
-                        <a class="btn icon-btn btn-delete" onclick="return deleteRowFolder(${folder.folderId})" id="${folder.folderId}">
+                        <a data-toggle="modal" data-target="#delete-popup-folder" class="btn icon-btn btn-delete" id="${folder.folderId}">
                             <span class="glyphicon btn-glyphicon glyphicon-trash img-circle text-danger"></span>
                             Delete
                         </a>
+
+                        <div class="modal fade" id="delete-popup-folder" role="dialog">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header ">
+                                        <h4>Are you sure?</h4>
+                                    </div>
+                                    <div class="modal-body text-center">
+                                        <button onclick="deleteRowFolder(${folder.folderId})" data-dismiss="modal" class="btn btn-primary">Accept</button>
+                                        <button data-dismiss="modal" class="btn btn-default">Cancel</button>
+                                    </div>
+                                    <div class="modal-footer mar-top-signup ">
+
+                                    </div>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+
                         <%--<button onclick="deleteRowFolder(${folder.folderId})" class="btn btn-default">Delete</button>--%>
                     </td>
                 </tr>
@@ -173,10 +209,9 @@
 
 <div class="modal fade" id="add-file" role="dialog">
     <div class="modal-dialog">
-
         <!-- Popup content add-->
 
-        <form action="${contextPath}/upload" method="post" enctype="multipart/form-data" id="uploadFile">
+        <form:form action="${contextPath}/upload" method="post" enctype="multipart/form-data" modelAttribute="file" id="uploadFile">
             <div class="modal-content">
                 <div class="modal-header ">
                     <h4>bbbb</h4>
@@ -198,9 +233,10 @@
                     <button id="btn-upFile" class="btn btn-default">Upload file</button>
                 </div>
             </div>
-        </form>
+        </form:form>
     </div>
 </div>
+
 
 <script>
         $('#createFolder').submit(function () {
@@ -238,7 +274,7 @@
 //                    var a = row.parentNode.parentNode.nodeName;
 //                    console.log(a);
 //                    var table = document.getElementById("cha");
-//                    table.removeChild(a); aaaaaaaaaaaa
+//                    table.removeChild(a); aaaaaaaaaaaaaaaaaaaaaaa
                     var row = document.getElementById(fileId);
                     var a = row.parentNode.parentNode;
                     var b = a.parentNode;
