@@ -38,10 +38,11 @@
                                 <tbody>
                                 <tr>
                                     <td>Username</td>
+                                    <td>${user.userName}</td>
                                 </tr>
                                 <tr>
                                     <td>Email</td>
-                                    <td><a href="mailto:info@vshare.com">info@vshare.com</a></td>
+                                    <td><a href="mailto:${user.userEmail}">${user.userEmail}</a></td>
                                 </tr>
 
                                 <tr>
@@ -50,9 +51,9 @@
                                 </tr>
                                 </tbody>
                             </table>
-                            <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#add-premium">Upgrade
+                            <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#add-premium2">Upgrade
                                 premium</a>
-                            <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#add-card">Add premium
+                            <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#add-card2">Add premium
                                 point</a>
                         </div>
                     </div>
@@ -72,16 +73,61 @@
         </form:form>
     </div>
 </div>
-
-<div class="modal fade" id="add-premium" role="dialog">
+<div class="modal fade" id="add-card2" role="dialog">
     <div class="modal-dialog">
-        <!-- Popup content-->
+        <form:form modelAttribute="card" action="${contextPath}/upgrade" method="post" id="addPoint">
+            <!-- Popup content-->
+            <div class="modal-content">
+                <div class="modal-header ">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Add Card</h4>
+                </div>
+                <div class="modal-body ">
+                    <div class="col-md-12">
+                        <div class="col-md-4">
+                            <form:label cssClass="control-label mar-top-lb" path="cardCode">Enter card code</form:label>
+                        </div>
+                        <div class="col-md-8">
+                            <form:input cssClass="form-control" path="cardCode"/>
+                            <input type="hidden" value="point" name="upgrade"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer mar-top-signup mar-popup-card ">
+                        <%--<button type="button" class="btn btn-default" data-dismiss="modal">Sign up</button>--%>
+                            <button type="submit" class="btn btn-primary">Add</button>
+                </div>
+            </div>
+        </form:form>
+    </div>
+</div>
+<div class="modal fade" id="add-premium2" role="dialog">
+    <div class="modal-dialog">
         <form:form modelAttribute="premiumSize" action="${contextPath}/upgrade" method="post">
-            <input type="hidden" name="upgrade" value="vip"/>
-            <form:select path="size" cssClass="form-control" cssStyle="width: auto !important;">
-                <form:options items="${premiumSizeData}"></form:options>
-            </form:select>
-            <button type="submit">OK</button>
+        <!-- Popup content-->
+        <div class="modal-content">
+            <div class="modal-header ">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Upgrade premium</h4>
+            </div>
+            <div class="modal-body ">
+                <div class="col-md-12">
+                    <div class="col-md-4">
+                        <label class="control-label mar-top-lb">Số ngày</label>
+                    </div>
+                    <div class="col-md-8">
+                        <input type="hidden" name="upgrade" value="vip"/>
+                        <form:select path="size" cssClass="form-control" cssStyle="width: auto !important;">
+                            <form:options items="${premiumSizeData}"></form:options>
+                        </form:select>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer mar-top-signup mar-popup-card ">
+                <%--<button type="button" class="btn btn-default" data-dismiss="modal">Sign up</button>--%>
+                <button type="submit" class="btn btn-primary">Upgrade</button>
+            </div>
+        </div>
         </form:form>
     </div>
 </div>
