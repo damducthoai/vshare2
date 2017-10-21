@@ -140,6 +140,32 @@ public class FileManagerImpl implements FileManager, ApplicationEventPublisherAw
     }
 
     @Override
+    public boolean deleteFile(long fileId) {
+        boolean success = false;
+        try {
+            FileEntity file = fileRepository.findOne(fileId);
+            if (file == null) {
+                success = true;
+            } else {
+
+                Long storageId = storageManager.getStorageId();
+                if (file.getStorageId().equals(storageId)) {
+                    fileRepository.delete(fileId);
+                    success = fileRepository.findOne(fileId) == null ? true : false;
+                } else {
+                    success = false;
+                }
+            }
+
+        } catch (Exception e) {
+            // TODO
+
+        } finally {
+            return success;
+        }
+    }
+
+    @Override
     public void setApplicationEventPublisher(ApplicationEventPublisher applicationEventPublisher) {
         this.publisher = applicationEventPublisher;
     }

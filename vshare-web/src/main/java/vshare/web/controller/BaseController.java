@@ -68,6 +68,11 @@ public class BaseController implements FileManager, FolderManager, ServerManager
     }
 
     @Override
+    public boolean deleteFile(long fileId) {
+        return fileManager.deleteFile(fileId);
+    }
+
+    @Override
     public List<FolderEntity> getFolders(Long folderId) {
         return folderManager.getFolders(folderId);
     }
@@ -75,6 +80,11 @@ public class BaseController implements FileManager, FolderManager, ServerManager
     @Override
     public FolderEntity createFolder(Long parrentId, String name) {
         return folderManager.createFolder(parrentId, name);
+    }
+
+    @Override
+    public boolean deleteFolder(Long folderId) {
+        return folderManager.deleteFolder(folderId);
     }
 
     protected RegisterInfo getRegisterModel() {

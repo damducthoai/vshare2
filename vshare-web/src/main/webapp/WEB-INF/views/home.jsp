@@ -84,7 +84,7 @@
                     <td><a href="${contextPath}/files/${file.filePhysicalName}">${file.filePhysicalName}</a></td>
                     <td>update</td>
                     <td>
-                        <button onclick="deleteFile(file.id)" class="btn btn-default">Delete</button>
+                        <button onclick="deleteFile(${file.fileId})" class="btn btn-default">Delete</button>
                     </td>
                 </tr>
             </c:forEach>
@@ -94,7 +94,7 @@
                     <td></td>
                     <td>Update</td>
                     <td>
-                        <button onclick="deleteRowFolder(folder.id)" class="btn btn-default">Delete</button>
+                        <button onclick="deleteRowFolder(${folder.folderId})" class="btn btn-default">Delete</button>
                     </td>
                 </tr>
             </c:forEach>
@@ -155,6 +155,32 @@
         $(this).ajaxSubmit();
         return false;
     });
+
+    function deleteRowFolder(folderId) {
+        $.ajax({
+            url: "${contextPath}/folders/" + folderId,
+            type: 'DELETE',
+            success: function (response) {
+                // TODO
+            },
+            error: function (response) {
+                // TODO
+            }
+        });
+    }
+
+    function deleteFile(fileId) {
+        $.ajax({
+            url: "${contextPath}/files/" + fileId,
+            type: 'DELETE',
+            success: function (response) {
+                // TODO
+            },
+            error: function (response) {
+                // TODO
+            }
+        });
+    }
 </script>
 
 <script src="${contextPath}/resources/js/app.js"></script>

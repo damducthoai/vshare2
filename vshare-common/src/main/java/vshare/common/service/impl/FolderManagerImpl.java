@@ -39,4 +39,18 @@ public class FolderManagerImpl implements FolderManager {
 
         return folderRepository.findByStorageIdAndFolderParentAndFolderName(storageId, parrentId, name);
     }
+
+    @Override
+    public boolean deleteFolder(Long folderId) {
+        boolean success = false;
+        FolderEntity folder = folderRepository.findOne(folderId);
+        if (folder != null) {
+            folderRepository.delete(folderId);
+            folder = folderRepository.findOne(folderId);
+            if (folder == null) success = true;
+        } else {
+            success = true;
+        }
+        return success;
+    }
 }
