@@ -117,6 +117,7 @@ public class PremiumCardManagerImpl implements PremiumCardManager {
 
     @Override
     public PremiumDataEntity getPremiumData() {
-        return premiumDataRepository.findOne(securityService.getUserId());
+        PremiumDataEntity data = premiumDataRepository.findOne(securityService.getUserId());
+        return data;
     }
 }
