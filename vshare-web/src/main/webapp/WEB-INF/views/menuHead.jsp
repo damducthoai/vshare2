@@ -15,7 +15,7 @@
         <ul class="nav navbar-nav col-lg-6">
             <li class="active"><a href="upgrade">Upgrade</a></li>
         </ul>
-        <ul class="nav navbar-nav navbar-right col-lg-3">
+        <ul class="nav navbar-nav navbar-right col-lg-3" id="download-file">
             <li><a href="#" data-toggle="modal"><span class="glyphicon glyphicon-log-out" ></span> Logout </a></li>
         </ul>
     </div>

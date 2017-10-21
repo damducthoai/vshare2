@@ -17,8 +17,9 @@
     <title>File Download</title>
 </head>
 <body>
+<jsp:include page="menuHead.jsp"></jsp:include>
 <form:form modelAttribute="file" action="${contextPath}/download" method="post">
-<div class="container">
+<div class="container mar-top">
     <div class="row">
         <fieldset>
             <legend>Download File</legend>
@@ -55,5 +56,10 @@
 </form:form>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script>
+    $(function () {
+        $("#download-file").hide();
+    });
+</script>
 </body>
 </html>
