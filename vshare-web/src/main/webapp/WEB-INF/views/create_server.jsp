@@ -15,6 +15,7 @@
         <fieldset>
             <legend>Thông tin</legend>
             <form:form method="post" action="${contextPath}/servers/${serverIp}" modelAttribute="server" id="${formId}">
+                <input type="hidden" name="ip" value="${serverIp}"/>
                 <div class="col-md-12">
                     <div class="col-md-6 form-group ">
                         <div class="col-md-4 no-padding">

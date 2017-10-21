@@ -23,11 +23,11 @@ public class ServerController extends BaseController {
     }
 
     @GetMapping("{serverIp}")
-    String getServerInfo(Model model, @PathVariable String serverIp) {
-        model.addAttribute("server", getServer(serverIp));
+    String getServerInfo(Model model, @PathVariable String serverIp, @RequestParam("ip") String ip) {
+        model.addAttribute("server", getServer(ip));
         model.addAttribute("action", "Update Server");
         model.addAttribute("formId", "updateServerForm");
-        model.addAttribute("serverIp", serverIp);
+        model.addAttribute("serverIp", ip);
         return "update_server";
     }
 
@@ -49,13 +49,13 @@ public class ServerController extends BaseController {
 
     @PostMapping("{serverIp}")
     @ResponseBody
-    ResponseEntity<ServerEntity> updateServer(@Valid @ModelAttribute("server") ServerEntity server, BindingResult result, @PathVariable String serverIp) {
+    ResponseEntity<ServerEntity> updateServer(@Valid @ModelAttribute("server") ServerEntity server, BindingResult result, @PathVariable String serverIp, @RequestParam("ip") String ip) {
         ResponseEntity<ServerEntity> res = new ResponseEntity<ServerEntity>(HttpStatus.OK);
         if (result.hasErrors()) {
             res = new ResponseEntity<ServerEntity>(HttpStatus.BAD_REQUEST);
         } else {
             server.setServerUseableSize(server.getServerSize());
-            ServerEntity updatedServer = updateServer(serverIp, server);
+            ServerEntity updatedServer = updateServer(ip, server);
             if (updatedServer == null) {
                 res = new ResponseEntity<ServerEntity>(HttpStatus.BAD_REQUEST);
             }

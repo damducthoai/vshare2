@@ -36,7 +36,8 @@ public class ServerManagerImpl implements ServerManager {
 
     @Override
     public ServerEntity getServer(String serverIp) {
-        return serverRepository.findOne(serverIp);
+        ServerEntity server = serverRepository.findOne(serverIp);
+        return server;
     }
 
     @Override

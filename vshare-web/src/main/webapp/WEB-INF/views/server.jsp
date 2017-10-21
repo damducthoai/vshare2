@@ -56,7 +56,9 @@
                 <tbody>
                 <c:forEach var="server" items="${servers}">
                     <tr>
-                        <td><a href="${contextPath}/servers/${server.serverIp}">${server.serverIp}</a></td>
+                        <td>
+                            <a href="${contextPath}/servers/${server.serverIp}?ip=${server.serverIp}">${server.serverIp}</a>
+                        </td>
                         <td>${server.serverAlias}</td>
                         <td>${server.serverUseableSize}</td>
                     </tr>
