@@ -78,24 +78,8 @@ legend{
 }
 /*Anh TU*/
 
-#tool-box {
-    width: 59%;
-    margin: 20px auto;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #ccc;
-}
-
-#tool-box table{
-    width: 100%;
-    border: none;
-}
-
-#tool-box input{
-    width: 100%;
-    padding: 8px;
-    outline: none;
-    background-color: #ebebeb;
-    border: 1px solid #ccc;
+.tool-box{
+    padding-right: 20px;
 }
 
 #folder-list {
