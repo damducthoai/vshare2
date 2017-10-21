@@ -195,8 +195,11 @@
                     <h4>aaa</h4>
                 </div>
                 <div class="modal-body">
-                    <form:hidden path="parrentId" value="${curlFolderId}"/>
-                    <form:label path="name">Folder Name</form:label>
+                    <input type="hidden" value="${curlFolderId}" name="folderId">
+                        <%--
+                                            <form:hidden path="parrentId" value="${curlFolderId}"/>
+                        --%>
+                    <form:label path="name">Folder Name</input></form:label>
                     <form:input path="name"/>
                 </div>
                 <div class="modal-footer mar-top-signup ">

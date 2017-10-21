@@ -62,7 +62,8 @@ public class FileManagerImpl implements FileManager, ApplicationEventPublisherAw
     @Override
     public List<FileEntity> getFiles(Long folderId) {
         long storageId = storageManager.getStorageId();
-        return fileRepository.findAllByStorageIdAndFolderId(storageId, folderId);
+        List<FileEntity> fileEntityList = fileRepository.findAllByStorageIdAndFolderId(storageId, folderId);
+        return fileEntityList;
     }
 
     @Override

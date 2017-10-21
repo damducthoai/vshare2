@@ -23,10 +23,10 @@ public class UploadController extends BaseController {
 
     @PostMapping
     @ResponseBody
-    ResponseEntity<FileEntity> process(@Valid @ModelAttribute("file") FileUploadInfo info, BindingResult result) {
+    ResponseEntity<FileEntity> process(@Valid @ModelAttribute("file") FileUploadInfo info, BindingResult result, @RequestParam(value = "folderId", required = false) Long folderId) {
 
         ResponseEntity<FileEntity> res = null;
-
+        info.setParrentId(folderId);
         FileEntity file = null;
 
         if (result.hasErrors()) {
