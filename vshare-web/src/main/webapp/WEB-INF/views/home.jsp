@@ -209,10 +209,9 @@
 
 <div class="modal fade" id="add-file" role="dialog">
     <div class="modal-dialog">
-
         <!-- Popup content add-->
 
-        <form action="${contextPath}/upload" method="post" enctype="multipart/form-data" id="uploadFile">
+        <form:form action="${contextPath}/upload" method="post" enctype="multipart/form-data" modelAttribute="file" id="uploadFile">
             <div class="modal-content">
                 <div class="modal-header ">
                     <h4>bbbb</h4>
@@ -234,7 +233,7 @@
                     <button id="btn-upFile" class="btn btn-default">Upload file</button>
                 </div>
             </div>
-        </form>
+        </form:form>
     </div>
 </div>
 
