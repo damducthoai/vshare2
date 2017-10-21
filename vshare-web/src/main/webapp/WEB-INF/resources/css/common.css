@@ -60,15 +60,20 @@ body {
 .no-padding{
     padding: 0 !important;
 }
-
+fieldset{
+    background: white;
+    border: 1px solid #FFFBCC;
+    border-radius: 10px ;
+    padding: 20px;
+}
+legend{
+    border-bottom: none !important;
+    margin-bottom: 0px !important;
+}
+.padd-button{
+    padding-right: 30px !important;
+}
 /*Anh TU*/
-*, html {
-    box-sizing: border-box;
-}
-
-button {
-    padding: 8px 15px;
-}
 
 #tool-box {
     width: 59%;

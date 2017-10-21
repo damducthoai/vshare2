@@ -16,150 +16,114 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+    <link href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <%--<link href="${contextPath}/resources/css/datatable/dataTables.bootstrap.css" type="text/css" media="screen" rel="stylesheet">--%>
+    <%--<link href="${contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">--%>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link href="${contextPath}/resources/css/common.css" rel="stylesheet">
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
+    <title>Server List</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.js"></script>
+    <%--<script src="${contextPath}/resources/js/datatable/dataTables.bootstrap.min.js"></script>--%>
+    <%--<script src="${contextPath}/resources/js/datatable/jquery.dataTables.min.js"></script>--%>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#folderList').DataTable();
+        });
+    </script>
 
 </head>
 
 <body>
+
+<jsp:include page="menuHead.jsp"></jsp:include>
+
 <jsp:include page="navigator.jsp"/>
-<%--<form:form action="${contextPath}/folders" method="post" id="createFolder" modelAttribute="newFolder">
-    <form:hidden path="parrentId" value="${curlFolderId}"/>
-    <form:label path="name">Folder Name</form:label>
-    <form:input path="name"/>
-    <button>Create Folder</button>
-</form:form>
-<form action="${contextPath}/upload" method="post" enctype="multipart/form-data" id="uploadFile">
-    <input type="hidden" value="${curlFolderId}" name="folderId"/>
-    <input type="file" name="file"/>
-    <button>Upload file</button>
-</form>--%>
-<jsp:include page="create_folder.jsp"/>
-<jsp:include page="upload_file.jsp"/>
-<script>
-    $('#createFolder').submit(function () {
-        $(this).ajaxSubmit();
-        return false;
-    });
-    $('#uploadFile').submit(function () {
-        $(this).ajaxSubmit();
-        return false;
-    });
-</script>
-<div id="tool-box">
 
-    <h4>Add new folder</h4>
-    <td>
-        <button id="btn-add" data-toggle="modal" data-target="#add-folder">add new folder</button>
+<fieldset style="width: 80%" class="container">
+    <legend>Add</legend>
+    <div id="tool-box">
 
-    </td>
-</div>
+        <h4>Add new folder</h4>
+        <td>
+            <button id="btn-add" data-toggle="modal" data-target="#add-folder" class="btn btn-default">add new folder</button>
 
-<div id="tool-box">
-    <h4>Upload File</h4>
-    <td>
-        <button id="btn-add" data-toggle="modal" data-target="#add-file">add new file</button>
-    </td>
+        </td>
+    </div>
 
-    <%--<form action="${contextPath}/upload" method="post" enctype="multipart/form-data" id="uploadFile">
-        <tr>
-            <input type="hidden" value="${curlFolderId}" name="folderId"/>
-        <td><input type="file" name="file"/></td>
-        <td><button id="btn-upFile" >Upload file</button></td>
-        </tr>
-    </form>--%>
-</div>
+    <div id="tool-box">
+        <h4>Upload File</h4>
+        <td>
+            <button id="btn-add" data-toggle="modal" data-target="#add-file" class="btn btn-default">add new file</button>
+        </td>
 
-
-
-
-<table id="folder-list" class="table table-bordered table-hover">
-    <thead>
-    <tr>
-        <th>Name</th>
-        <th>Size</th>
-        <th>Update</th>
-        <th></th>
-    </tr>
-    </thead>
-    <tbody>
-    <c:forEach var="file" items="${files}">
-        <tr>
-            <td class="item-folder"><a>file </a> ${file.fileOriginalName}</td>
-            <td><a href="${contextPath}/files/${file.filePhysicalName}">${file.filePhysicalName}</a></td>
-            <td>update</td>
-            <td><button onclick="deleteFile(file.id)">Delete</button></td>
-        </tr>
-    </c:forEach>
-    <c:forEach var="folder" items="${folders}">
-        <tr>
-            <td class="item-file"><a>folder </a> ${folder.folderName}</td>
-            <td></td>
-            <td>Update</td>
-            <td><button onclick="deleteRowFolder(folder.id)">Delete</button></td>
-        </tr>
-    </c:forEach>
-    </tbody>
-</table>
-
+    </div>
+</fieldset>
+<br>
+<fieldset style="width: 80%" class="container">
+    <legend>Danh sách</legend>
+    <div style="width: 80%" class="container">
+        <table id="folderList" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Size</th>
+                <th>Update</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <c:forEach var="file" items="${files}">
+                <tr>
+                    <td class="item-folder"><a>file </a> ${file.fileOriginalName}</td>
+                    <td><a href="${contextPath}/files/${file.filePhysicalName}">${file.filePhysicalName}</a></td>
+                    <td>update</td>
+                    <td>
+                        <button onclick="deleteFile(file.id)" class="btn btn-default">Delete</button>
+                    </td>
+                </tr>
+            </c:forEach>
+            <c:forEach var="folder" items="${folders}">
+                <tr>
+                    <td class="item-file"><a>folder </a> ${folder.folderName}</td>
+                    <td></td>
+                    <td>Update</td>
+                    <td>
+                        <button onclick="deleteRowFolder(folder.id)" class="btn btn-default">Delete</button>
+                    </td>
+                </tr>
+            </c:forEach>
+            </tbody>
+        </table>
+    </div>
+</fieldset>
 
 <hr>
 
-<%--<ul>--%>
-<%--<c:forEach var="file" items="${files}">--%>
-<%--<li class="item-file item">--%>
-<%--${file.fileOriginalName}--%>
-<%--</li>--%>
-<%--</ul>--%>
-
-<%--<ul>--%>
-<%--</c:forEach>--%>
-<%--<c:forEach var="folder" items="${folders}">--%>
-<%--<li class="item-folder item">${folder.folderName}</li>--%>
-<%--</c:forEach>--%>
-<%--</ul>--%>
-
-<%--<table id="file-list">--%>
-
-
-<%--<c:forEach var="file" items="${files}">--%>
-<%--<tr>--%>
-<%--<td>${file.fileOriginalName}</td>--%>
-<%--<td>${file.filePhysicalName}</td>--%>
-<%--<td>update</td>--%>
-<%--</c:forEach>--%>
-<%--</table>--%>
-
-
-
-<!--<div id="friend-list" >
-        <a href="/">
-                    <i class="fa fa-music" aria-hidden="true"></i> <span>Music</span>
-                </a>
-    </div>
-    <div  id="friend-list">
-                <a href="/">
-                    <i class="fa fa-camera-retro" aria-hidden="true"></i> <span>Photo</span>
-                </a>
-    </div>-->
 <div class="modal fade" id="add-folder" role="dialog">
     <div class="modal-dialog">
 
         <!-- Popup content add-->
         <form:form action="${contextPath}/folders" method="post" id="createFolder" modelAttribute="newFolder">
             <form:hidden path="parrentId" value="${curlFolderId}"/>
+
             <div class="modal-content">
-                <form:hidden path="parrentId" value="${curlFolderId}"/>
-                <form:label path="name">Folder Name</form:label>
-                <form:input path="name"/>
-                <button>Create Folder</button>
+                <div class="modal-header ">
+                    <h4>aaa</h4>
+                </div>
+                <div class="modal-body">
+                    <form:hidden path="parrentId" value="${curlFolderId}"/>
+                    <form:label path="name">Folder Name</form:label>
+                    <form:input path="name"/>
+                </div>
+                <div class="modal-footer mar-top-signup ">
+                    <button class="btn btn-primary" onclick="closePopup()" class="btn btn-default">Create Folder</button>
+                </div>
             </div>
         </form:form>
     </div>
@@ -174,13 +138,24 @@
             <tr>
                 <input type="hidden" value="${curlFolderId}" name="folderId"/>
                 <td><input type="file" name="file"/></td>
-                <td><button id="btn-upFile" >Upload file</button></td>
+                <td>
+                    <button id="btn-upFile" class="btn btn-default">Upload file</button>
+                </td>
             </tr>
         </form>
     </div>
 </div>
 
-
+<script>
+    $('#createFolder').submit(function () {
+        $(this).ajaxSubmit();
+        return false;
+    });
+    $('#uploadFile').submit(function () {
+        $(this).ajaxSubmit();
+        return false;
+    });
+</script>
 
 <script src="${contextPath}/resources/js/app.js"></script>
 </body>
