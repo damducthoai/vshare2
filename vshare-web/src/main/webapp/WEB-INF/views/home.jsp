@@ -103,7 +103,7 @@
                 <th>Action</th>
             </tr>
             </thead>
-            <tbody>
+            <tbody id="cha">
             <c:forEach var="file" items="${files}">
                 <tr>
                     <td class="row">
@@ -114,7 +114,7 @@
                     </td>
                     <td><a href="${contextPath}/files/${file.filePhysicalName}">${file.filePhysicalName}</a></td>
                     <td>
-                        <a class="btn icon-btn btn-delete" onclick="return deleteFile(${file.fileId})">
+                        <a class="btn icon-btn btn-delete" onclick="return deleteFile(${file.fileId})" id="${file.fileId}">
                             <span class="glyphicon btn-glyphicon glyphicon-trash img-circle text-danger"></span>
                             Delete
                         </a>
@@ -132,7 +132,7 @@
                     </td>
                     <td></td>
                     <td>
-                        <a class="btn icon-btn btn-delete" onclick="return deleteRowFolder(${folder.folderId})">
+                        <a class="btn icon-btn btn-delete" onclick="return deleteRowFolder(${folder.folderId})" id="${folder.folderId}">
                             <span class="glyphicon btn-glyphicon glyphicon-trash img-circle text-danger"></span>
                             Delete
                         </a>
@@ -203,40 +203,55 @@
 </div>
 
 <script>
-    $('#createFolder').submit(function () {
-        $(this).ajaxSubmit();
-        return false;
-    });
-    $('#uploadFile').submit(function () {
-        $(this).ajaxSubmit();
-        return false;
-    });
-
-    function deleteRowFolder(folderId) {
-        $.ajax({
-            url: "${contextPath}/folders/" + folderId,
-            type: 'DELETE',
-            success: function (response) {
-                // TODO
-            },
-            error: function (response) {
-                // TODO
-            }
+        $('#createFolder').submit(function () {
+            $(this).ajaxSubmit();
+            return false;
         });
-    }
-
-    function deleteFile(fileId) {
-        $.ajax({
-            url: "${contextPath}/files/" + fileId,
-            type: 'DELETE',
-            success: function (response) {
-                // TODO
-            },
-            error: function (response) {
-                // TODO
-            }
+        $('#uploadFile').submit(function () {
+            $(this).ajaxSubmit();
+            return false;
         });
-    }
+
+        function deleteRowFolder(folderId) {
+            $.ajax({
+                url: "${contextPath}/folders/" + folderId,
+                type: 'DELETE',
+                success: function (response) {
+                    var row = document.getElementById(folderId);
+                    var a = row.parentNode.parentNode;
+                    var b = a.parentNode;
+                    b.removeChild(a);
+                },
+                error: function (response) {
+                    // TODO
+                }
+            });
+        }
+
+        function deleteFile(fileId) {
+            $.ajax({
+                url: "${contextPath}/files/" + fileId,
+                type: 'DELETE',
+                success: function (response) {
+                    //var deleteData = document.getElementById("folderList");
+//                    var row = document.getElementById(fileId);
+//                    var a = row.parentNode.parentNode.nodeName;
+//                    console.log(a);
+//                    var table = document.getElementById("cha");
+//                    table.removeChild(a);
+                    var row = document.getElementById(fileId);
+                    var a = row.parentNode.parentNode;
+                    var b = a.parentNode;
+                    b.removeChild(a);
+                    //row.style.display='none';
+                },
+                error: function (response) {
+                    window.alert("co lỗi rồi man!");
+                }
+            });
+        }
+
+
 </script>
 
 <script src="${contextPath}/resources/js/app.js"></script>
