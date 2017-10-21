@@ -276,7 +276,7 @@
                                 '                    </td>';
                             cell2.innerHTML = '<td></td>';
                             //cell4.innerHTML = "<button id="+"btn-remove "+"onclick="+"deleteRow("+i+")"+">Delete</button>";   C1
-                            //cell3.innerHTML = '<td><a class="btn icon-btn btn-delete"><span class="glyphicon btn-glyphicon glyphicon-trash img-circle text-danger"></span> Delete</a></td>';   //C2
+                            //aaaaaaaaacell3.innerHTML = '<td><a class="btn icon-btn btn-delete"><span class="glyphicon btn-glyphicon glyphicon-trash img-circle text-danger"></span> Delete</a></td>';   //C2
                             cell3.innerHTML = '<td>\n' +
                                 '                        <a data-toggle="modal" data-target="#delete-popup-folder" class="btn icon-btn btn-delete" id="'+res.fileId+'">\n' +
                                 '                            <span class="glyphicon btn-glyphicon glyphicon-trash img-circle text-danger"></span>\n' +
