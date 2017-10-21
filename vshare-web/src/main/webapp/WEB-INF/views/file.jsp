@@ -11,17 +11,49 @@
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 <html>
 <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${contextPath}/resources/css/common.css" rel="stylesheet">
     <title>File Download</title>
 </head>
 <body>
 <form:form modelAttribute="file" action="${contextPath}/download" method="post">
-    <form:label path="fileOriginalName">File Name</form:label>
-    <form:input path="fileOriginalName"/>
-    <form:hidden path="filePhysicalName"/>
-    <form:label path="fileSize">File Size</form:label>
-    <form:input path="fileSize"/>
-    <br>
-    <button>Download</button>
+<div class="container">
+    <div class="row">
+        <fieldset>
+            <legend>Download File</legend>
+            <div class="col-md-12 form-group">
+                <div class="col-md-4 mar-top-lb text-right">
+                    <form:label cssClass="control-label" path="fileOriginalName">File Name</form:label>
+                </div>
+                <div class="col-md-8">
+                    <form:input cssClass="form-control" path="fileOriginalName" cssStyle="display: none"/>
+                    <label class="control-label"></label>
+                </div>
+            </div>
+            <div class="col-md-12 form-group">
+                <div class="col-md-4 mar-top-lb text-right">
+                    <form:hidden path="filePhysicalName"/>
+                    <form:label cssClass="control-label" path="fileSize">File Size</form:label>
+                </div>
+                <div class="col-md-8">
+                    <form:input cssClass="form-control" path="fileSize" cssStyle="display: none"/>
+                    <label class="control-label"></label>
+                </div>
+            </div>
+            <div class="col-md-12 form-group">
+                <div class="col-md-4 mar-top-lb">
+
+                </div>
+                <div class="col-md-8">
+                    <button class="btn btn-primary"><i class="fa fa-download" aria-hidden="true"></i> Download</button>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+</div>
 </form:form>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 </html>
