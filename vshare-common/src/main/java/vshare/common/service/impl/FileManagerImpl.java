@@ -1,5 +1,6 @@
 package vshare.common.service.impl;
 
+import org.apache.commons.net.ftp.FTPClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationEventPublisher;
@@ -183,6 +184,7 @@ public class FileManagerImpl implements FileManager, ApplicationEventPublisherAw
     }
 
     protected void deleteFileFromVPS(Long fileId) {
+        FTPClient client = new FTPClient();
         String ip = null;
         FileServerMetaEntity metaEntity = fileServerMetaRepository.findByFileId(fileId);
         if (metaEntity != null) {
@@ -196,6 +198,31 @@ public class FileManagerImpl implements FileManager, ApplicationEventPublisherAw
             server.setServerUseableSize(server.getServerUseableSize() + fileEntity.getFileSize());
 
             serverRepository.save(server);
+
+            try {
+                client.connect(server.getServerIp());
+                client.login(server.getServerUser(), server.getServerPassword());
+
+                // Delete file on the FTP server. When the FTP delete
+                // complete it returns true.
+                String filename = fileEntity.getFilePhysicalName();
+                boolean deleted = client.deleteFile(filename);
+                if (deleted) {
+                    System.out.printf("File %s was deleted...", filename);
+                } else {
+                    System.out.println("No file was deleted...");
+                }
+
+                client.logout();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                try {
+                    client.disconnect();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
 }
