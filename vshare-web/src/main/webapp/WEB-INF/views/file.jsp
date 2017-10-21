@@ -27,7 +27,8 @@
                     <form:label cssClass="control-label" path="fileOriginalName">File Name</form:label>
                 </div>
                 <div class="col-md-8">
-                    <form:input cssClass="form-control" path="fileOriginalName"/>
+                    <form:input cssClass="form-control" path="fileOriginalName" cssStyle="display: none"/>
+                    <label class="control-label"></label>
                 </div>
             </div>
             <div class="col-md-12 form-group">
@@ -36,14 +37,15 @@
                     <form:label cssClass="control-label" path="fileSize">File Size</form:label>
                 </div>
                 <div class="col-md-8">
-                    <form:input cssClass="form-control" path="fileSize"/>
+                    <form:input cssClass="form-control" path="fileSize" cssStyle="display: none"/>
+                    <label class="control-label"></label>
                 </div>
             </div>
             <div class="col-md-12 form-group">
                 <div class="col-md-4 mar-top-lb">
 
                 </div>
-                <div class="col-md-8 text-right">
+                <div class="col-md-8">
                     <button class="btn btn-primary"><i class="fa fa-download" aria-hidden="true"></i> Download</button>
                 </div>
             </div>
