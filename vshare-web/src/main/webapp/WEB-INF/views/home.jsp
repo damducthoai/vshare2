@@ -238,7 +238,7 @@
 //                    var a = row.parentNode.parentNode.nodeName;
 //                    console.log(a);
 //                    var table = document.getElementById("cha");
-//                    table.removeChild(a);
+//                    table.removeChild(a); aaaaaaaaaaaa
                     var row = document.getElementById(fileId);
                     var a = row.parentNode.parentNode;
                     var b = a.parentNode;
