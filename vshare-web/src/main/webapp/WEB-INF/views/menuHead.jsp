@@ -13,7 +13,7 @@
         <div class="navbar-header col-lg-3">
             <a class="navbar-brand" href="${contextPath}/home"><i class="fa fa-superpowers" aria-hidden="true"></i><b>VShare</b></a>
         </div>
-        <ul class="nav navbar-nav col-lg-6">
+        <ul class="nav navbar-nav col-lg-6" id="hide-upgrade">
             <li class="active"><a href="${contextPath}/upgrade">Upgrade</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right col-lg-3" id="hide-logout">
