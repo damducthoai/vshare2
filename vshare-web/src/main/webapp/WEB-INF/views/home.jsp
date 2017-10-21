@@ -102,7 +102,9 @@
                 <tr>
                     <td class="row">
                         <div class="col-md-2"><i class="fa fa-file-o" aria-hidden="true"></i></div>
-                        <div class="col-md-6">${file.fileOriginalName}</div>
+                        <a href="${contextPath}/files/${file.filePhysicalName}">
+                            <div class="col-md-6">${file.fileOriginalName}</div>
+                        </a>
                     </td>
                     <td><a href="${contextPath}/files/${file.filePhysicalName}">${file.filePhysicalName}</a></td>
                     <td>update</td>
@@ -119,7 +121,9 @@
                 <tr>
                     <td class="row">
                         <div class="col-md-2"><i class="fa fa-folder-open-o" aria-hidden="true"></i></div>
-                        <div class="col-md-6">${folder.folderName}</div>
+                        <a href="${contextPath}/home/${folder.folderId}">
+                            <div class="col-md-6">${folder.folderName}</div>
+                        </a>
                     </td>
                     <td></td>
                     <td>Update</td>
