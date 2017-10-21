@@ -74,7 +74,7 @@ legend{
     padding-right: 30px !important;
 }
 .mar-popup-card{
-    margin-top:60px;
+    margin-top:35px;
 }
 .mar-top{
     margin-top: 50px;
@@ -153,5 +153,6 @@ hr{
     border-top: 0;
 }
 .toppad
-{margin-top:20px;
+{
+    margin-top:20px;
 }
