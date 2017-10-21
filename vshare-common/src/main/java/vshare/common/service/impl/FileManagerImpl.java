@@ -10,9 +10,13 @@ import org.springframework.web.multipart.MultipartFile;
 import vshare.common.binding.DownloadRole;
 import vshare.common.binding.NewFileEvent;
 import vshare.common.entity.FileEntity;
+import vshare.common.entity.FileServerMetaEntity;
 import vshare.common.entity.PremiumDataEntity;
+import vshare.common.entity.ServerEntity;
 import vshare.common.repository.FileRepository;
+import vshare.common.repository.FileServerMetaRepository;
 import vshare.common.repository.PremiumDataRepository;
+import vshare.common.repository.ServerRepository;
 import vshare.common.service.FileManager;
 import vshare.common.service.SecurityService;
 import vshare.common.service.StorageManager;
@@ -48,6 +52,12 @@ public class FileManagerImpl implements FileManager, ApplicationEventPublisherAw
 
     @Resource(name = "premiumDataRepository")
     PremiumDataRepository premiumDataRepository;
+
+    @Resource(name = "fileServerMetaRepository")
+    FileServerMetaRepository fileServerMetaRepository;
+
+    @Resource(name = "serverRepository")
+    ServerRepository serverRepository;
 
     @Override
     public List<FileEntity> getFiles(Long folderId) {
@@ -150,6 +160,7 @@ public class FileManagerImpl implements FileManager, ApplicationEventPublisherAw
 
                 Long storageId = storageManager.getStorageId();
                 if (file.getStorageId().equals(storageId)) {
+                    deleteFileFromVPS(fileId);
                     fileRepository.delete(fileId);
                     success = fileRepository.findOne(fileId) == null ? true : false;
                 } else {
@@ -168,5 +179,22 @@ public class FileManagerImpl implements FileManager, ApplicationEventPublisherAw
     @Override
     public void setApplicationEventPublisher(ApplicationEventPublisher applicationEventPublisher) {
         this.publisher = applicationEventPublisher;
+    }
+
+    protected void deleteFileFromVPS(Long fileId) {
+        String ip = null;
+        FileServerMetaEntity metaEntity = fileServerMetaRepository.findByFileId(fileId);
+        if (metaEntity != null) {
+            ip = metaEntity.getServerIp();
+
+            FileEntity fileEntity = fileRepository.findOne(fileId);
+
+            fileServerMetaRepository.delete(metaEntity);
+
+            ServerEntity server = serverRepository.findOne(ip);
+            server.setServerUseableSize(server.getServerUseableSize() + fileEntity.getFileSize());
+
+            serverRepository.save(server);
+        }
     }
 }

@@ -7,4 +7,7 @@ import vshare.common.entity.FileServerMetaEntityPK;
 
 @Service("fileServerMetaRepository")
 public interface FileServerMetaRepository extends JpaRepository<FileServerMetaEntity, FileServerMetaEntityPK> {
+    FileServerMetaEntity findByFileId(Long fileId);
+
+    void deleteByFileId(Long fileId);
 }
