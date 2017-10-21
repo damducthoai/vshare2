@@ -53,18 +53,20 @@ public class StorageServiceImpl implements StorageService, ApplicationListener<N
 
     @PostConstruct
     public void postInit() {
-        serverList = serverRepository.findAll();
+       /* serverList = serverRepository.findAll();
         for (ServerEntity server : serverList) {
             servers.put(server.getServerIp(), server.getServerUseableSize());
-        }
+        }*/
     }
 
     @Override
     public void onApplicationEvent(NewFileEvent event) {
         boolean success = false;
         String serveServer = null;
-        for (ServerEntity s : serverList) {
+        ServerEntity server = null;
+        for (ServerEntity s : serverRepository.findAll()) {
             if (s.getServerUseableSize() > event.getSize()) {
+                server = s;
                 serveServer = s.getServerIp();
                 File file = new File(String.format("%s/%s", uploadDir, event.getName()));
                 success = upload(s.getServerIp(), s.getServerUser(), s.getServerPassword(), file);
@@ -74,6 +76,8 @@ public class StorageServiceImpl implements StorageService, ApplicationListener<N
         if (!success) {
             waitingFiles.put(event.getName(), event.getSize());
         } else {
+            server.setServerUseableSize(server.getServerUseableSize() - event.getSize());
+            serverRepository.save(server);
             long id = fileRepository.findByFilePhysicalName(event.getName()).getFileId();
             FileServerMetaEntity meta = new FileServerMetaEntity();
             meta.setFileId(id);
