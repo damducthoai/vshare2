@@ -10,10 +10,10 @@
 <nav class="navbar navbar-inverse navbar-fixed-top" id="menuMain">
     <div class="container-fluid row">
         <div class="navbar-header col-lg-3">
-            <a class="navbar-brand" href="#"><i class="fa fa-superpowers" aria-hidden="true"></i><b>VShare</b></a>
+            <a class="navbar-brand" href="home"><i class="fa fa-superpowers" aria-hidden="true"></i><b>VShare</b></a>
         </div>
         <ul class="nav navbar-nav col-lg-6">
-            <li class="active"><a href="#">left</a></li>
+            <li class="active"><a href="upgrade">Upgrade</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right col-lg-3">
             <li><a href="#" data-toggle="modal"><span class="glyphicon glyphicon-log-out" ></span> Logout </a></li>
