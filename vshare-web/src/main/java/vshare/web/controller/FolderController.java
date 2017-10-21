@@ -4,10 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import vshare.common.binding.NewFolder;
 import vshare.common.entity.FolderEntity;
 
@@ -27,6 +24,14 @@ public class FolderController extends BaseController {
         res = folderEntity == null ? res = new ResponseEntity<FolderEntity>(HttpStatus.BAD_REQUEST)
                 : new ResponseEntity<FolderEntity>(folderEntity, HttpStatus.OK);
 
+        return res;
+    }
+
+    @DeleteMapping("{folderId}")
+    public ResponseEntity<FolderEntity> processDeleteFolder(@PathVariable("folderId") Long folderId) {
+        boolean success = deleteFolder(folderId);
+        ResponseEntity<FolderEntity> res = success ? new ResponseEntity<FolderEntity>(HttpStatus.OK) :
+                new ResponseEntity<FolderEntity>(HttpStatus.BAD_REQUEST);
         return res;
     }
 }

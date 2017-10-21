@@ -16,4 +16,6 @@ public interface FileManager {
     String download(String physicalName);
 
     DownloadRole getDownloadRole();
+
+    boolean deleteFile(long fileId);
 }

@@ -8,4 +8,6 @@ public interface FolderManager {
     List<FolderEntity> getFolders(Long folderId);
 
     FolderEntity createFolder(Long parrentId, String name);
+
+    boolean deleteFolder(Long folderId);
 }
