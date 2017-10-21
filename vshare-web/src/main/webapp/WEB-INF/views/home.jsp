@@ -200,7 +200,7 @@
                                             <form:hidden path="parrentId" value="${curlFolderId}"/>
                         --%>
                     <form:label path="name">Folder Name</input></form:label>
-                    <form:input path="name"/>
+                    <form:input path="name" id="folder-name"/>
                 </div>
                 <div class="modal-footer mar-top-signup ">
                     <button class="btn btn-primary" onclick="closePopup()" class="btn btn-default">Create Folder</button>
@@ -220,6 +220,8 @@
                     <h4>bbbb</h4>
                 </div>
                 <div class="modal-body">
+                    <div id="uploadBox"></div><!-- /uploadBox -->
+
                     <input type="hidden" value="${curlFolderId}" name="folderId"/>
                     <%--<label class="btn btn-default btn-file">
                         Browse
@@ -246,15 +248,81 @@
 
 <script>
         $('#createFolder').submit(function () {
+            var options = {
 
-            $(this).ajaxSubmit();
+                success: function (res) {
+                    var folderList = [];
+                    var fileList = [];
+                        var name = document.getElementById("folder-name").value;
+                        var folder = [];
+
+                        folder.push(name);
+
+                        folderList.push(folder);
+
+                        var table = document.getElementById("folderList");
+                        for(var i =0; i<folderList.length;i++){
+
+                            var rowCount = table.rows.length;
+                            var row = table.insertRow(rowCount);
+                            var cell1 = row.insertCell(0);
+                            var cell2 = row.insertCell(1);
+                            var cell3 = row.insertCell(2);
+                            cell1.innerHTML = '<td class="row sorting_1">\n' +
+                                '                        <div class="col-md-2"><i class="fa fa-folder-open-o" aria-hidden="true"></i></div>\n' +
+                                '                        <a href="/home/'+ res.folderId + '">\n' +
+                                '                            <div class="col-md-6">' + folderList[i][0] + '</div>\n' +
+                                '                        </a>\n' +
+                                '                    </td>';
+                            cell2.innerHTML = '<td></td>';
+                            //cell4.innerHTML = "<button id="+"btn-remove "+"onclick="+"deleteRow("+i+")"+">Delete</button>";   C1
+                            //cell3.innerHTML = '<td><a class="btn icon-btn btn-delete"><span class="glyphicon btn-glyphicon glyphicon-trash img-circle text-danger"></span> Delete</a></td>';   //C2
+                            cell3.innerHTML = '<td>\n' +
+                                '                        <a data-toggle="modal" data-target="#delete-popup-folder" class="btn icon-btn btn-delete" id="'+res.fileId+'">\n' +
+                                '                            <span class="glyphicon btn-glyphicon glyphicon-trash img-circle text-danger"></span>\n' +
+                                '                            Delete\n' +
+                                '                        </a>\n' +
+                                '\n' +
+                                '                        <div class="modal fade" id="delete-popup-folder" role="dialog">\n' +
+                                '                            <div class="modal-dialog">\n' +
+                                '                                <div class="modal-content">\n' +
+                                '                                    <div class="modal-header ">\n' +
+                                '                                        <h4>Are you sure?</h4>\n' +
+                                '                                    </div>\n' +
+                                '                                    <div class="modal-body text-center">\n' +
+                                '                                        <button onclick="deleteRowFolder('+res.fileId+')" data-dismiss="modal" class="btn btn-primary">Accept</button>\n' +
+                                '                                        <button data-dismiss="modal" class="btn btn-default">Cancel</button>\n' +
+                                '                                    </div>\n' +
+                                '                                    <div class="modal-footer mar-top-signup ">\n' +
+                                '\n' +
+                                '                                    </div>\n' +
+                                '                                </div>\n' +
+                                '                                \n' +
+                                '                            </div>\n' +
+                                '                        </div>\n' +
+                                '\n' +
+                                '                        \n' +
+                                '                    </td>';
+                        }
+
+                },
+                error: function (response) {
+                    // TODO
+                }
+            };
+            $(this).ajaxSubmit(options);
             return false;
         });
+
         $('#uploadFile').submit(function () {
             // prepare Options Object
             var options = {
+
                 success: function (res) {
                     alert('Thanks for your comment!');
+                },
+                error: function (response) {
+                    // TODO
                 }
             };
             $(this).ajaxSubmit(options);
