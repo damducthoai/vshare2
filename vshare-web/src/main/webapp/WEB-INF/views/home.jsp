@@ -39,6 +39,18 @@
 
 </head>
 
+<style>
+    .btn-glyphicon {
+        padding:8px;
+        background:#ffffff;
+        margin-right:4px;
+    }
+    .icon-btn {
+        padding: 1px 15px 3px 2px;
+        border-radius:50px;
+    }
+</style>
+
 <body>
 
 <jsp:include page="menuHead.jsp"></jsp:include>
@@ -51,15 +63,23 @@
 
         <h4>Add new folder</h4>
         <td>
-            <button id="btn-add" data-toggle="modal" data-target="#add-folder" class="btn btn-default">add new folder</button>
+            <%--<button id="btn-add" data-toggle="modal" data-target="#add-folder" class="btn btn-default">add new folder</button>--%>
 
+            <a data-toggle="modal" data-target="#add-folder" class="btn icon-btn btn-success" href="#">
+                <span class="glyphicon btn-glyphicon glyphicon-plus img-circle text-success"></span>
+                Add Folder
+            </a>
         </td>
     </div>
 
     <div id="tool-box">
         <h4>Upload File</h4>
         <td>
-            <button id="btn-add" data-toggle="modal" data-target="#add-file" class="btn btn-default">add new file</button>
+           <%-- <button id="btn-add" data-toggle="modal" data-target="#add-file" class="btn btn-default">add new file</button>--%>
+            <a data-toggle="modal" data-target="#add-file" class="btn icon-btn btn-success" href="#">
+                <span class="glyphicon btn-glyphicon glyphicon-plus img-circle text-success"></span>
+                Add File
+            </a>
         </td>
 
     </div>
@@ -80,21 +100,35 @@
             <tbody>
             <c:forEach var="file" items="${files}">
                 <tr>
-                    <td class="item-folder"><a>file </a> ${file.fileOriginalName}</td>
+                    <td class="row">
+                        <div class="col-md-2"><i class="fa fa-file-o" aria-hidden="true"></i></div>
+                        <div class="col-md-6">${file.fileOriginalName}</div>
+                    </td>
                     <td><a href="${contextPath}/files/${file.filePhysicalName}">${file.filePhysicalName}</a></td>
                     <td>update</td>
                     <td>
-                        <button onclick="deleteFile(${file.fileId})" class="btn btn-default">Delete</button>
+                        <a class="btn icon-btn btn-danger" href="#">
+                            <span class="glyphicon btn-glyphicon glyphicon-trash img-circle text-danger"></span>
+                            Delete
+                        </a>
+                        <%--<button onclick="deleteFile(${file.fileId})" class="btn btn-default">Delete</button>--%>
                     </td>
                 </tr>
             </c:forEach>
             <c:forEach var="folder" items="${folders}">
                 <tr>
-                    <td class="item-file"><a>folder </a> ${folder.folderName}</td>
+                    <td class="row">
+                        <div class="col-md-2"><i class="fa fa-folder-open-o" aria-hidden="true"></i></div>
+                        <div class="col-md-6">${folder.folderName}</div>
+                    </td>
                     <td></td>
                     <td>Update</td>
                     <td>
-                        <button onclick="deleteRowFolder(${folder.folderId})" class="btn btn-default">Delete</button>
+                        <a class="btn icon-btn btn-danger" href="#">
+                            <span class="glyphicon btn-glyphicon glyphicon-trash img-circle text-danger"></span>
+                            Delete
+                        </a>
+                        <%--<button onclick="deleteRowFolder(${folder.folderId})" class="btn btn-default">Delete</button>--%>
                     </td>
                 </tr>
             </c:forEach>
@@ -135,13 +169,27 @@
         <!-- Popup content add-->
 
         <form action="${contextPath}/upload" method="post" enctype="multipart/form-data" id="uploadFile">
-            <tr>
-                <input type="hidden" value="${curlFolderId}" name="folderId"/>
-                <td><input type="file" name="file"/></td>
-                <td>
+            <div class="modal-content">
+                <div class="modal-header ">
+                    <h4>bbbb</h4>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" value="${curlFolderId}" name="folderId"/>
+                    <%--<label class="btn btn-default btn-file">
+                        Browse
+                    </label>--%>
+                    <span class="btn btn-primary btn-sm fileinput-button">
+                    <span class="glyphicon glyphicon-plus"></span>
+                    Thêm tập tin...
+                    <input type="file" name="file"/>
+                </span>
+
+                    <%--<td><input type="file" name="file" class="btn btn-default"/></td>--%>
+                </div>
+                <div class="modal-footer mar-top-signup ">
                     <button id="btn-upFile" class="btn btn-default">Upload file</button>
-                </td>
-            </tr>
+                </div>
+            </div>
         </form>
     </div>
 </div>
