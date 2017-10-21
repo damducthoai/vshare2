@@ -45,6 +45,10 @@
         background:#ffffff;
         margin-right:4px;
     }
+    .btn-delete {
+        padding: 1px 15px 3px 2px;
+        border:0.5px solid red;
+    }
     .icon-btn {
         padding: 1px 15px 3px 2px;
         border-radius:50px;
@@ -57,11 +61,14 @@
 
 <jsp:include page="navigator.jsp"/>
 
-<fieldset style="width: 80%" class="container">
+<%--<fieldset style="width: 80%" class="container">
     <legend>Add</legend>
-    <div id="tool-box">
 
-        <h4>Add new folder</h4>
+</fieldset>--%>
+<div class="row" style="width: 80%">
+    <div class="col-md-8"></div>
+    <div class="tool-box col-md-2">
+
         <td>
             <%--<button id="btn-add" data-toggle="modal" data-target="#add-folder" class="btn btn-default">add new folder</button>--%>
 
@@ -72,10 +79,9 @@
         </td>
     </div>
 
-    <div id="tool-box">
-        <h4>Upload File</h4>
+    <div class="tool-box col-md-2">
         <td>
-           <%-- <button id="btn-add" data-toggle="modal" data-target="#add-file" class="btn btn-default">add new file</button>--%>
+            <%-- <button id="btn-add" data-toggle="modal" data-target="#add-file" class="btn btn-default">add new file</button>--%>
             <a data-toggle="modal" data-target="#add-file" class="btn icon-btn btn-success" href="#">
                 <span class="glyphicon btn-glyphicon glyphicon-plus img-circle text-success"></span>
                 Add File
@@ -83,7 +89,8 @@
         </td>
 
     </div>
-</fieldset>
+</div>
+
 <br>
 <fieldset style="width: 80%" class="container">
     <legend>Danh sách</legend>
@@ -93,8 +100,7 @@
             <tr>
                 <th>Name</th>
                 <th>Size</th>
-                <th>Update</th>
-                <th></th>
+                <th>Action</th>
             </tr>
             </thead>
             <tbody>
@@ -107,9 +113,8 @@
                         </a>
                     </td>
                     <td><a href="${contextPath}/files/${file.filePhysicalName}">${file.filePhysicalName}</a></td>
-                    <td>update</td>
                     <td>
-                        <a class="btn icon-btn btn-danger" href="#">
+                        <a class="btn icon-btn btn-delete" onclick="return deleteFile(${file.fileId})">
                             <span class="glyphicon btn-glyphicon glyphicon-trash img-circle text-danger"></span>
                             Delete
                         </a>
@@ -126,9 +131,8 @@
                         </a>
                     </td>
                     <td></td>
-                    <td>Update</td>
                     <td>
-                        <a class="btn icon-btn btn-danger" href="#">
+                        <a class="btn icon-btn btn-delete" onclick="return deleteRowFolder(${folder.folderId})">
                             <span class="glyphicon btn-glyphicon glyphicon-trash img-circle text-danger"></span>
                             Delete
                         </a>
