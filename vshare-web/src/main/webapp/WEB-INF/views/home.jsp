@@ -233,6 +233,9 @@
                     <%--<td><input type="file" name="file" class="btn btn-default"/></td>--%>
                 </div>
                 <div class="modal-footer mar-top-signup ">
+                        <%--
+                                            <input type="button" id="btn-upFile" class="btn btn-default" onclick="uploadFile()" value="Upload"/>
+                        --%>
                     <button id="btn-upFile" class="btn btn-default">Upload file</button>
                 </div>
             </div>
@@ -243,11 +246,18 @@
 
 <script>
         $('#createFolder').submit(function () {
+
             $(this).ajaxSubmit();
             return false;
         });
         $('#uploadFile').submit(function () {
-            $(this).ajaxSubmit();
+            // prepare Options Object
+            var options = {
+                success: function (res) {
+                    alert('Thanks for your comment!');
+                }
+            };
+            $(this).ajaxSubmit(options);
             return false;
         });
 
