@@ -44,12 +44,7 @@
                     <input type="checkbox" onclick="toggle('.myClass', this)"/> Upgrade Premium
                 </label>
             </div>
-            <div class="col-md-3">
-                <input type="hidden" name="upgrade" value="vip"/>
-                <form:select path="size" cssClass="form-control">
-                    <form:options items="${premiumSizeData}"></form:options>
-                </form:select>
-            </div>
+
             <div class="col-md-2">
             </div>
             <div class="col-md-2"></div>
@@ -60,7 +55,12 @@
                 <div class="col-md-2 no-padding">
                 </div>
                 <div class="col-md-3 text-right">
-
+                    <div class="col-md-3">
+                        <input type="hidden" name="upgrade" value="vip"/>
+                        <form:select path="size" cssClass="form-control">
+                            <form:options items="${premiumSizeData}"></form:options>
+                        </form:select>
+                    </div>
                 </div>
                 <div class="col-md-2">
                     <button class="btn btn-primary">Update VIP</button>
