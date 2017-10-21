@@ -38,6 +38,7 @@
                         <div class="col-md-4 no-padding">
                             <form:label path="serverUser" cssClass="control-label mar-top-lb">User name</form:label>
                         </div>
+
                         <div class="col-md-8">
                             <form:input path="serverUser" cssClass="form-control w-100"/>
                         </div>
