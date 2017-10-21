@@ -23,22 +23,22 @@
         <fieldset>
             <legend>Download File</legend>
             <div class="col-md-12 form-group">
-                <div class="col-md-4 mar-top-lb text-right">
-                    <form:label cssClass="control-label" path="fileOriginalName">File Name</form:label>
+                <div class="col-md-4  text-right">
+                    <form:label cssClass="control-label" path="fileOriginalName">File Name:</form:label>
                 </div>
                 <div class="col-md-8">
                     <form:input cssClass="form-control" path="fileOriginalName" cssStyle="display: none"/>
-                    <label class="control-label"></label>
+                    <label class="control-label">${file.fileOriginalName}</label>
                 </div>
             </div>
             <div class="col-md-12 form-group">
-                <div class="col-md-4 mar-top-lb text-right">
+                <div class="col-md-4 text-right">
                     <form:hidden path="filePhysicalName"/>
-                    <form:label cssClass="control-label" path="fileSize">File Size</form:label>
+                    <form:label cssClass="control-label" path="fileSize">File Size:</form:label>
                 </div>
                 <div class="col-md-8">
                     <form:input cssClass="form-control" path="fileSize" cssStyle="display: none"/>
-                    <label class="control-label"></label>
+                    <label class="control-label">${file.fileSize}</label>
                 </div>
             </div>
             <div class="col-md-12 form-group">
