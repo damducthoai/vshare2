@@ -28,7 +28,8 @@
             </ul>
             <ul class="nav navbar-nav navbar-right col-lg-3" id="hide-logout">
                 <li><a href="${contextPath}/changepassword">Change Password</a></li>
-                <li><a href="#" data-toggle="modal"><span class="glyphicon glyphicon-log-out"></span> Logout </a></li>
+                <li><a href="${contextPath}/login?logout" data-toggle="modal"><span
+                        class="glyphicon glyphicon-log-out"></span> Logout </a></li>
             </ul>
 
         </security:authorize>
