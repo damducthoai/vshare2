@@ -65,6 +65,7 @@ fieldset{
     border: 1px solid #FFFBCC;
     border-radius: 10px ;
     padding: 20px;
+    border-left:6px solid #ff3e51;
 }
 legend{
     border-bottom: none !important;
