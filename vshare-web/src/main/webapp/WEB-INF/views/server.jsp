@@ -86,10 +86,9 @@
                             <%--<input type="button" onclick="deleteServer('${server.serverIp}')"/>
                             <i class="fa fa-trash-o" aria-hidden="true"></i>
 --%>
-                            <a data-toggle="modal" data-target="#delete-popup-folder" class="btn icon-btn btn-delete"
+                            <a data-toggle="modal" data-target="#delete-popup-folder" class="btn icon-btn"
                                onclick="deleteServer('${server.serverIp}')" id="${folder.folderId}">
-                                <span class="glyphicon btn-glyphicon glyphicon-trash img-circle text-danger"></span>
-                                Remove
+                                <i class="fa fa-trash-o cl-force" aria-hidden="true"></i>
                             </a>
                         </td>
                     </tr>
@@ -111,7 +110,7 @@
 
     $(document).ready(function () {
         var tableOption = $('#example').DataTable();
-        $('#example tbody').on( 'click', 'i.fa-trash-o', function () {
+        $('#example tbody').on( 'click', 'a.icon-btn', function () {
             tableOption
                 .row( $(this).parents('tr') )
                 .remove()
