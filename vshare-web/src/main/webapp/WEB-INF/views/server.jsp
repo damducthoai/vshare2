@@ -34,6 +34,7 @@
         </script>
     </head>
     <div>
+        <jsp:include page="menuHead.jsp"></jsp:include>
         <jsp:include page="create_server.jsp"/>
         <br/>
         <fieldset>
