@@ -12,6 +12,7 @@
 <link href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css" rel="stylesheet">
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 <link href="${contextPath}/resources/css/common.css" rel="stylesheet">
+<jsp:include page="menuHead.jsp"></jsp:include>
 <div class="container">
     <div class="row">
         <fieldset>
