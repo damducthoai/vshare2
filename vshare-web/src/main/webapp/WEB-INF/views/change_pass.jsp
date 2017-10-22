@@ -12,20 +12,64 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${contextPath}/resources/css/common.css" rel="stylesheet">
     <title>Change pass</title>
 </head>
 <body>
-<form:form modelAttribute="info" method="post" action="${contextPath}/changepassword" id="changepass">
-    <form:label path="currentPassword">Current password</form:label>
-    <form:input path="currentPassword"/>
-    <form:label path="newPassword">New Password</form:label>
-    <form:input path="newPassword"/>
-    <form:label path="confirmNewPassword">Confirm new pass</form:label>
-    <form:input path="confirmNewPassword"/>
-    <button type="submit">OK</button>
-</form:form>
+<div class="container">
+    <div class="row">
+        <form:form modelAttribute="info" method="post" action="${contextPath}/changepassword" id="changepass">
+        <fieldset>
+            <legend>Change password</legend>
+            <div class="col-md-12 form-group">
+                <div class="col-md-4 mar-top-lb">
+                    <form:label path="currentPassword" cssClass="control-label">Current password</form:label>
+                </div>
+                <div class="col-md-8">
+                    <form:input path="currentPassword" cssClass="form-control"/>
+                </div>
+            </div>
+            <div class="col-md-12 form-group">
+                <div class="col-md-4 mar-top-lb">
+                    <form:label path="newPassword" cssClass="control-label">New Password</form:label>
+                </div>
+                <div class="col-md-8">
+                    <form:input path="newPassword" cssClass="form-control"/>
+                </div>
+            </div>
+            <div class="col-md-12 form-group">
+                <div class="col-md-4 mar-top-lb">
+                    <form:label path="confirmNewPassword" cssClass="control-label">Confirm new pass</form:label>
+                </div>
+                <div class="col-md-8">
+                    <form:input path="confirmNewPassword" cssClass="form-control"/>
+                </div>
+            </div>
+            <div class="col-md-12 form-group">
+                <div class="col-md-4 mar-top-lb">
+                </div>
+                <div class="col-md-8 text-right">
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-repeat" aria-hidden="true"></i> Change</button>
+                </div>
+            </div>
+        </fieldset>
+        </form:form>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.js"></script>
+</body>
+
+
+
+
+
+
+
+
 <script>
     $('#changepass').submit(function () {
         // prepare Options Object
