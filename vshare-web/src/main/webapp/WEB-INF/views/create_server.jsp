@@ -10,7 +10,7 @@
   Time: 8:01 AM
   To change this template use File | Settings | File Templates.
 --%>
-<div class="container">
+<div class="container mar-top">
     <div class="row">
         <fieldset>
             <legend>Thông tin</legend>
