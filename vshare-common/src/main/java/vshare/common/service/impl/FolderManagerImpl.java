@@ -53,11 +53,11 @@ public class FolderManagerImpl implements FolderManager {
     @Override
     public boolean deleteFolder(Long folderId) {
         List<FileEntity> fileEntityList = fileRepository.findAllByFolderId(folderId);
-        if (fileEntityList != null) {
+        if (fileEntityList !=  null) {
            return false;
         }
-        FolderEntity folder = folderRepository.findOne(folderId);
-        if (folder != null) {
+        List<FolderEntity> folderEntityList  = folderRepository.findAllByFolderParent(folderId);
+        if (folderEntityList != null) {
            return false;
         }
 
