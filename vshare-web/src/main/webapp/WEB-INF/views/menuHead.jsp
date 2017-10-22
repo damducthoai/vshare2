@@ -16,9 +16,9 @@
         </div>
         <security:authorize access="hasRole('ROLE_USER')">
 
-            <ul class="nav navbar-nav col-lg-7" id="hide-upgrade">
+            <ul class="nav navbar-nav col-lg-7">
+                <li class="active"><a href="${contextPath}/home">Home</a></li>
                 <li><a href="${contextPath}/upgrade">Upgrade</a></li>
-                <li><a href="${contextPath}/home">Home</a></li>
                 <security:authorize access="hasRole('ROLE_ADMIN')">
                     <ul class="nav navbar-nav col-lg-3">
                         <li><a href="${contextPath}/cards">Cards</a></li>
