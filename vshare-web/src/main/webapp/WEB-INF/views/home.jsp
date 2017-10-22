@@ -31,6 +31,8 @@
     <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
 
+    <%--Progess--%>
+    <script type="text/javascript" src="http://malsup.github.io/jquery.form.js"></script>
     <script>
         $(document).ready(function () {
             $('#folderList').DataTable();
@@ -229,7 +231,7 @@
                     <span class="btn btn-primary btn-sm fileinput-button">
                     <span class="glyphicon glyphicon-plus"></span>
                     Thêm tập tin...
-                    <input type="file" name="file"/>
+                    <input id="progessFile" type="file" name="file"/>
                 </span>
 
                     <%--<td><input type="file" name="file" class="btn btn-default"/></td>--%>
@@ -239,6 +241,7 @@
                                             <input type="button" id="btn-upFile" class="btn btn-default" onclick="uploadFile()" value="Upload"/>
                         --%>
                     <button id="btn-upFile" class="btn btn-default">Upload file</button>
+                            <button id="closess" data-dismiss="modal"></button>
                 </div>
             </div>
         </form:form>
@@ -317,17 +320,54 @@
         $('#uploadFile').submit(function () {
             // prepare Options Object
             var options = {
-
+                beforeSubmit: function() {
+                    $(this).addClass('loading');
+                    $('#uploadBox').html('<div class="progress progress-striped active"><div class="progress-bar" id="progressBar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"><span class="sr-only">0%</span></div></div>');
+                },
+                uploadProgress: function(event, position, total, percentComplete) {
+                    if (percentComplete == 100) {
+                        $('#progressBar').css('width', percentComplete + '%').html('Processing...');
+                    } else {
+                        $('#progressBar').css('width', percentComplete + '%').html(percentComplete + '%');
+                    }
+                },
                 success: function (res) {
-                    alert('Thanks for your comment!');
+                    /*var colsePopup = function () {
+
+                      var popup =  $("#add-file").css("display","none");
+                       self.close();
+                    };*/
+                    $("#closess").click();
+//                    colsePopup();
+                    window.alert("yeah");
                 },
                 error: function (response) {
-                    // TODO
+                    window.alert("Có lỗi rồi man!!!");
+
                 }
             };
+
             $(this).ajaxSubmit(options);
             return false;
         });
+
+      /*  $('#progessFile').progess(function () {
+            // prepare Options Object
+            var options = {
+                beforeSubmit: function() {
+                    $(this).addClass('loading');
+                    $('#uploadBox').html('<div class="progress progress-striped active"><div class="progress-bar" id="progressBar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"><span class="sr-only">0%</span></div></div>');
+                },
+                uploadProgress: function(event, position, total, percentComplete) {
+                    if (percentComplete == 100) {
+                        $('#progressBar').css('width', percentComplete + '%').html('Processing...');
+                    } else {
+                        $('#progressBar').css('width', percentComplete + '%').html(percentComplete + '%');
+                    }
+                },
+            };
+            return false;
+        });*/
 
         function deleteRowFolder(folderId) {
             $.ajax({
