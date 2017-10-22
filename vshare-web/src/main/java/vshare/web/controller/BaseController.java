@@ -139,6 +139,11 @@ public class BaseController implements FileManager, FolderManager, ServerManager
     }
 
     @Override
+    public List<PremiumCardEntity> getCards() {
+        return premiumCardManager.getCards();
+    }
+
+    @Override
     public PremiumDataEntity getPremiumData() {
         return premiumCardManager.getPremiumData();
     }
