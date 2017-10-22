@@ -63,16 +63,6 @@
     </div>
 </div>
 
-<div class="modal fade" id="add-card" role="dialog">
-    <div class="modal-dialog">
-        <form:form modelAttribute="card" action="${contextPath}/upgrade" method="post" id="addPoint">
-            <form:label cssClass="control-label mar-top-lb" path="cardCode">Enter card code</form:label>
-            <form:input cssClass="form-control" path="cardCode"/>
-            <input type="hidden" value="point" name="upgrade"/>
-            <button type="submit">OK</button>
-        </form:form>
-    </div>
-</div>
 <div class="modal fade" id="add-card2" role="dialog">
     <div class="modal-dialog">
         <form:form modelAttribute="card" action="${contextPath}/upgrade" method="post" id="addPoint">
