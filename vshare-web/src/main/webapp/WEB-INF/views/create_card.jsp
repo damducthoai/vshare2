@@ -17,7 +17,7 @@
 <div class="container mar-top">
     <div class="row">
         <fieldset>
-            <legend>Tạo card</legend>
+            <legend>Create card</legend>
             <form:form action="${contextPath}/cards" method="post" modelAttribute="card">
 
                 <div class="col-md-12">
@@ -36,7 +36,7 @@
         </fieldset>
         <br/>
         <fieldset>
-            <legend>Danh sách card</legend>
+            <legend>Card's list</legend>
             <table id="list" class="table table-striped table-bordered" cellspacing="0" width="100%">
                 <thead>
                 <tr>

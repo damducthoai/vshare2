@@ -56,7 +56,7 @@
         <jsp:include page="create_server.jsp"/>
         <br/>
         <fieldset>
-            <legend>Danh sách</legend>
+            <legend>Server's list</legend>
             <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
                 <thead>
                 <tr>

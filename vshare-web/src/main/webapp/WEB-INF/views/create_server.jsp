@@ -13,7 +13,7 @@
 <div class="container mar-top">
     <div class="row">
         <fieldset>
-            <legend>Thông tin</legend>
+            <legend>Server's information</legend>
             <form:form method="post" action="${contextPath}/servers/${serverIp}" modelAttribute="server" id="${formId}">
                 <input type="hidden" name="ip" value="${serverIp}"/>
                 <div class="col-md-12">

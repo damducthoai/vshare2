@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 <link href="${contextPath}/resources/css/common.css" rel="stylesheet">
 
@@ -51,9 +52,9 @@
                                 </tr>
                                 </tbody>
                             </table>
-                            <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#add-premium2">Upgrade
+                            <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#add-premium2"><i class="fa fa-arrow-up" aria-hidden="true"></i> Upgrade
                                 premium</a>
-                            <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#add-card2">Add premium
+                            <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#add-card2"><i class="fa fa-plus" aria-hidden="true"></i> Add premium
                                 point</a>
                         </div>
                     </div>

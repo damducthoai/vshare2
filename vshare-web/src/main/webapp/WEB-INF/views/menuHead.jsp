@@ -15,19 +15,20 @@
             <a class="navbar-brand" href="${contextPath}/home"><i class="fa fa-superpowers" aria-hidden="true"></i><b>VShare</b></a>
         </div>
         <security:authorize access="hasRole('ROLE_USER')">
-
             <ul class="nav navbar-nav col-lg-7">
-                <li class="active"><a href="${contextPath}/home" class="top-bar" id="home">Home</a></li>
-                <li><a href="${contextPath}/upgrade" class="top-bar" id="upgrade">Upgrade</a></li>
+                <li><a href="#">Hi, ${user.userName}</a></li>
+                <li class="active"><a href="${contextPath}/home" class="top-bar" id="home"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
+                <li><a href="${contextPath}/upgrade" class="top-bar" id="upgrade"><i class="fa fa-arrow-up" aria-hidden="true"></i> Upgrade</a></li>
                 <security:authorize access="hasRole('ROLE_ADMIN')">
-                    <ul class="nav navbar-nav col-lg-3">
-                        <li><a href="${contextPath}/cards" class="top-bar" id="card">Cards</a></li>
-                        <li><a href="${contextPath}/servers" class="top-bar" id="server">Servers</a></li>
+                    <ul class="nav navbar-nav col-lg-6">
+                        <li><a href="${contextPath}/cards" class="top-bar" id="card"><i class="fa fa-credit-card-alt" aria-hidden="true"></i> Cards</a></li>
+                        <li><a href="${contextPath}/servers" class="top-bar" id="server"><i class="fa fa-server" aria-hidden="true"></i> Servers</a></li>
                     </ul>
                 </security:authorize>
             </ul>
             <ul class="nav navbar-nav navbar-right col-lg-3" id="hide-logout">
-                <li><a href="${contextPath}/changepassword" class="top-bar" id="changepw">Change Password</a></li>
+                <li><a href="${contextPath}/changepassword" class="top-bar" id="changepw"><i class="fa fa-exchange" aria-hidden="true"></i> Change Password</a></li>
+
                 <li><a href="${contextPath}/login?logout" data-toggle="modal"><span
                         class="glyphicon glyphicon-log-out"></span> Logout </a></li>
             </ul>
