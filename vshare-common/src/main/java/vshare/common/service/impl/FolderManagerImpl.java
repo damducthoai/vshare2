@@ -59,9 +59,9 @@ public class FolderManagerImpl implements FolderManager {
         FolderEntity folder = folderRepository.findOne(folderId);
         if (folder != null) {
            return false;
-        } else {
-            folderRepository.delete(folderId);
         }
+
+        folderRepository.delete(folderId);
         return true;
     }
 }
