@@ -164,4 +164,8 @@ public class BaseController implements FileManager, FolderManager, ServerManager
     protected Collection<SimpleGrantedAuthority> getAuthorities() {
         return securityService.getLoggedInAuthorities();
     }
+
+    protected void changePassword(String newPass) {
+        securityService.changePassword(newPass);
+    }
 }

@@ -1,7 +1,22 @@
 package vshare.common.binding;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
 public class ChangepassInfo {
-    String currentPassword, newPassword, confirmNewPassword;
+    @NotEmpty
+    @NotNull
+    @NotBlank
+    String currentPassword;
+    @NotEmpty
+    @NotNull
+    @NotBlank
+    String newPassword;
+    @NotEmpty
+    @NotNull
+    @NotBlank
+    String confirmNewPassword;
 
     public String getCurrentPassword() {
         return currentPassword;
