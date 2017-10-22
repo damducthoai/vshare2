@@ -69,7 +69,7 @@
                     <div class="col-md-6 form-group ">
                     </div>
                     <div class="col-md-6 form-group text-right padd-button">
-                        <button class="btn btn-primary ch-bt-com ">${action}</button>
+                        <button class="btn btn-primary ch-bt-com "><i class="fa fa-plus" aria-hidden="true"></i> ${action}</button>
                     </div>
                 </div>
             </form:form>
