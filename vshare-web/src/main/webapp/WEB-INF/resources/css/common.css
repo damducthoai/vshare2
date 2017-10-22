@@ -79,6 +79,9 @@ legend{
 .mar-top{
     margin-top: 50px;
 }
+.btn.ch-bt-com {
+    padding: 5px 10px !important;
+}
 /*Anh TU*/
 
 .tool-box{
