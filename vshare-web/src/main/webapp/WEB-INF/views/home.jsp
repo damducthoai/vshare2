@@ -280,7 +280,7 @@
                             //cell4.innerHTML = "<button id="+"btn-remove "+"onclick="+"deleteRow("+i+")"+">Delete</button>";   C1
                             //aaaaaaaaacell3.innerHTML = '<td><a class="btn icon-btn btn-delete"><span class="glyphicon btn-glyphicon glyphicon-trash img-circle text-danger"></span> Delete</a></td>';   //C2
                             cell3.innerHTML = '<td>\n' +
-                                '                        <a data-toggle="modal" data-target="#delete-popup-folder" class="btn icon-btn btn-delete" id="'+res.fileId+'">\n' +
+                                '                        <a data-toggle="modal" data-target="#delete-popup-folder" class="btn icon-btn btn-delete" id="'+res.folderId+'">\n' +
                                 '                            <span class="glyphicon btn-glyphicon glyphicon-trash img-circle text-danger"></span>\n' +
                                 '                            Delete\n' +
                                 '                        </a>\n' +
@@ -331,16 +331,74 @@
                     }
                 },
                 success: function (res) {
-                    /*var colsePopup = function () {
+                    var addFileToFronend = function () {
+                        var folderList = [];
+                        var fileList = [];
+                        var nameOr = res.fileOriginalName;
+                        var namePh = res.filePhysicalName;
+                        var folder = [];
 
-                      var popup =  $("#add-file").css("display","none");
-                       self.close();
-                    };*/
+                        folder.push(nameOr);
+                        folder.push(namePh);
+                        folderList.push(folder);
+
+                        var table = document.getElementById("folderList");
+                        for(var i =0; i<folderList.length;i++) {
+
+                            var rowCount = table.rows.length;
+                            var row = table.insertRow(rowCount);
+                            var cell1 = row.insertCell(0);
+                            var cell2 = row.insertCell(1);
+                            var cell3 = row.insertCell(2);
+                            cell1.innerHTML = '<td class="row sorting_1">\n' +
+                                '                        <div class="col-md-2"><i class="fa fa-file-o" aria-hidden="true"></i></div>\n' +
+                                '                        <a href="/files/' + nameOr + '">\n' +
+                                '                            <div class="col-md-6">' + folderList[i][0] + '</div>\n' +
+                                '                        </a>\n' +
+                                '                    </td>';
+
+                            cell2.innerHTML = '<td><a href="/files/' + namePh + '">' + folderList[i][1] + '</td>';
+                            //cell4.innerHTML = "<button id="+"btn-remove "+"onclick="+"deleteRow("+i+")"+">Delete</button>";   C1
+                            //aaaaaaaaacell3.innerHTML = '<td><a class="btn icon-btn btn-delete"><span class="glyphicon btn-glyphicon glyphicon-trash img-circle text-danger"></span> Delete</a></td>';   //C2
+                            cell3.innerHTML = '<td>\n' +
+                                '                        <a data-toggle="modal" data-target="#delete-popup-folder" class="btn icon-btn btn-delete" id="' + res.fileId + '">\n' +
+                                '                            <span class="glyphicon btn-glyphicon glyphicon-trash img-circle text-danger"></span>\n' +
+                                '                            Delete\n' +
+                                '                        </a>\n' +
+                                '\n' +
+                                '                        <div class="modal fade" id="delete-popup-folder" role="dialog">\n' +
+                                '                            <div class="modal-dialog">\n' +
+                                '                                <div class="modal-content">\n' +
+                                '                                    <div class="modal-header ">\n' +
+                                '                                        <h4>Are you sure?</h4>\n' +
+                                '                                    </div>\n' +
+                                '                                    <div class="modal-body text-center">\n' +
+                                '                                        <button onclick="deleteFile(' + res.fileId + ')" data-dismiss="modal" class="btn btn-primary">Accept</button>\n' +
+                                '                                        <button data-dismiss="modal" class="btn btn-default">Cancel</button>\n' +
+                                '                                    </div>\n' +
+                                '                                    <div class="modal-footer mar-top-signup ">\n' +
+                                '\n' +
+                                '                                    </div>\n' +
+                                '                                </div>\n' +
+                                '                                \n' +
+                                '                            </div>\n' +
+                                '                        </div>\n' +
+                                '\n' +
+                                '                        \n' +
+                                '                    </td>';
+                        }
+                    }
+                    addFileToFronend();
                     $("#closess").click();
 //                    colsePopup();
                     window.alert("yeah");
+
+                    /*Add file to fronend*/
+
                 },
                 error: function (response) {
+                    $("#closess").click();
+//                    colsePopup();
                     window.alert("Có lỗi rồi man!!!");
 
                 }
