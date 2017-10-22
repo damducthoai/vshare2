@@ -61,7 +61,6 @@
 
 <jsp:include page="menuHead.jsp"></jsp:include>
 
-<jsp:include page="navigator.jsp"/>
 
 <%--<fieldset style="width: 80%" class="container">
     <legend>Add</legend>
