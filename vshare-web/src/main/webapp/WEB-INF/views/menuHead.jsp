@@ -17,17 +17,17 @@
         <security:authorize access="hasRole('ROLE_USER')">
 
             <ul class="nav navbar-nav col-lg-1" id="hide-upgrade">
-                <li class="active"><a href="${contextPath}/upgrade">Upgrade</a></li>
+                <li><a href="${contextPath}/upgrade">Upgrade</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right col-lg-3" id="hide-logout">
                 <li><a href="#" data-toggle="modal"><span class="glyphicon glyphicon-log-out"></span> Logout </a></li>
             </ul>
             <security:authorize access="hasRole('ROLE_ADMIN')">
                 <ul class="nav navbar-nav col-lg-1" id="hide-upgrade">
-                    <li class="active"><a href="${contextPath}/cards">Cards</a></li>
+                    <li><a href="${contextPath}/cards">Cards</a></li>
                 </ul>
                 <ul class="nav navbar-nav col-lg-1" id="hide-upgrade">
-                    <li class="active"><a href="${contextPath}/servers">Servers</a></li>
+                    <li><a href="${contextPath}/servers">Servers</a></li>
                 </ul>
             </security:authorize>
         </security:authorize>

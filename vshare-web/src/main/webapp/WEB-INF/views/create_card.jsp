@@ -13,7 +13,7 @@
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 <link href="${contextPath}/resources/css/common.css" rel="stylesheet">
 <jsp:include page="menuHead.jsp"></jsp:include>
-<div class="container">
+<div class="container mar-top">
     <div class="row">
         <fieldset>
             <legend>Tạo card</legend>
