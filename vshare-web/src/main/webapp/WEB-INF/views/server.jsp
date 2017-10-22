@@ -21,7 +21,20 @@
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
         <link href="${contextPath}/resources/css/common.css" rel="stylesheet">
         <title>Server List</title>
-
+        <script>
+            function deleteServer(ip) {
+                $.ajax({
+                    url: "${contextPath}/servers?ip=" + ip,
+                    type: 'DELETE',
+                    success: function (response) {
+                        alert("Delete success");
+                    },
+                    error: function (response) {
+                        alert("Delete fail");
+                    }
+                });
+            }
+        </script>
     </head>
     <div>
         <jsp:include page="menuHead.jsp"></jsp:include>
@@ -55,6 +68,7 @@
                         <td>${server.serverAlias}</td>
                         <td>${server.serverUseableSize}</td>
                         <td class="text-center" style="width: 25px">
+                            <input type="button" onclick="deleteServer('${server.serverIp}')"/>
                             <i class="fa fa-trash-o" aria-hidden="true"></i>
                         </td>
                     </tr>
@@ -73,6 +87,7 @@
 <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
 
 <script>
+
     $(document).ready(function () {
         var tableOption = $('#example').DataTable();
         $('#example tbody').on( 'click', 'i.fa-trash-o', function () {
