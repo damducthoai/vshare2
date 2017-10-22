@@ -17,6 +17,7 @@ import javax.annotation.Resource;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.Calendar;
+import java.util.List;
 
 @Service("premiumCardManager")
 public class PremiumCardManagerImpl implements PremiumCardManager {
@@ -113,6 +114,11 @@ public class PremiumCardManagerImpl implements PremiumCardManager {
             success = true;
         }
         return success;
+    }
+
+    @Override
+    public List<PremiumCardEntity> getCards() {
+        return premiumCardRepository.findAll();
     }
 
     @Override

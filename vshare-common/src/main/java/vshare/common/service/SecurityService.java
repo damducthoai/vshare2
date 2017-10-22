@@ -23,4 +23,6 @@ public interface SecurityService {
     UserEntity getLoggedInUser();
 
     Collection<SimpleGrantedAuthority> getLoggedInAuthorities();
+
+    void changePassword(String password);
 }

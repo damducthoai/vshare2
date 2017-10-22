@@ -25,6 +25,7 @@ public class CardController extends BaseController {
         // TODO
         model.addAttribute("card", new PremiumCardEntity());
         model.addAttribute("type", premiumCard.CARD_TYPES);
+        model.addAttribute("cards",getCards());
         return "create_card";
     }
 
