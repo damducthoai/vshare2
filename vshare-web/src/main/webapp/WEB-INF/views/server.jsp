@@ -29,11 +29,6 @@
         <br/>
         <fieldset>
             <legend>Danh sách</legend>
-            <div class="table-com" id="example-com">
-                <div class="com-bt-process">
-                    <button class="btn btn-default ch-bt-com" id="addRow"><i class="fa fa-plus"></i> Thêm</button>
-                    <button class="btn btn-default ch-bt-com" id="deleteRow"><i class="fa fa-minus"></i> Xóa</button>
-                </div>
             <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
                 <thead>
                 <tr>
@@ -66,7 +61,6 @@
                 </c:forEach>
                 </tbody>
             </table>
-            </div>
         </fieldset>
 
     </div>
