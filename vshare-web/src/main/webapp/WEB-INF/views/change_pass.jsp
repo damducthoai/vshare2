@@ -18,7 +18,8 @@
     <title>Change pass</title>
 </head>
 <body>
-<div class="container">
+<jsp:include page="menuHead.jsp"></jsp:include>
+<div class="container mar-top">
     <div class="row">
         <form:form modelAttribute="info" method="post" action="${contextPath}/changepassword" id="changepass">
         <fieldset>
