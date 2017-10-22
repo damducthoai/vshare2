@@ -124,6 +124,11 @@ public class BaseController implements FileManager, FolderManager, ServerManager
     }
 
     @Override
+    public boolean deleteServer(String ip) {
+        return serverManager.deleteServer(ip);
+    }
+
+    @Override
     public PremiumCardEntity createPremiumCard(long point) {
         return premiumCardManager.createPremiumCard(point);
     }
@@ -158,5 +163,9 @@ public class BaseController implements FileManager, FolderManager, ServerManager
 
     protected Collection<SimpleGrantedAuthority> getAuthorities() {
         return securityService.getLoggedInAuthorities();
+    }
+
+    protected void changePassword(String newPass) {
+        securityService.changePassword(newPass);
     }
 }

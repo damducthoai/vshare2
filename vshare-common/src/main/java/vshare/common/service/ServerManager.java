@@ -12,4 +12,6 @@ public interface ServerManager {
     ServerEntity getServer(String serverIp);
 
     ServerEntity updateServer(String serverIp, ServerEntity server);
+
+    boolean deleteServer(String ip);
 }
