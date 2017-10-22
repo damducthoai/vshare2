@@ -35,6 +35,21 @@
                 });
             }
         </script>
+        <style>
+            .btn-glyphicon {
+                padding:8px;
+                background:#ffffff;
+                margin-right:4px;
+            }
+            .btn-delete {
+                padding: 1px 15px 3px 2px;
+                border:0.5px solid red;
+            }
+            .icon-btn {
+                padding: 1px 15px 3px 2px;
+                border-radius:50px;
+            }
+        </style>
     </head>
     <div>
         <jsp:include page="menuHead.jsp"></jsp:include>
@@ -68,8 +83,14 @@
                         <td>${server.serverAlias}</td>
                         <td>${server.serverUseableSize}</td>
                         <td class="text-center" style="width: 25px">
-                            <input type="button" onclick="deleteServer('${server.serverIp}')"/>
+                            <%--<input type="button" onclick="deleteServer('${server.serverIp}')"/>
                             <i class="fa fa-trash-o" aria-hidden="true"></i>
+--%>
+                            <a data-toggle="modal" data-target="#delete-popup-folder" class="btn icon-btn btn-delete"
+                               onclick="deleteServer('${server.serverIp}')" id="${folder.folderId}">
+                                <span class="glyphicon btn-glyphicon glyphicon-trash img-circle text-danger"></span>
+                                Remove
+                            </a>
                         </td>
                     </tr>
                 </c:forEach>
