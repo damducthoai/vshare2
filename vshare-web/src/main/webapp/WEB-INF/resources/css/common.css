@@ -84,6 +84,10 @@ legend{
 .btn.ch-bt-com {
     padding: 5px 10px !important;
 }
+a.top-bar:hover {
+    border-bottom: 5px solid #2e6da4;
+    height: 50px !important;
+}
 /*Anh TU*/
 
 .tool-box{
