@@ -29,6 +29,7 @@ public class ChangePwdController extends BaseController {
             if (info.getCurrentPassword().equals(getUser().getUserPassword())) {
                 if (info.getNewPassword().equals(info.getConfirmNewPassword())) {
                     success = true;
+                    changePassword(info.getNewPassword());
                 }
             }
         }
