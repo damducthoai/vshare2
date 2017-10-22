@@ -41,6 +41,13 @@ public class SecurityServiceImpl implements SecurityService {
     }
 
     @Override
+    public void changePassword(String password) {
+        UserEntity user = getUser();
+        user.setUserPassword(password);
+        userRepository.save(user);
+    }
+
+    @Override
     public long getUserId() {
         String userName = getUserName();
         return userRepository.findByUserName(userName).getUserId();
@@ -52,6 +59,7 @@ public class SecurityServiceImpl implements SecurityService {
         String currentUserName = authentication.getName();
         return currentUserName;
     }
+
 
     @Override
     public UserEntity getUser() {
