@@ -95,12 +95,13 @@
 <br>
 <fieldset style="width: 80%" class="container">
     <legend>Danh sách</legend>
-    <div style="width: 80%" class="container">
+    <div style="width: 100%" class="container">
         <table id="folderList" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
             <thead>
             <tr>
                 <th>Name</th>
                 <th>Size</th>
+                <th>Share</th>
                 <th>Action</th>
             </tr>
             </thead>
@@ -114,13 +115,19 @@
                         </a>
                     </td>
                     <td><a href="${contextPath}/files/${file.filePhysicalName}">${file.filePhysicalName}</a></td>
-                    <td>
-                        <a data-toggle="modal" data-target="#delete-popup-file" class="btn icon-btn btn-delete" id="${file.fileId}">
-                            <span class="glyphicon btn-glyphicon glyphicon-trash img-circle text-danger"></span>
-                            Delete
+                    <td class="text-center" style="width: 25px">
+                        <a data-toggle="modal" data-target="#delete-popup-file" class="btn icon-btn" id="${file.fileId}"
+                           onclick="share(${file.fileId})">
+                            <i class="fa fa-share-square-o" aria-hidden="true"></i>
+                        </a>
+                    </td>
+                    <td class="text-center" style="width: 25px">
+                        <a data-toggle="modal" data-target="#delete-popup-file" class="btn icon-btn" id="${file.fileId}"
+                           onclick="deleteFile(${file.fileId})">
+                            <i class="fa fa-trash-o cl-force" aria-hidden="true"></i>
                         </a>
                         <%--<button onclick="deleteFile(${file.fileId})" class="btn btn-default">Delete</button>--%>
-                        <div class="modal fade" id="delete-popup-file" role="dialog">
+                       <%-- <div class="modal fade" id="delete-popup-file" role="dialog">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header ">
@@ -136,7 +143,7 @@
                                 </div>
                                 </form>
                             </div>
-                        </div>
+                        </div>--%>
                     </td>
                 </tr>
             </c:forEach>
@@ -149,20 +156,26 @@
                         </a>
                     </td>
                     <td></td>
-                    <td>
-                        <a data-toggle="modal" data-target="#delete-popup-folder" class="btn icon-btn btn-delete" id="${folder.folderId}">
-                            <span class="glyphicon btn-glyphicon glyphicon-trash img-circle text-danger"></span>
-                            Delete
+                    <td class="text-center" style="width: 25px">
+                        <a data-toggle="modal" data-target="#delete-popup-file" class="btn icon-btn" id="${file.fileId}"
+                           onclick="share(${file.fileId})">
+                            <i class="fa fa-share-square-o" aria-hidden="true"></i>
+                        </a>
+                    </td>
+                    <td class="text-center" style="width: 25px">
+                        <a data-toggle="modal" data-target="#delete-popup-folder" class="btn icon-btn" id="${folder.folderId}"
+                           onclick="deleteRowFolder(${folder.folderId})">
+                            <i class="fa fa-trash-o cl-force" aria-hidden="true"></i>
                         </a>
 
-                        <div class="modal fade" id="delete-popup-folder" role="dialog">
+                        <%--<div class="modal fade" id="delete-popup-folder" role="dialog">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header ">
                                         <h4>Are you sure?</h4>
                                     </div>
                                     <div class="modal-body text-center">
-                                        <button onclick="deleteRowFolder(${folder.folderId})" data-dismiss="modal" class="btn btn-primary">Accept</button>
+                                        <button onclick="deleteRowFolder('<script></script>')" data-dismiss="modal" class="btn btn-primary">Accept</button>
                                         <button data-dismiss="modal" class="btn btn-default">Cancel</button>
                                     </div>
                                     <div class="modal-footer mar-top-signup ">
@@ -171,7 +184,7 @@
                                 </div>
                                 </form>
                             </div>
-                        </div>
+                        </div>--%>
 
                         <%--<button onclick="deleteRowFolder(${folder.folderId})" class="btn btn-default">Delete</button>--%>
                     </td>
@@ -204,7 +217,8 @@
                     <form:input path="name" id="folder-name"/>
                 </div>
                 <div class="modal-footer mar-top-signup ">
-                    <button class="btn btn-primary" onclick="closePopup()" class="btn btn-default">Create Folder</button>
+                    <button class="btn btn-primary" class="btn btn-default">Create Folder</button>
+                    <button id="closess1" data-dismiss="modal" style="display: none"></button>
                 </div>
             </div>
         </form:form>
@@ -240,7 +254,7 @@
                                             <input type="button" id="btn-upFile" class="btn btn-default" onclick="uploadFile()" value="Upload"/>
                         --%>
                     <button id="btn-upFile" class="btn btn-default">Upload file</button>
-                            <button id="closess" data-dismiss="modal"></button>
+                            <button id="closess" data-dismiss="modal" style="display: none"></button>
                 </div>
             </div>
         </form:form>
@@ -249,6 +263,7 @@
 
 
 <script>
+        $('#home').css({"height" : "50px","border-bottom" : "5px solid #2e6da4","color":"white" });
         $('#createFolder').submit(function () {
             var options = {
 
@@ -270,6 +285,7 @@
                             var cell1 = row.insertCell(0);
                             var cell2 = row.insertCell(1);
                             var cell3 = row.insertCell(2);
+                            var cell4 = row.insertCell(3);
                             cell1.innerHTML = '<td class="row sorting_1">\n' +
                                 '                        <div class="col-md-2"><i class="fa fa-folder-open-o" aria-hidden="true"></i></div>\n' +
                                 '                        <a href="/home/'+ res.folderId + '">\n' +
@@ -277,35 +293,22 @@
                                 '                        </a>\n' +
                                 '                    </td>';
                             cell2.innerHTML = '<td></td>';
+                            cell3.innerHTML = '<td class="text-center" style="width: 25px">\n' +
+                                '                        <a data-toggle="modal" data-target="#delete-popup-file" class="btn icon-btn" id=""\n' +
+                                '                           onclick="share()">\n' +
+                                '                            <i class="fa fa-share-square-o" aria-hidden="true"></i>\n' +
+                                '                        </a>\n' +
+                                '                    </td>';
                             //cell4.innerHTML = "<button id="+"btn-remove "+"onclick="+"deleteRow("+i+")"+">Delete</button>";   C1
                             //aaaaaaaaacell3.innerHTML = '<td><a class="btn icon-btn btn-delete"><span class="glyphicon btn-glyphicon glyphicon-trash img-circle text-danger"></span> Delete</a></td>';   //C2
-                            cell3.innerHTML = '<td>\n' +
-                                '                        <a data-toggle="modal" data-target="#delete-popup-folder" class="btn icon-btn btn-delete" id="'+res.folderId+'">\n' +
-                                '                            <span class="glyphicon btn-glyphicon glyphicon-trash img-circle text-danger"></span>\n' +
-                                '                            Delete\n' +
+                            cell4.innerHTML = '<td class="text-center" style="width: 25px">\n' +
+                                '                        <a data-toggle="modal" onclick="deleteFile(' + res.fileId +')" data-target="#delete-popup-folder" class="btn icon-btn" id="'+res.folderId+'">\n' +
+                                '                            <i class="fa fa-trash-o cl-force" aria-hidden="true"></i>\n' +
                                 '                        </a>\n' +
-                                '\n' +
-                                '                        <div class="modal fade" id="delete-popup-folder" role="dialog">\n' +
-                                '                            <div class="modal-dialog">\n' +
-                                '                                <div class="modal-content">\n' +
-                                '                                    <div class="modal-header ">\n' +
-                                '                                        <h4>Are you sure?</h4>\n' +
-                                '                                    </div>\n' +
-                                '                                    <div class="modal-body text-center">\n' +
-                                '                                        <button onclick="deleteRowFolder('+res.fileId+')" data-dismiss="modal" class="btn btn-primary">Accept</button>\n' +
-                                '                                        <button data-dismiss="modal" class="btn btn-default">Cancel</button>\n' +
-                                '                                    </div>\n' +
-                                '                                    <div class="modal-footer mar-top-signup ">\n' +
-                                '\n' +
-                                '                                    </div>\n' +
-                                '                                </div>\n' +
-                                '                                \n' +
-                                '                            </div>\n' +
-                                '                        </div>\n' +
-                                '\n' +
-                                '                        \n' +
                                 '                    </td>';
                         }
+
+                        $("#closess1").click();
 
                 },
                 error: function (response) {
@@ -350,6 +353,7 @@
                             var cell1 = row.insertCell(0);
                             var cell2 = row.insertCell(1);
                             var cell3 = row.insertCell(2);
+                            var cell4 = row.insertCell(3);
                             cell1.innerHTML = '<td class="row sorting_1">\n' +
                                 '                        <div class="col-md-2"><i class="fa fa-file-o" aria-hidden="true"></i></div>\n' +
                                 '                        <a href="/files/' + nameOr + '">\n' +
@@ -358,32 +362,18 @@
                                 '                    </td>';
 
                             cell2.innerHTML = '<td><a href="/files/' + namePh + '">' + folderList[i][1] + '</td>';
+                            cell3.innerHTML = '<td class="text-center" style="width: 25px; text-align: center">\n' +
+                                '                        <a data-toggle="modal" data-target="#delete-popup-file" class="btn icon-btn" id=""\n' +
+                                '                           onclick="share()">\n' +
+                                '                            <i class="fa fa-share-square-o" aria-hidden="true"></i>\n' +
+                                '                        </a>\n' +
+                                '                    </td>';
                             //cell4.innerHTML = "<button id="+"btn-remove "+"onclick="+"deleteRow("+i+")"+">Delete</button>";   C1
                             //aaaaaaaaacell3.innerHTML = '<td><a class="btn icon-btn btn-delete"><span class="glyphicon btn-glyphicon glyphicon-trash img-circle text-danger"></span> Delete</a></td>';   //C2
-                            cell3.innerHTML = '<td>\n' +
-                                '                        <a data-toggle="modal" data-target="#delete-popup-folder" class="btn icon-btn btn-delete" id="' + res.fileId + '">\n' +
-                                '                            <span class="glyphicon btn-glyphicon glyphicon-trash img-circle text-danger"></span>\n' +
-                                '                            Delete\n' +
+                            cell4.innerHTML = '<td class="text-center" style="width:25px">\n' +
+                                '                        <a data-toggle="modal" onclick="deleteFile(' + res.fileId + ')" data-target="#delete-popup-folder" class="btn icon-btn" id="' + res.fileId + '">\n' +
+                                '                            <i class="fa fa-trash-o cl-force" aria-hidden="true"></i>\n' +
                                 '                        </a>\n' +
-                                '\n' +
-                                '                        <div class="modal fade" id="delete-popup-folder" role="dialog">\n' +
-                                '                            <div class="modal-dialog">\n' +
-                                '                                <div class="modal-content">\n' +
-                                '                                    <div class="modal-header ">\n' +
-                                '                                        <h4>Are you sure?</h4>\n' +
-                                '                                    </div>\n' +
-                                '                                    <div class="modal-body text-center">\n' +
-                                '                                        <button onclick="deleteFile(' + res.fileId + ')" data-dismiss="modal" class="btn btn-primary">Accept</button>\n' +
-                                '                                        <button data-dismiss="modal" class="btn btn-default">Cancel</button>\n' +
-                                '                                    </div>\n' +
-                                '                                    <div class="modal-footer mar-top-signup ">\n' +
-                                '\n' +
-                                '                                    </div>\n' +
-                                '                                </div>\n' +
-                                '                                \n' +
-                                '                            </div>\n' +
-                                '                        </div>\n' +
-                                '\n' +
                                 '                        \n' +
                                 '                    </td>';
                         }
@@ -407,24 +397,6 @@
             $(this).ajaxSubmit(options);
             return false;
         });
-
-      /*  $('#progessFile').progess(function () {
-            // prepare Options Object
-            var options = {
-                beforeSubmit: function() {
-                    $(this).addClass('loading');
-                    $('#uploadBox').html('<div class="progress progress-striped active"><div class="progress-bar" id="progressBar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"><span class="sr-only">0%</span></div></div>');
-                },
-                uploadProgress: function(event, position, total, percentComplete) {
-                    if (percentComplete == 100) {
-                        $('#progressBar').css('width', percentComplete + '%').html('Processing...');
-                    } else {
-                        $('#progressBar').css('width', percentComplete + '%').html(percentComplete + '%');
-                    }
-                },
-            };
-            return false;
-        });*/
 
         function deleteRowFolder(folderId) {
             $.ajax({
