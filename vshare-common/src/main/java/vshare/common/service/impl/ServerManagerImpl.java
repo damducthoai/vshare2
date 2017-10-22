@@ -2,6 +2,7 @@ package vshare.common.service.impl;
 
 import org.springframework.stereotype.Service;
 import vshare.common.entity.ServerEntity;
+import vshare.common.repository.FileServerMetaRepository;
 import vshare.common.repository.ServerRepository;
 import vshare.common.service.SecurityService;
 import vshare.common.service.ServerManager;
@@ -18,6 +19,9 @@ public class ServerManagerImpl implements ServerManager {
     ServerRepository serverRepository;
     @Resource(name = "storageManager")
     StorageManager storageManager;
+
+    @Resource(name = "fileServerMetaRepository")
+    FileServerMetaRepository fileServerMetaRepository;
 
     @Override
     public List<ServerEntity> getServers() {
@@ -48,5 +52,12 @@ public class ServerManagerImpl implements ServerManager {
             res = server;
         }
         return res;
+    }
+
+    @Override
+    public boolean deleteServer(String ip) {
+        if (fileServerMetaRepository.findByServerIp(ip) != null) return false;
+        serverRepository.delete(ip);
+        return true;
     }
 }

@@ -62,4 +62,10 @@ public class ServerController extends BaseController {
         }
         return res;
     }
+
+    @DeleteMapping
+    ResponseEntity doDelete(@RequestParam("ip") String ip) {
+        boolean success = deleteServer(ip);
+        return success ? new ResponseEntity(HttpStatus.OK) : new ResponseEntity(HttpStatus.BAD_REQUEST);
+    }
 }

@@ -124,6 +124,11 @@ public class BaseController implements FileManager, FolderManager, ServerManager
     }
 
     @Override
+    public boolean deleteServer(String ip) {
+        return serverManager.deleteServer(ip);
+    }
+
+    @Override
     public PremiumCardEntity createPremiumCard(long point) {
         return premiumCardManager.createPremiumCard(point);
     }

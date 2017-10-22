@@ -10,4 +10,7 @@ public interface FileServerMetaRepository extends JpaRepository<FileServerMetaEn
     FileServerMetaEntity findByFileId(Long fileId);
 
     void deleteByFileId(Long fileId);
+
+    FileServerMetaEntity findByServerIp(String serverIp);
+
 }
