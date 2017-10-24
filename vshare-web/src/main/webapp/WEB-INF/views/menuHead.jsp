@@ -14,9 +14,8 @@
         <div class="navbar-header col-lg-2">
             <a class="navbar-brand" href="${contextPath}/home"><i class="fa fa-superpowers" aria-hidden="true"></i><b>VShare</b></a>
         </div>
-        <security:authorize access="hasRole('ROLE_USER')">
+        <security:authorize access="hasRole('ROLE_USER')" >
             <ul class="nav navbar-nav col-lg-7">
-                <li><a href="#">Hi, ${user.userName}</a></li>
                 <li ><a href="${contextPath}/home" class="top-bar" id="home" ><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
                 <li ><a href="${contextPath}/upgrade" class="top-bar" id="upgrade" ><i class="fa fa-arrow-up" aria-hidden="true"></i> Upgrade</a></li>
                 <security:authorize access="hasRole('ROLE_ADMIN')">
@@ -26,11 +25,17 @@
                     </ul>
                 </security:authorize>
             </ul>
-            <ul class="nav navbar-nav navbar-right col-lg-3" id="hide-logout">
-                <li ><a href="${contextPath}/changepassword" class="top-bar" id="changepw" ><i class="fa fa-exchange" aria-hidden="true"></i> Change Password</a></li>
+            <ul class="nav navbar-nav navbar-right col-lg-2" id="hide-logout">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Hi, ${user.userName}
+                        <span class="caret"></span></a>
+                    <ul class="dropdown-menu" style="background: #222">
+                        <li ><a href="${contextPath}/changepassword" id="changepw" class="dd" style="color: white" ><i class="fa fa-exchange" aria-hidden="true"></i> Change Password</a></li>
 
-                <li><a href="${contextPath}/login?logout" data-toggle="modal"><span
-                        class="glyphicon glyphicon-log-out"></span> Logout </a></li>
+                        <li><a href="${contextPath}/login?logout" data-toggle="modal" class="dd" style="color: white"><span
+                                class="glyphicon glyphicon-log-out"></span> Logout </a></li>
+                    </ul>
+                </li>
             </ul>
 
         </security:authorize>

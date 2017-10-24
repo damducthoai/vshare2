@@ -87,6 +87,11 @@ legend{
 a.top-bar:hover {
     border-bottom: 5px solid #2e6da4;
     height: 50px !important;
+    background: black !important;
+}
+a.dd:hover{
+    border-bottom: 3px solid #2e6da4;
+    background:black !important;
 }
 /*Anh TU*/
 
