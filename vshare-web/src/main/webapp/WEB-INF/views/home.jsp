@@ -263,7 +263,7 @@
 
 
 <script>
-        $('#home').css({"height" : "50px","border-bottom" : "5px solid #2e6da4","color":"white" });
+        $('#home').css({"height" : "50px","border-bottom" : "5px solid #2e6da4","color":"white","background":"black"  });
         $('#createFolder').submit(function () {
             var options = {
 

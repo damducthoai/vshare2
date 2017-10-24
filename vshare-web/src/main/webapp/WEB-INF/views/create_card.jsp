@@ -83,7 +83,7 @@
 <script>
     $(document).ready(function () {
         $('#list').DataTable();
-        $('#card').css({"height" : "50px","border-bottom" : "5px solid #2e6da4","color":"white" });
+        $('#card').css({"height" : "50px","border-bottom" : "5px solid #2e6da4","color":"white","background":"black"  });
     });
 </script>
 

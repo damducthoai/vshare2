@@ -128,7 +128,7 @@
 </body>
 <script>
     $(document).ready(function () {
-        $('#upgrade').css({"height" : "50px","border-bottom" : "5px solid #2e6da4","color":"white" });
+        $('#upgrade').css({"height" : "50px","border-bottom" : "5px solid #2e6da4","color":"white","background":"black" });
     });
 </script>
 

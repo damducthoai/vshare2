@@ -116,7 +116,7 @@
                 .remove()
                 .draw();
         } );
-        $('#server').css({"height" : "50px","border-bottom" : "5px solid #2e6da4","color":"white" });
+        $('#server').css({"height" : "50px","border-bottom" : "5px solid #2e6da4","color":"white","background":"black"  });
     });
 </script>
 </body>
