@@ -72,7 +72,7 @@
 
 
 <script>
-    $('#changepw').css({"border-bottom" : "2px solid #2e6da4","color":"white","background":"black"  });
+    $('#changepw').css({"border-left" : "3px solid #2e6da4","color":"white","background":"black"  });
     $('#changepass').submit(function () {
         // prepare Options Object
         var options = {

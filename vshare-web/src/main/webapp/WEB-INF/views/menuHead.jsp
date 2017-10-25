@@ -30,9 +30,9 @@
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Hi, ${user.userName}
                         <span class="caret"></span></a>
                     <ul class="dropdown-menu" style="background: #222">
-                        <li ><a href="${contextPath}/changepassword" id="changepw" class="dd" style="color: white" ><i class="fa fa-exchange" aria-hidden="true"></i> Change Password</a></li>
+                        <li ><a href="${contextPath}/changepassword" id="changepw" class="dd" style="color: #9d9d9d"><i class="fa fa-exchange" aria-hidden="true"></i> Change Password</a></li>
 
-                        <li><a href="${contextPath}/login?logout" data-toggle="modal" class="dd" style="color: white"><span
+                        <li><a href="${contextPath}/login?logout" data-toggle="modal" class="dd" style="color: #9d9d9d" ><span
                                 class="glyphicon glyphicon-log-out"></span> Logout </a></li>
                     </ul>
                 </li>

@@ -55,7 +55,7 @@ body {
     margin-bottom: 10px;
 }
 .mar-top-lb{
-    margin-top:9px;
+    margin-top:6px;
 }
 .no-padding{
     padding: 0 !important;
@@ -90,8 +90,46 @@ a.top-bar:hover {
     background: black !important;
 }
 a.dd:hover{
-    border-bottom: 3px solid #2e6da4;
+    border-left: 3px solid #2e6da4;
     background:black !important;
+    color: white !important;
+}
+/*label*/
+.box-wmc {
+    border-radius: 3px;
+    background: #fff;
+    border-top: 3px solid #d2d6de;
+    margin: 0 15px 20px;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+    padding-bottom: 10px;
+    width: auto;
+}
+.wrap-title-mc {
+    color: #c71616;
+    display: block;
+    padding: 14px 10px 5px;
+    position: relative;
+    border-bottom: 1px solid #f4f4f4;
+    margin-bottom: 20px
+}
+.wrap-title-mc.ch {
+    padding: 14px 10px 10px;
+    overflow: hidden;
+}
+.title-mc {
+    display: inline-block;
+    font-size: 20px;
+    margin: 0 0 5px 5px;
+    line-height: 1;
+    color: #000;
+    /*text-transform: capitalize;*/
+}
+.co-bd-01{
+    border-top-color: #2087e6;
+}
+.padd-lr {
+    padding-left: 15px !important;
+    padding-right: 15px !important
 }
 /*Anh TU*/
 

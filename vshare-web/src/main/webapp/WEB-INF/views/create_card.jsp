@@ -16,62 +16,76 @@
 <jsp:include page="menuHead.jsp"></jsp:include>
 <div class="container mar-top">
     <div class="row">
-        <fieldset>
-            <legend>Create card</legend>
-            <form:form action="${contextPath}/cards" method="post" modelAttribute="card">
+        <div class="box-wmc co-bd-01">
+            <div class="wrap-title-mc">
+                <div class="title-mc">Create card</div>
+            </div>
+            <div class="row form-inline">
+                <form:form action="${contextPath}/cards" method="post" modelAttribute="card">
 
-                <div class="col-md-12">
-                    <div class="col-md-2"></div>
-                    <div class="col-md-6 no-padding">
-                        <form:select cssClass="form-control" path="point" items="${type}">
-                        </form:select>
+                    <div class="col-md-6">
+                        <div class="col-md-3">
+                            <label class="control-label mar-top-lb">Kind of card</label>
+                        </div>
+                        <div class="col-md-3 no-padding">
+                            <form:select cssClass="form-control" path="point" items="${type}">
+                            </form:select>
+                        </div>
+                        <div class="col-md-2">
+                            <button class="btn btn-primary"><i class="fa fa-plus" aria-hidden="true"></i> Create card
+                            </button>
+                        </div>
                     </div>
-                    <div class="col-md-2">
-                        <button class="btn btn-primary"><i class="fa fa-plus" aria-hidden="true"></i> Create card</button>
-                    </div>
-                    <div class="col-md-2"></div>
-                </div>
 
-            </form:form>
-        </fieldset>
+                </form:form>
+            </div>
+        </div>
         <br/>
-        <fieldset>
-            <legend>Card's list</legend>
-            <table id="list" class="table table-striped table-bordered" cellspacing="0" width="100%">
-                <thead>
-                <tr>
-                    <td>Card Serial</td>
-                    <td>Card Code</td>
-                    <td>Created</td>
-                    <td>Point</td>
-                    <td>Last Modified</td>
-                    <td>Card Status</td>
-                </tr>
-                </thead>
-                <tfoot>
-                <tr>
-                    <td>Card Serial</td>
-                    <td>Card Code</td>
-                    <td>Created</td>
-                    <td>Point</td>
-                    <td>Last Modified</td>
-                    <td>Card Status</td>
-                </tr>
-                </tfoot>
-                <tbody>
-                <c:forEach var="card" items="${cards}">
-                    <tr>
-                        <td>${card.cardSerial}</td>
-                        <td>${card.cardCode}</td>
-                        <td>${card.created}</td>
-                        <td>${card.point}</td>
-                        <td>${card.lastModified}</td>
-                        <td>${card.cardStatus}</td>
-                    </tr>
-                </c:forEach>
-                </tbody>
-            </table>
-        </fieldset>
+        <div class="box-wmc co-bd-01">
+            <div class="wrap-title-mc">
+                <div class="title-mc">Card's list</div>
+            </div>
+            <div class="row padd-lr fit-table">
+                <div class="col-md-12">
+                    <table id="list" class="table table-striped table-bordered " >
+                        <thead>
+                        <tr>
+                            <td>Card Serial</td>
+                            <td>Card Code</td>
+                            <td>Created</td>
+                            <td>Point</td>
+                            <td>Card Status</td>
+                            <td>Last Modified</td>
+
+                        </tr>
+                        </thead>
+                        <tfoot>
+                        <tr>
+                            <td>Card Serial</td>
+                            <td>Card Code</td>
+                            <td>Created</td>
+                            <td>Point</td>
+                            <td>Card Status</td>
+                            <td>Last Modified</td>
+
+                        </tr>
+                        </tfoot>
+                        <tbody>
+                        <c:forEach var="card" items="${cards}">
+                            <tr>
+                                <td>${card.cardSerial}</td>
+                                <td>${card.cardCode}</td>
+                                <td>${card.created}</td>
+                                <td>${card.point}</td>
+                                <td>${card.cardStatus}</td>
+                                <td>${card.lastModified}</td>
+                            </tr>
+                        </c:forEach>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -83,7 +97,17 @@
 <script>
     $(document).ready(function () {
         $('#list').DataTable();
-        $('#card').css({"height" : "50px","border-bottom" : "5px solid #2e6da4","color":"white","background":"black"  });
+        $('#card').css({
+            "height": "50px",
+            "border-bottom": "5px solid #2e6da4",
+            "color": "white",
+            "background": "black"
+        });
+        $('.fit-table').each(function () {
+            var itemWidthFit = $(this).width();
+            var sItemWidthFit = itemWidthFit;
+            $(this).find('.wrap-table').attr('style', 'width' + ': ' + sItemWidthFit + 'px !important;');
+        });
     });
 </script>
 
