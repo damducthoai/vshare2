@@ -27,7 +27,9 @@
             </ul>
             <ul class="nav navbar-nav navbar-right col-lg-2" id="hide-logout">
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Hi, ${user.userName}
+                    <security:authentication var="principal" property="principal"/>
+
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Hi, ${principal.username}
                         <span class="caret"></span></a>
                     <ul class="dropdown-menu" style="background: #222">
                         <li ><a href="${contextPath}/changepassword" id="changepw" class="dd" style="color: #9d9d9d"><i class="fa fa-exchange" aria-hidden="true"></i> Change Password</a></li>
