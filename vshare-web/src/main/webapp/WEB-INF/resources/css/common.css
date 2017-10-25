@@ -208,3 +208,7 @@ hr{
 {
     margin-top:20px;
 }
+
+#list{
+    width: 100%!important;
+}
