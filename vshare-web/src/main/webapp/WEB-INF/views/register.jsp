@@ -45,7 +45,7 @@
                             <form:label path="userEmail" cssClass="control-label mar-top-lb">Email <strong class="cl-force">*</strong></form:label>
                         </div>
                         <div class="col-md-8">
-                            <form:input path="userEmail" cssClass="form-control w-100"/>
+                            <form:input path="userEmail" type="email" cssClass="form-control w-100"/>
                         </div>
                     </div>
                     <div class="col-md-12 form-group">
@@ -53,7 +53,7 @@
                             <form:label path="userPassword" cssClass="control-label mar-top-lb">Password <strong class="cl-force">*</strong></form:label>
                         </div>
                         <div class="col-md-8 ">
-                            <form:input path="userPassword" cssClass="form-control w-100"/>
+                            <form:input path="userPassword" type="password" cssClass="form-control w-100"/>
                         </div>
                     </div>
                     <div class="col-md-12 form-group">
@@ -61,7 +61,7 @@
                             <form:label path="userConfirmPassword" cssClass="control-label mar-top-lb">Confirm Password <strong class="cl-force">*</strong></form:label>
                         </div>
                         <div class="col-md-8">
-                            <form:input path="userConfirmPassword" cssClass="form-control w-100"/>
+                            <form:input path="userConfirmPassword" type="password" cssClass="form-control w-100"/>
                         </div>
                     </div>
                     <div class="col-md-12 form-group text-right padd-button">
