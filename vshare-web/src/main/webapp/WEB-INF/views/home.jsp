@@ -66,198 +66,213 @@
     <legend>Add</legend>
 
 </fieldset>--%>
-<div class="row" style="width: 80%">
-    <div class="col-md-8"></div>
-    <div class="tool-box col-md-2">
+<div class="container" style="padding-top: 50px">
+    <div class="row">
 
-        <td>
-            <%--<button id="btn-add" data-toggle="modal" data-target="#add-folder" class="btn btn-default">add new folder</button>--%>
+        <div class="box-wmc co-bd-01">
+            <div class="row" style="width: 80%">
+                <div class="col-md-8"></div>
+                <div class="tool-box col-md-2">
 
-            <a data-toggle="modal" data-target="#add-folder" class="btn icon-btn btn-success" href="#">
-                <span class="glyphicon btn-glyphicon glyphicon-plus img-circle text-success"></span>
-                Add Folder
-            </a>
-        </td>
-    </div>
+                    <td>
+                        <%--<button id="btn-add" data-toggle="modal" data-target="#add-folder" class="btn btn-default">add new folder</button>--%>
 
-    <div class="tool-box col-md-2">
-        <td>
-            <%-- <button id="btn-add" data-toggle="modal" data-target="#add-file" class="btn btn-default">add new file</button>--%>
-            <a data-toggle="modal" data-target="#add-file" class="btn icon-btn btn-success" href="#">
-                <span class="glyphicon btn-glyphicon glyphicon-plus img-circle text-success"></span>
-                Add File
-            </a>
-        </td>
-
-    </div>
-</div>
-
-<br>
-<fieldset style="width: 80%" class="container">
-    <legend>Danh sách</legend>
-    <div style="width: 100%" class="container">
-        <table id="folderList" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
-            <thead>
-            <tr>
-                <th>Name</th>
-                <th>Size</th>
-                <th style="width: 20px;">Share</th>
-                <th style="width: 20px;">Action</th>
-            </tr>
-            </thead>
-            <tbody id="cha">
-            <c:forEach var="file" items="${files}">
-                <tr>
-                    <td class="row">
-                        <div class="col-md-2"><i class="fa fa-file-o" aria-hidden="true"></i></div>
-                        <a href="${contextPath}/files/${file.filePhysicalName}">
-                            <div class="col-md-6">${file.fileOriginalName}</div>
+                        <a data-toggle="modal" data-target="#add-folder" class="btn icon-btn btn-success" href="#">
+                            <span class="glyphicon btn-glyphicon glyphicon-plus img-circle text-success"></span>
+                            Add Folder
                         </a>
                     </td>
-                    <td><a href="${contextPath}/files/${file.filePhysicalName}">${file.filePhysicalName}</a></td>
-                    <td class="" style="width: 25px">
-                        <a data-toggle="modal" data-target="#delete-popup-file" class="btn icon-btn" id="${file.fileId}"
-                           onclick="share(${file.fileId})">
-                            <i class="fa fa-share-square-o" aria-hidden="true"></i>
-                        </a>
-                    </td>
-                    <td class="" style="width: 25px">
-                        <a data-toggle="modal" data-target="#delete-popup-file" class="btn icon-btn" id="${file.fileId}"
-                           onclick="deleteFile(${file.fileId})">
-                            <i class="fa fa-trash-o cl-force" aria-hidden="true"></i>
-                        </a>
-                        <%--<button onclick="deleteFile(${file.fileId})" class="btn btn-default">Delete</button>--%>
-                       <%-- <div class="modal fade" id="delete-popup-file" role="dialog">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header ">
-                                        <h4>Are you sure?</h4>
-                                    </div>
-                                    <div class="modal-body text-center">
-                                        <button onclick="deleteFile(${file.fileId})" data-dismiss="modal" class="btn btn-primary">Accept</button>
-                                        <button data-dismiss="modal" class="btn btn-default">Cancel</button>
-                                    </div>
-                                    <div class="modal-footer mar-top-signup ">
-
-                                    </div>
-                                </div>
-                                </form>
-                            </div>
-                        </div>--%>
-                    </td>
-                </tr>
-            </c:forEach>
-            <c:forEach var="folder" items="${folders}">
-                <tr>
-                    <td class="row">
-                        <div class="col-md-2"><i class="fa fa-folder-open-o" aria-hidden="true"></i></div>
-                        <a href="${contextPath}/home/${folder.folderId}">
-                            <div class="col-md-6">${folder.folderName}</div>
-                        </a>
-                    </td>
-                    <td></td>
-                    <td class="" style="width: 25px">
-                        <a data-toggle="modal" data-target="#delete-popup-file" class="btn icon-btn" id="${file.fileId}"
-                           onclick="share(${file.fileId})">
-                            <i class="fa fa-share-square-o" aria-hidden="true"></i>
-                        </a>
-                    </td>
-                    <td class="" style="width: 25px">
-                        <a data-toggle="modal" data-target="#delete-popup-folder" class="btn icon-btn" id="${folder.folderId}"
-                           onclick="deleteRowFolder(${folder.folderId})">
-                            <i class="fa fa-trash-o cl-force" aria-hidden="true"></i>
-                        </a>
-
-                        <%--<div class="modal fade" id="delete-popup-folder" role="dialog">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header ">
-                                        <h4>Are you sure?</h4>
-                                    </div>
-                                    <div class="modal-body text-center">
-                                        <button onclick="deleteRowFolder('<script></script>')" data-dismiss="modal" class="btn btn-primary">Accept</button>
-                                        <button data-dismiss="modal" class="btn btn-default">Cancel</button>
-                                    </div>
-                                    <div class="modal-footer mar-top-signup ">
-
-                                    </div>
-                                </div>
-                                </form>
-                            </div>
-                        </div>--%>
-
-                        <%--<button onclick="deleteRowFolder(${folder.folderId})" class="btn btn-default">Delete</button>--%>
-                    </td>
-                </tr>
-            </c:forEach>
-            </tbody>
-        </table>
-    </div>
-</fieldset>
-
-<hr>
-
-<div class="modal fade" id="add-folder" role="dialog">
-    <div class="modal-dialog">
-
-        <!-- Popup content add-->
-        <form:form action="${contextPath}/folders" method="post" id="createFolder" modelAttribute="newFolder">
-            <form:hidden path="parrentId" value="${curlFolderId}"/>
-
-            <div class="modal-content">
-                <div class="modal-header ">
-                    <h4>aaa</h4>
                 </div>
-                <div class="modal-body">
-                    <input type="hidden" value="${curlFolderId}" name="folderId">
-                        <%--
-                                            <form:hidden path="parrentId" value="${curlFolderId}"/>
-                        --%>
-                    <form:label path="name">Folder Name</input></form:label>
-                    <form:input path="name" id="folder-name"/>
-                </div>
-                <div class="modal-footer mar-top-signup ">
-                    <button class="btn btn-primary" class="btn btn-default">Create Folder</button>
-                    <button id="closess1" data-dismiss="modal" style="display: none"></button>
+
+                <div class="tool-box col-md-2">
+                    <td>
+                        <%-- <button id="btn-add" data-toggle="modal" data-target="#add-file" class="btn btn-default">add new file</button>--%>
+                        <a data-toggle="modal" data-target="#add-file" class="btn icon-btn btn-success" href="#">
+                            <span class="glyphicon btn-glyphicon glyphicon-plus img-circle text-success"></span>
+                            Add File
+                        </a>
+                    </td>
+
                 </div>
             </div>
-        </form:form>
-    </div>
-</div>
+        </div>
 
-<div class="modal fade" id="add-file" role="dialog">
-    <div class="modal-dialog">
-        <!-- Popup content add-->
+        <br>
 
-        <form:form action="${contextPath}/upload" method="post" enctype="multipart/form-data" modelAttribute="file" id="uploadFile">
-            <div class="modal-content">
-                <div class="modal-header ">
-                    <h4>bbbb</h4>
+        <div class="box-wmc co-bd-01">
+            <div class="wrap-title-mc">
+                <div class="title-mc">Danh sách</div>
+            </div>
+            <div class="row padd-lr fit-table">
+                <div class="col-md-12">
+                    <table id="folderList" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Size</th>
+                            <th style="width: 20px;">Share</th>
+                            <th style="width: 20px;">Action</th>
+                        </tr>
+                        </thead>
+                        <tbody id="cha">
+                        <c:forEach var="file" items="${files}">
+                            <tr>
+                                <td class="row">
+                                    <div class="col-md-2"><i class="fa fa-file-o" aria-hidden="true"></i></div>
+                                    <a href="${contextPath}/files/${file.filePhysicalName}">
+                                        <div class="col-md-6">${file.fileOriginalName}</div>
+                                    </a>
+                                </td>
+                                <td><a href="${contextPath}/files/${file.filePhysicalName}">${file.filePhysicalName}</a></td>
+                                <td class="" style="width: 25px">
+                                    <a data-toggle="modal" data-target="#delete-popup-file" class="btn icon-btn" id="${file.fileId}"
+                                       onclick="share(${file.fileId})">
+                                        <i class="fa fa-share-square-o" aria-hidden="true"></i>
+                                    </a>
+                                </td>
+                                <td class="" style="width: 25px">
+                                    <a data-toggle="modal" data-target="#delete-popup-file" class="btn icon-btn" id="${file.fileId}"
+                                       onclick="deleteFile(${file.fileId})">
+                                        <i class="fa fa-trash-o cl-force" aria-hidden="true"></i>
+                                    </a>
+                                        <%--<button onclick="deleteFile(${file.fileId})" class="btn btn-default">Delete</button>--%>
+                                        <%-- <div class="modal fade" id="delete-popup-file" role="dialog">
+                                             <div class="modal-dialog">
+                                                 <div class="modal-content">
+                                                     <div class="modal-header ">
+                                                         <h4>Are you sure?</h4>
+                                                     </div>
+                                                     <div class="modal-body text-center">
+                                                         <button onclick="deleteFile(${file.fileId})" data-dismiss="modal" class="btn btn-primary">Accept</button>
+                                                         <button data-dismiss="modal" class="btn btn-default">Cancel</button>
+                                                     </div>
+                                                     <div class="modal-footer mar-top-signup ">
+
+                                                     </div>
+                                                 </div>
+                                                 </form>
+                                             </div>
+                                         </div>--%>
+                                </td>
+                            </tr>
+                        </c:forEach>
+                        <c:forEach var="folder" items="${folders}">
+                            <tr>
+                                <td class="row">
+                                    <div class="col-md-2"><i class="fa fa-folder-open-o" aria-hidden="true"></i></div>
+                                    <a href="${contextPath}/home/${folder.folderId}">
+                                        <div class="col-md-6">${folder.folderName}</div>
+                                    </a>
+                                </td>
+                                <td></td>
+                                <td class="" style="width: 25px">
+                                    <a data-toggle="modal" data-target="#delete-popup-file" class="btn icon-btn" id="${file.fileId}"
+                                       onclick="share(${file.fileId})">
+                                        <i class="fa fa-share-square-o" aria-hidden="true"></i>
+                                    </a>
+                                </td>
+                                <td class="" style="width: 25px">
+                                    <a data-toggle="modal" data-target="#delete-popup-folder" class="btn icon-btn" id="${folder.folderId}"
+                                       onclick="deleteRowFolder(${folder.folderId})">
+                                        <i class="fa fa-trash-o cl-force" aria-hidden="true"></i>
+                                    </a>
+
+                                        <%--<div class="modal fade" id="delete-popup-folder" role="dialog">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header ">
+                                                        <h4>Are you sure?</h4>
+                                                    </div>
+                                                    <div class="modal-body text-center">
+                                                        <button onclick="deleteRowFolder('<script></script>')" data-dismiss="modal" class="btn btn-primary">Accept</button>
+                                                        <button data-dismiss="modal" class="btn btn-default">Cancel</button>
+                                                    </div>
+                                                    <div class="modal-footer mar-top-signup ">
+
+                                                    </div>
+                                                </div>
+                                                </form>
+                                            </div>
+                                        </div>--%>
+
+                                        <%--<button onclick="deleteRowFolder(${folder.folderId})" class="btn btn-default">Delete</button>--%>
+                                </td>
+                            </tr>
+                        </c:forEach>
+                        </tbody>
+                    </table>
+
                 </div>
-                <div class="modal-body">
-                    <div id="uploadBox"></div><!-- /uploadBox -->
+            </div>
+        </div>
 
-                    <input type="hidden" value="${curlFolderId}" name="folderId"/>
-                    <%--<label class="btn btn-default btn-file">
-                        Browse
-                    </label>--%>
-                    <span class="btn btn-primary btn-sm fileinput-button">
+
+        <hr>
+
+        <div class="modal fade" id="add-folder" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Popup content add-->
+                <form:form action="${contextPath}/folders" method="post" id="createFolder" modelAttribute="newFolder">
+                    <form:hidden path="parrentId" value="${curlFolderId}"/>
+
+                    <div class="modal-content">
+                        <div class="modal-header ">
+                            <h4>aaa</h4>
+                        </div>
+                        <div class="modal-body">
+                            <input type="hidden" value="${curlFolderId}" name="folderId">
+                                <%--
+                                                    <form:hidden path="parrentId" value="${curlFolderId}"/>
+                                --%>
+                            <form:label path="name">Folder Name</input></form:label>
+                            <form:input path="name" id="folder-name"/>
+                        </div>
+                        <div class="modal-footer mar-top-signup ">
+                            <button class="btn btn-primary" class="btn btn-default">Create Folder</button>
+                            <button id="closess1" data-dismiss="modal" style="display: none"></button>
+                        </div>
+                    </div>
+                </form:form>
+            </div>
+        </div>
+
+        <div class="modal fade" id="add-file" role="dialog">
+            <div class="modal-dialog">
+                <!-- Popup content add-->
+
+                <form:form action="${contextPath}/upload" method="post" enctype="multipart/form-data" modelAttribute="file" id="uploadFile">
+                    <div class="modal-content">
+                        <div class="modal-header ">
+                            <h4>bbbb</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div id="uploadBox"></div><!-- /uploadBox -->
+
+                            <input type="hidden" value="${curlFolderId}" name="folderId"/>
+                                <%--<label class="btn btn-default btn-file">
+                                    Browse
+                                </label>--%>
+                            <span class="btn btn-primary btn-sm fileinput-button">
                     <span class="glyphicon glyphicon-plus"></span>
                     Thêm tập tin...
                     <input id="progessFile" type="file" name="file"/>
                 </span>
 
-                    <%--<td><input type="file" name="file" class="btn btn-default"/></td>--%>
-                </div>
-                <div class="modal-footer mar-top-signup ">
-                        <%--
-                                            <input type="button" id="btn-upFile" class="btn btn-default" onclick="uploadFile()" value="Upload"/>
-                        --%>
-                    <button id="btn-upFile" class="btn btn-default">Upload file</button>
+                                <%--<td><input type="file" name="file" class="btn btn-default"/></td>--%>
+                        </div>
+                        <div class="modal-footer mar-top-signup ">
+                                <%--
+                                                    <input type="button" id="btn-upFile" class="btn btn-default" onclick="uploadFile()" value="Upload"/>
+                                --%>
+                            <button id="btn-upFile" class="btn btn-default">Upload file</button>
                             <button id="closess" data-dismiss="modal" style="display: none"></button>
-                </div>
+                        </div>
+                    </div>
+                </form:form>
             </div>
-        </form:form>
+        </div>
+
     </div>
 </div>
 
