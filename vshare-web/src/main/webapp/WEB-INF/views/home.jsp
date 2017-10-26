@@ -101,8 +101,8 @@
             <tr>
                 <th>Name</th>
                 <th>Size</th>
-                <th>Share</th>
-                <th>Action</th>
+                <th style="width: 20px;">Share</th>
+                <th style="width: 20px;">Action</th>
             </tr>
             </thead>
             <tbody id="cha">
@@ -115,13 +115,13 @@
                         </a>
                     </td>
                     <td><a href="${contextPath}/files/${file.filePhysicalName}">${file.filePhysicalName}</a></td>
-                    <td class="text-center" style="width: 25px">
+                    <td class="" style="width: 25px">
                         <a data-toggle="modal" data-target="#delete-popup-file" class="btn icon-btn" id="${file.fileId}"
                            onclick="share(${file.fileId})">
                             <i class="fa fa-share-square-o" aria-hidden="true"></i>
                         </a>
                     </td>
-                    <td class="text-center" style="width: 25px">
+                    <td class="" style="width: 25px">
                         <a data-toggle="modal" data-target="#delete-popup-file" class="btn icon-btn" id="${file.fileId}"
                            onclick="deleteFile(${file.fileId})">
                             <i class="fa fa-trash-o cl-force" aria-hidden="true"></i>
@@ -156,13 +156,13 @@
                         </a>
                     </td>
                     <td></td>
-                    <td class="text-center" style="width: 25px">
+                    <td class="" style="width: 25px">
                         <a data-toggle="modal" data-target="#delete-popup-file" class="btn icon-btn" id="${file.fileId}"
                            onclick="share(${file.fileId})">
                             <i class="fa fa-share-square-o" aria-hidden="true"></i>
                         </a>
                     </td>
-                    <td class="text-center" style="width: 25px">
+                    <td class="" style="width: 25px">
                         <a data-toggle="modal" data-target="#delete-popup-folder" class="btn icon-btn" id="${folder.folderId}"
                            onclick="deleteRowFolder(${folder.folderId})">
                             <i class="fa fa-trash-o cl-force" aria-hidden="true"></i>
