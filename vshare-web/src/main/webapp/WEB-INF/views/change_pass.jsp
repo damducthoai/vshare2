@@ -21,42 +21,46 @@
 <jsp:include page="menuHead.jsp"></jsp:include>
 <div class="container mar-top">
     <div class="row">
-        <form:form modelAttribute="info" method="post" action="${contextPath}/changepassword" id="changepass">
-        <fieldset>
-            <legend>Change password</legend>
-            <div class="col-md-12 form-group">
-                <div class="col-md-4 mar-top-lb">
-                    <form:label path="currentPassword" cssClass="control-label">Current password</form:label>
-                </div>
-                <div class="col-md-8">
-                    <form:input path="currentPassword" cssClass="form-control"/>
-                </div>
+        <div class="box-wmc co-bd-01">
+            <div class="wrap-title-mc">
+                <div class="title-mc">Change password</div>
             </div>
-            <div class="col-md-12 form-group">
-                <div class="col-md-4 mar-top-lb">
-                    <form:label path="newPassword" cssClass="control-label">New Password</form:label>
+            <div class="row form-group ">
+                <form:form modelAttribute="info" method="post" action="${contextPath}/changepassword" id="changepass">
+                <div class="col-md-12 form-group">
+                    <div class="col-md-4 mar-top-lb">
+                        <form:label path="currentPassword" cssClass="control-label">Current password</form:label>
+                    </div>
+                    <div class="col-md-8">
+                        <form:input path="currentPassword" type="password" cssClass="form-control"/>
+                    </div>
                 </div>
-                <div class="col-md-8">
-                    <form:input path="newPassword" cssClass="form-control"/>
+                <div class="col-md-12 form-group">
+                    <div class="col-md-4 mar-top-lb">
+                        <form:label path="newPassword" cssClass="control-label">New Password</form:label>
+                    </div>
+                    <div class="col-md-8">
+                        <form:input path="newPassword" type="password" cssClass="form-control"/>
+                    </div>
                 </div>
+                <div class="col-md-12 form-group">
+                    <div class="col-md-4 mar-top-lb">
+                        <form:label path="confirmNewPassword" cssClass="control-label">Confirm new pass</form:label>
+                    </div>
+                    <div class="col-md-8">
+                        <form:input path="confirmNewPassword" type="password" cssClass="form-control"/>
+                    </div>
+                </div>
+                <div class="col-md-12 form-group">
+                    <div class="col-md-4 mar-top-lb">
+                    </div>
+                    <div class="col-md-8 text-right">
+                        <button type="submit" class="btn btn-primary"><i class="fa fa-repeat" aria-hidden="true"></i> Change</button>
+                    </div>
+                </div>
+                </form:form>
             </div>
-            <div class="col-md-12 form-group">
-                <div class="col-md-4 mar-top-lb">
-                    <form:label path="confirmNewPassword" cssClass="control-label">Confirm new pass</form:label>
-                </div>
-                <div class="col-md-8">
-                    <form:input path="confirmNewPassword" cssClass="form-control"/>
-                </div>
-            </div>
-            <div class="col-md-12 form-group">
-                <div class="col-md-4 mar-top-lb">
-                </div>
-                <div class="col-md-8 text-right">
-                    <button type="submit" class="btn btn-primary"><i class="fa fa-repeat" aria-hidden="true"></i> Change</button>
-                </div>
-            </div>
-        </fieldset>
-        </form:form>
+        </div>
     </div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
