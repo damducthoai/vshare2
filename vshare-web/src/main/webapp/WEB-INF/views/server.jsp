@@ -55,48 +55,53 @@
         <jsp:include page="menuHead.jsp"></jsp:include>
         <jsp:include page="create_server.jsp"/>
         <br/>
-        <fieldset>
-            <legend>Server's list</legend>
-            <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
-                <thead>
-                <tr>
-                    <td>Server Ip</td>
-                    <td>Alias</td>
-                    <td>Useable</td>
-                    <td></td>
-                </tr>
-                </thead>
-                <tfoot>
-                <tr>
-                    <td>Server Ip</td>
-                    <td>Alias</td>
-                    <td>Useable</td>
-                    <td></td>
-                </tr>
-                </tfoot>
-                <tbody>
-                <c:forEach var="server" items="${servers}">
-                    <tr>
-                        <td>
-                            <a href="${contextPath}/servers/${server.serverIp}?ip=${server.serverIp}">${server.serverIp}</a>
-                        </td>
-                        <td>${server.serverAlias}</td>
-                        <td>${server.serverUseableSize}</td>
-                        <td class="text-center" style="width: 25px">
-                            <%--<input type="button" onclick="deleteServer('${server.serverIp}')"/>
-                            <i class="fa fa-trash-o" aria-hidden="true"></i>
---%>
-                            <a data-toggle="modal" data-target="#delete-popup-folder" class="btn icon-btn"
-                               onclick="deleteServer('${server.serverIp}')" id="${folder.folderId}">
-                                <i class="fa fa-trash-o cl-force" aria-hidden="true"></i>
-                            </a>
-                        </td>
-                    </tr>
-                </c:forEach>
-                </tbody>
-            </table>
-        </fieldset>
-
+        <div class="box-wmc co-bd-01">
+            <div class="wrap-title-mc">
+                <div class="title-mc">Server's list</div>
+            </div>
+            <div class="row padd-lr fit-table">
+                <div class="col-md-12">
+                    <table id="example" class="table table-striped table-bordered">
+                        <thead>
+                        <tr>
+                            <td>Server Ip</td>
+                            <td>Alias</td>
+                            <td>Useable</td>
+                            <td></td>
+                        </tr>
+                        </thead>
+                        <tfoot>
+                        <tr>
+                            <td>Server Ip</td>
+                            <td>Alias</td>
+                            <td>Useable</td>
+                            <td></td>
+                        </tr>
+                        </tfoot>
+                        <tbody>
+                        <c:forEach var="server" items="${servers}">
+                            <tr>
+                                <td>
+                                    <a href="${contextPath}/servers/${server.serverIp}?ip=${server.serverIp}">${server.serverIp}</a>
+                                </td>
+                                <td>${server.serverAlias}</td>
+                                <td>${server.serverUseableSize}</td>
+                                <td class="text-center" style="width: 25px">
+                                        <%--<input type="button" onclick="deleteServer('${server.serverIp}')"/>
+                                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+            --%>
+                                    <a data-toggle="modal" data-target="#delete-popup-folder" class="btn icon-btn"
+                                       onclick="deleteServer('${server.serverIp}')" id="${folder.folderId}">
+                                        <i class="fa fa-trash-o cl-force" aria-hidden="true"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        </c:forEach>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
