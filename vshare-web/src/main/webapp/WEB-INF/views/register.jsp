@@ -26,52 +26,55 @@
 <body>
 <div class="container">
     <div class="row">
-        <fieldset>
-            <legend>Thông tin đăng ký</legend>
-            <form:form action="registration" method="post" enctype="application/x-www-form-urlencoded"
-                       modelAttribute="user">
-                <div class="col-md-2"></div>
-                <div class="col-md-8">
-                    <div class="col-md-12 form-group">
-                        <div class="col-md-4">
-                            <form:label path="userName" cssClass="control-label mar-top-lb">User name <strong class="cl-force">*</strong></form:label>
+        <div class="box-wmc co-bd-01">
+            <div class="wrap-title-mc">
+                <div class="title-mc">Thông tin đăng ký</div>
+            </div>
+            <div class="row form-group">
+                <form:form action="registration" method="post" enctype="application/x-www-form-urlencoded"
+                           modelAttribute="user">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8">
+                        <div class="col-md-12 form-group">
+                            <div class="col-md-4">
+                                <form:label path="userName" cssClass="control-label mar-top-lb">User name <strong class="cl-force">*</strong></form:label>
+                            </div>
+                            <div class="col-md-8">
+                                <form:input path="userName" cssClass="form-control w-100"/>
+                            </div>
                         </div>
-                        <div class="col-md-8">
-                            <form:input path="userName" cssClass="form-control w-100"/>
+                        <div class="col-md-12 form-group">
+                            <div class="col-md-4">
+                                <form:label path="userEmail" cssClass="control-label mar-top-lb">Email <strong class="cl-force">*</strong></form:label>
+                            </div>
+                            <div class="col-md-8">
+                                <form:input path="userEmail" type="email" cssClass="form-control w-100"/>
+                            </div>
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <div class="col-md-4">
+                                <form:label path="userPassword" cssClass="control-label mar-top-lb">Password <strong class="cl-force">*</strong></form:label>
+                            </div>
+                            <div class="col-md-8 ">
+                                <form:input path="userPassword" type="password" cssClass="form-control w-100"/>
+                            </div>
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <div class="col-md-4">
+                                <form:label path="userConfirmPassword" cssClass="control-label mar-top-lb">Confirm Password <strong class="cl-force">*</strong></form:label>
+                            </div>
+                            <div class="col-md-8">
+                                <form:input path="userConfirmPassword" type="password" cssClass="form-control w-100"/>
+                            </div>
+                        </div>
+                        <div class="col-md-12 form-group text-right padd-button">
+                            <button type="submit" class="btn btn-primary " data-dismiss="modal">Sign up</button>
                         </div>
                     </div>
-                    <div class="col-md-12 form-group">
-                        <div class="col-md-4">
-                            <form:label path="userEmail" cssClass="control-label mar-top-lb">Email <strong class="cl-force">*</strong></form:label>
-                        </div>
-                        <div class="col-md-8">
-                            <form:input path="userEmail" type="email" cssClass="form-control w-100"/>
-                        </div>
-                    </div>
-                    <div class="col-md-12 form-group">
-                        <div class="col-md-4">
-                            <form:label path="userPassword" cssClass="control-label mar-top-lb">Password <strong class="cl-force">*</strong></form:label>
-                        </div>
-                        <div class="col-md-8 ">
-                            <form:input path="userPassword" type="password" cssClass="form-control w-100"/>
-                        </div>
-                    </div>
-                    <div class="col-md-12 form-group">
-                        <div class="col-md-4">
-                            <form:label path="userConfirmPassword" cssClass="control-label mar-top-lb">Confirm Password <strong class="cl-force">*</strong></form:label>
-                        </div>
-                        <div class="col-md-8">
-                            <form:input path="userConfirmPassword" type="password" cssClass="form-control w-100"/>
-                        </div>
-                    </div>
-                    <div class="col-md-12 form-group text-right padd-button">
-                        <button type="submit" class="btn btn-primary " data-dismiss="modal">Sign up</button>
-                    </div>
-                </div>
-                <div class="col-md-2"></div>
-            </form:form>
-        </fieldset>
-
+                    <div class="col-md-2"></div>
+                </form:form>
+            </div>
+        </div>
     </div>
 </div>
 </body>
