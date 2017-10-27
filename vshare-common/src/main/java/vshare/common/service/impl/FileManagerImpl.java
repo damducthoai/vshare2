@@ -206,7 +206,7 @@ public class FileManagerImpl implements FileManager, ApplicationEventPublisherAw
                 // Delete file on the FTP server. When the FTP delete
                 // complete it returns true.
                 String filename = fileEntity.getFilePhysicalName();
-                boolean deleted = client.deleteFile(filename);
+                boolean deleted = client.deleteFile("files/" + filename);
                 if (deleted) {
                     System.out.printf("File %s was deleted...", filename);
                 } else {

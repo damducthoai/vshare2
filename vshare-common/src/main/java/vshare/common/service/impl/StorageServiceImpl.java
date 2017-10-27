@@ -107,7 +107,7 @@ public class StorageServiceImpl implements StorageService, ApplicationListener<N
 
             FileInputStream inputStream = new FileInputStream(file);
 
-            ftpClient.storeFile(file.getName(), inputStream);
+            ftpClient.storeFile("files/" + file.getName(), inputStream);
 
             inputStream.close();
 
