@@ -16,12 +16,12 @@
         </div>
         <security:authorize access="hasRole('ROLE_USER')" >
             <ul class="nav navbar-nav col-lg-7">
-                <li ><a href="${contextPath}/home" class="top-bar" id="home" ><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
-                <li ><a href="${contextPath}/upgrade" class="top-bar" id="upgrade" ><i class="fa fa-arrow-up" aria-hidden="true"></i> Upgrade</a></li>
+                <li class="link-hover"><a href="${contextPath}/home" class="top-bar" id="home" ><i class="fa fa-home cool-link" aria-hidden="true"></i> Home</a></li>
+                <li class="link-hover"><a href="${contextPath}/upgrade" class="top-bar" id="upgrade" ><i class="fa fa-arrow-up cool-link" aria-hidden="true"></i> Upgrade</a></li>
                 <security:authorize access="hasRole('ROLE_ADMIN')">
                     <ul class="nav navbar-nav col-lg-6">
-                        <li ><a href="${contextPath}/cards" class="top-bar" id="card" ><i class="fa fa-credit-card-alt" aria-hidden="true"></i> Cards</a></li>
-                        <li ><a href="${contextPath}/servers" class="top-bar" id="server" ><i class="fa fa-server" aria-hidden="true"></i> Servers</a></li>
+                        <li class="link-hover"><a href="${contextPath}/cards" class="top-bar" id="card" ><i class="fa fa-credit-card-alt cool-link" aria-hidden="true"></i> Cards</a></li>
+                        <li class="link-hover"><a href="${contextPath}/servers" class="top-bar" id="server" ><i class="fa fa-server cool-link" aria-hidden="true"></i> Servers</a></li>
                     </ul>
                 </security:authorize>
             </ul>

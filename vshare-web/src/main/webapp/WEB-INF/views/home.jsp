@@ -166,10 +166,7 @@
                                 </td>
                                 <td></td>
                                 <td class="" style="width: 25px">
-                                    <a data-toggle="modal" data-target="#delete-popup-file" class="btn icon-btn" id="${file.fileId}"
-                                       onclick="share(${file.fileId})">
-                                        <i class="fa fa-share-square-o" aria-hidden="true"></i>
-                                    </a>
+
                                 </td>
                                 <td class="" style="width: 25px">
                                     <a data-toggle="modal" data-target="#delete-popup-folder" class="btn icon-btn" id="${folder.folderId}"
@@ -278,7 +275,7 @@
 
 
 <script>
-        $('#home').css({"height" : "50px","border-bottom" : "5px solid #2e6da4","color":"white","background":"black"  });
+        $('#home').css({"height" : "52px","border-bottom" : "2px solid #2e6da4","color":"white","background":"black"  });
         $('#createFolder').submit(function () {
             var options = {
 
@@ -308,12 +305,7 @@
                                 '                        </a>\n' +
                                 '                    </td>';
                             cell2.innerHTML = '<td></td>';
-                            cell3.innerHTML = '<td class="text-center" style="width: 25px">\n' +
-                                '                        <a data-toggle="modal" data-target="#delete-popup-file" class="btn icon-btn" id=""\n' +
-                                '                           onclick="share()">\n' +
-                                '                            <i class="fa fa-share-square-o" aria-hidden="true"></i>\n' +
-                                '                        </a>\n' +
-                                '                    </td>';
+                            cell3.innerHTML = '<td></td>';
                             //cell4.innerHTML = "<button id="+"btn-remove "+"onclick="+"deleteRow("+i+")"+">Delete</button>";   C1
                             //aaaaaaaaacell3.innerHTML = '<td><a class="btn icon-btn btn-delete"><span class="glyphicon btn-glyphicon glyphicon-trash img-circle text-danger"></span> Delete</a></td>';   //C2
                             cell4.innerHTML = '<td class="text-center" style="width: 25px">\n' +

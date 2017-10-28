@@ -84,16 +84,33 @@ legend{
 .btn.ch-bt-com {
     padding: 5px 10px !important;
 }
-a.top-bar:hover {
-    border-bottom: 5px solid #2e6da4;
+
+.link-hover{
+    display: inline-block;
+    color: #000;
+    text-decoration: none;
+}
+.link-hover::after{
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #2e6da4;
+    transition: width .3s;
+}
+.link-hover:hover:after {
+    width: 100%;
+
+    /*border-bottom: 5px solid #2e6da4;
     height: 50px !important;
-    background: black !important;
+    background: black !important;*/
 }
 a.dd:hover{
     border-left: 3px solid #2e6da4;
     background:black !important;
     color: white !important;
 }
+
 /*label*/
 .box-wmc {
     border-radius: 3px;
@@ -170,6 +187,7 @@ a.dd:hover{
 hr{
     width: 59%;
 }
+
 
 /*Nha*/
 .user-row {

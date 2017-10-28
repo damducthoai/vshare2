@@ -98,8 +98,8 @@
     $(document).ready(function () {
         $('#list').DataTable();
         $('#card').css({
-            "height": "50px",
-            "border-bottom": "5px solid #2e6da4",
+            "height": "52px",
+            "border-bottom": "2px solid #2e6da4",
             "color": "white",
             "background": "black"
         });
