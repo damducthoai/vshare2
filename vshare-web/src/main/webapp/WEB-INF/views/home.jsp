@@ -125,10 +125,28 @@
                                 </td>
                                 <td><a href="${contextPath}/files/${file.filePhysicalName}">${file.filePhysicalName}</a></td>
                                 <td class="" style="width: 25px">
-                                    <a data-toggle="modal" data-target="#delete-popup-file" class="btn icon-btn" id="${file.fileId}"
+                                    <a data-toggle="modal" data-target="#share-popup-file" class="btn icon-btn" id="${file.fileId}"
                                        onclick="share(${file.fileId})">
                                         <i class="fa fa-share-square-o" aria-hidden="true"></i>
                                     </a>
+                                         <div class="modal fade" id="share-popup-file" role="dialog">
+                                                 <div class="modal-dialog">
+                                                     <div class="modal-content">
+                                                         <div class="modal-header ">
+                                                             <h4>Share ${file.fileOriginalName} file</h4>
+                                                         </div>
+                                                         <div class="modal-body text-center">
+                                                             <h4 id="linkShare">${contextPath}/files/${file.filePhysicalName}</h4>
+                                                             <button id="copy-btn" onclick="copyToClipboard('#linkShare')" data-dismiss="modal" class="btn btn-primary">Copy link</button>
+                                                             <button data-dismiss="modal" class="btn btn-default">Cancel</button>
+                                                         </div>
+                                                         <div class="modal-footer mar-top-signup ">
+
+                                                         </div>
+                                                     </div>
+                                                     </form>
+                                                 </div>
+                                             </div>
                                 </td>
                                 <td class="" style="width: 25px">
                                     <a data-toggle="modal" data-target="#delete-popup-file" class="btn icon-btn" id="${file.fileId}"
@@ -442,6 +460,14 @@
                     window.alert("co lỗi rồi man!");
                 }
             });
+        }
+
+        function copyToClipboard(element) {
+            var $temp = $("<input>");
+            $("body").append($temp);
+            $temp.val($(element).text()).select();
+            document.execCommand("copy");
+            $temp.remove();
         }
 
 
