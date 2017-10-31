@@ -9,7 +9,9 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ page isELIgnored="false" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+
 <html>
 <head>
     <title>Home</title>
@@ -136,7 +138,10 @@
                                                              <h4>Share ${file.fileOriginalName} file</h4>
                                                          </div>
                                                          <div class="modal-body text-center">
-                                                             <h4 id="linkShare">${contextPath}/files/${file.filePhysicalName}</h4>
+                                                             <c:set var="req" value="${pageContext.request}"/>
+                                                             <c:set var="baseURL"
+                                                                    value="${req.scheme}://${req.serverName}:${req.serverPort}${req.contextPath}"/>
+                                                             <h4 id="linkShare">${baseURL}/files/${file.filePhysicalName}</h4>
                                                              <button id="copy-btn" onclick="copyToClipboard('#linkShare')" data-dismiss="modal" class="btn btn-primary">Copy link</button>
                                                              <button data-dismiss="modal" class="btn btn-default">Cancel</button>
                                                          </div>
