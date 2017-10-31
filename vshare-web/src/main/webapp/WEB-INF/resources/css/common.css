@@ -188,6 +188,26 @@ hr{
     width: 59%;
 }
 
+.btn-up-add{
+    height: 45px;
+    background: #337ab7;
+    border-color: #337ab7;
+    width: 130px;
+    color: whitesmoke;
+    font-weight: 700;
+}
+.btn-up-add:hover{
+    background-color: #337A9B;
+    border-color: #337ab7;
+    color: white;
+}
+.btn-up-add span{
+    width: 20px;
+    font-size: 20px;
+    color: white;
+    padding-top: 8px;
+}
+
 
 /*Nha*/
 .user-row {

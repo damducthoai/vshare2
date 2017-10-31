@@ -72,15 +72,18 @@
     <div class="row">
 
         <div class="box-wmc co-bd-01">
-            <div class="row" style="width: 80%">
+            <div class="wrap-title-mc">
+                <div class="title-mc"></div>
+            </div>
+            <div class="row">
                 <div class="col-md-8"></div>
                 <div class="tool-box col-md-2">
 
                     <td>
-                        <%--<button id="btn-add" data-toggle="modal" data-target="#add-folder" class="btn btn-default">add new folder</button>--%>
-
-                        <a data-toggle="modal" data-target="#add-folder" class="btn icon-btn btn-success" href="#">
-                            <span class="glyphicon btn-glyphicon glyphicon-plus img-circle text-success"></span>
+                        <a data-toggle="modal" data-target="#add-folder" class="btn icon-btn btn-up-add" href="#">
+                            <span class="fa fa-folder img-circle text-success"></span>
+                            <%--<i class="fa fa-folder-o" aria-hidden="true"></i>--%>
+                            <%--<i class="fa fa-upload" aria-hidden="true"></i>--%>
                             Add Folder
                         </a>
                     </td>
@@ -89,9 +92,10 @@
                 <div class="tool-box col-md-2">
                     <td>
                         <%-- <button id="btn-add" data-toggle="modal" data-target="#add-file" class="btn btn-default">add new file</button>--%>
-                        <a data-toggle="modal" data-target="#add-file" class="btn icon-btn btn-success" href="#">
-                            <span class="glyphicon btn-glyphicon glyphicon-plus img-circle text-success"></span>
-                            Add File
+                        <a data-toggle="modal" data-target="#add-file" class="btn icon-btn btn-up-add" href="#">
+                            <span class="fa fa-cloud-upload img-circle text-success"></span>
+                           <%-- <i class="fa fa-cloud-upload" aria-hidden="true"></i>--%>
+                            Upload File
                         </a>
                     </td>
 
@@ -238,7 +242,7 @@
 
                     <div class="modal-content">
                         <div class="modal-header ">
-                            <h4>aaa</h4>
+                            <h4>Add new folder</h4>
                         </div>
                         <div class="modal-body">
                             <input type="hidden" value="${curlFolderId}" name="folderId">
@@ -264,7 +268,7 @@
                 <form:form action="${contextPath}/upload" method="post" enctype="multipart/form-data" modelAttribute="file" id="uploadFile">
                     <div class="modal-content">
                         <div class="modal-header ">
-                            <h4>bbbb</h4>
+                            <h4>Upload file</h4>
                         </div>
                         <div class="modal-body">
                             <div id="uploadBox"></div><!-- /uploadBox -->
