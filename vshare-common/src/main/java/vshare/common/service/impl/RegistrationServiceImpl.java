@@ -36,10 +36,10 @@ public class RegistrationServiceImpl implements RegistrationService {
         boolean success = false;
         ActionResult result;
 
-        UserEntity tmp = userRepository.findByUserName(info.getUserName());
-        if (tmp != null) {
-            msg = String.format("%s already used", info.getUserName());
-        }
+//        UserEntity tmp = userRepository.findByUserName(info.getUserName());
+//        if (tmp != null) {
+//            msg = String.format("%s already used", info.getUserName());
+//        }
         if (!info.getUserPassword().equals(info.getUserConfirmPassword())) {
             msg = "Password and confirm password not math";
         } else {

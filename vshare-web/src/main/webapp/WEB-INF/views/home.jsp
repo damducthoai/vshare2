@@ -45,17 +45,19 @@
 
 <style>
     .btn-glyphicon {
-        padding:8px;
-        background:#ffffff;
-        margin-right:4px;
+        padding: 8px;
+        background: #ffffff;
+        margin-right: 4px;
     }
+
     .btn-delete {
         padding: 1px 15px 3px 2px;
-        border:0.5px solid red;
+        border: 0.5px solid red;
     }
+
     .icon-btn {
         padding: 1px 15px 3px 2px;
-        border-radius:50px;
+        border-radius: 50px;
     }
 </style>
 
@@ -70,48 +72,33 @@
 </fieldset>--%>
 <div class="container" style="padding-top: 50px">
     <div class="row">
-
+        <%--<div class="col-md-12 form-group text-right">--%>
+           <%----%>
+        <%--</div>--%>
         <div class="box-wmc co-bd-01">
             <div class="wrap-title-mc">
-                <div class="title-mc"></div>
-            </div>
-            <div class="row">
-                <div class="col-md-8"></div>
-                <div class="tool-box col-md-2">
-
-                    <td>
-                        <a data-toggle="modal" data-target="#add-folder" class="btn icon-btn btn-up-add" href="#">
+                <div class="title-mc">
+                    <div class="tool-box text-right">
+                        <%-- <button id="btn-add" data-toggle="modal" data-target="#add-file" class="btn btn-default">add new file</button>--%>
+                        <a data-toggle="modal" data-target="#add-file" class="btn icon-btn btn-up-add" href="#">
+                            <span class="fa fa-cloud-upload img-circle text-success"></span>
+                            <%-- <i class="fa fa-cloud-upload" aria-hidden="true"></i>--%>
+                            Upload File
+                        </a>
+                        <a data-toggle="modal" data-target="#add-folder" class="btn icon-btn btn-up-add"
+                           href="#">
                             <span class="fa fa-folder img-circle text-success"></span>
                             <%--<i class="fa fa-folder-o" aria-hidden="true"></i>--%>
                             <%--<i class="fa fa-upload" aria-hidden="true"></i>--%>
                             Add Folder
                         </a>
-                    </td>
+                    </div>
                 </div>
-
-                <div class="tool-box col-md-2">
-                    <td>
-                        <%-- <button id="btn-add" data-toggle="modal" data-target="#add-file" class="btn btn-default">add new file</button>--%>
-                        <a data-toggle="modal" data-target="#add-file" class="btn icon-btn btn-up-add" href="#">
-                            <span class="fa fa-cloud-upload img-circle text-success"></span>
-                           <%-- <i class="fa fa-cloud-upload" aria-hidden="true"></i>--%>
-                            Upload File
-                        </a>
-                    </td>
-
-                </div>
-            </div>
-        </div>
-
-        <br>
-
-        <div class="box-wmc co-bd-01">
-            <div class="wrap-title-mc">
-                <div class="title-mc">Danh sách</div>
             </div>
             <div class="row padd-lr fit-table">
                 <div class="col-md-12">
-                    <table id="folderList" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
+                    <table id="folderList" class="table table-striped table-bordered table-hover" cellspacing="0"
+                           width="100%">
                         <thead>
                         <tr>
                             <th>Name</th>
@@ -129,36 +116,41 @@
                                         <div class="col-md-6">${file.fileOriginalName}</div>
                                     </a>
                                 </td>
-                                <td><a href="${contextPath}/files/${file.filePhysicalName}">${file.filePhysicalName}</a></td>
+                                <td><a href="${contextPath}/files/${file.filePhysicalName}">${file.filePhysicalName}</a>
+                                </td>
                                 <td class="" style="width: 25px">
-                                    <a data-toggle="modal" data-target="#share-popup-file" class="btn icon-btn" id="${file.fileId}"
+                                    <a data-toggle="modal" data-target="#share-popup-file" class="btn icon-btn"
+                                       id="${file.fileId}"
                                        onclick="share(${file.fileId})">
                                         <i class="fa fa-share-square-o" aria-hidden="true"></i>
                                     </a>
-                                         <div class="modal fade" id="share-popup-file" role="dialog">
-                                                 <div class="modal-dialog">
-                                                     <div class="modal-content">
-                                                         <div class="modal-header ">
-                                                             <h4>Share ${file.fileOriginalName} file</h4>
-                                                         </div>
-                                                         <div class="modal-body text-center">
-                                                             <c:set var="req" value="${pageContext.request}"/>
-                                                             <c:set var="baseURL"
-                                                                    value="${req.scheme}://${req.serverName}:${req.serverPort}${req.contextPath}"/>
-                                                             <h4 id="linkShare">${baseURL}/files/${file.filePhysicalName}</h4>
-                                                             <button id="copy-btn" onclick="copyToClipboard('#linkShare')" data-dismiss="modal" class="btn btn-primary">Copy link</button>
-                                                             <button data-dismiss="modal" class="btn btn-default">Cancel</button>
-                                                         </div>
-                                                         <div class="modal-footer mar-top-signup ">
+                                    <div class="modal fade" id="share-popup-file" role="dialog">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header ">
+                                                    <h4>Share ${file.fileOriginalName} file</h4>
+                                                </div>
+                                                <div class="modal-body text-center">
+                                                    <c:set var="req" value="${pageContext.request}"/>
+                                                    <c:set var="baseURL"
+                                                           value="${req.scheme}://${req.serverName}:${req.serverPort}${req.contextPath}"/>
+                                                    <h4 id="linkShare">${baseURL}/files/${file.filePhysicalName}</h4>
+                                                    <button id="copy-btn" onclick="copyToClipboard('#linkShare')"
+                                                            data-dismiss="modal" class="btn btn-primary">Copy link
+                                                    </button>
+                                                    <button data-dismiss="modal" class="btn btn-default">Cancel</button>
+                                                </div>
+                                                <div class="modal-footer mar-top-signup ">
 
-                                                         </div>
-                                                     </div>
-                                                     </form>
-                                                 </div>
-                                             </div>
+                                                </div>
+                                            </div>
+                                            </form>
+                                        </div>
+                                    </div>
                                 </td>
                                 <td class="" style="width: 25px">
-                                    <a data-toggle="modal" data-target="#delete-popup-file" class="btn icon-btn" id="${file.fileId}"
+                                    <a data-toggle="modal" data-target="#delete-popup-file" class="btn icon-btn"
+                                       id="${file.fileId}"
                                        onclick="deleteFile(${file.fileId})">
                                         <i class="fa fa-trash-o cl-force" aria-hidden="true"></i>
                                     </a>
@@ -196,7 +188,8 @@
 
                                 </td>
                                 <td class="" style="width: 25px">
-                                    <a data-toggle="modal" data-target="#delete-popup-folder" class="btn icon-btn" id="${folder.folderId}"
+                                    <a data-toggle="modal" data-target="#delete-popup-folder" class="btn icon-btn"
+                                       id="${folder.folderId}"
                                        onclick="deleteRowFolder(${folder.folderId})">
                                         <i class="fa fa-trash-o cl-force" aria-hidden="true"></i>
                                     </a>
@@ -265,7 +258,8 @@
             <div class="modal-dialog">
                 <!-- Popup content add-->
 
-                <form:form action="${contextPath}/upload" method="post" enctype="multipart/form-data" modelAttribute="file" id="uploadFile">
+                <form:form action="${contextPath}/upload" method="post" enctype="multipart/form-data"
+                           modelAttribute="file" id="uploadFile">
                     <div class="modal-content">
                         <div class="modal-header ">
                             <h4>Upload file</h4>
@@ -302,182 +296,182 @@
 
 
 <script>
-        $('#home').css({"height" : "52px","border-bottom" : "2px solid #2e6da4","color":"white","background":"black"  });
-        $('#createFolder').submit(function () {
-            var options = {
+    $('#home').css({"height": "52px", "border-bottom": "2px solid #2e6da4", "color": "white", "background": "black"});
+    $('#createFolder').submit(function () {
+        var options = {
 
-                success: function (res) {
+            success: function (res) {
+                var folderList = [];
+                var fileList = [];
+                var name = document.getElementById("folder-name").value;
+                var folder = [];
+
+                folder.push(name);
+
+                folderList.push(folder);
+
+                var table = document.getElementById("folderList");
+                for (var i = 0; i < folderList.length; i++) {
+
+                    var rowCount = table.rows.length;
+                    var row = table.insertRow(rowCount);
+                    var cell1 = row.insertCell(0);
+                    var cell2 = row.insertCell(1);
+                    var cell3 = row.insertCell(2);
+                    var cell4 = row.insertCell(3);
+                    cell1.innerHTML = '<td class="row sorting_1">\n' +
+                        '                        <div class="col-md-2"><i class="fa fa-folder-open-o" aria-hidden="true"></i></div>\n' +
+                        '                        <a href="/home/' + res.folderId + '">\n' +
+                        '                            <div class="col-md-6">' + folderList[i][0] + '</div>\n' +
+                        '                        </a>\n' +
+                        '                    </td>';
+                    cell2.innerHTML = '<td></td>';
+                    cell3.innerHTML = '<td></td>';
+                    //cell4.innerHTML = "<button id="+"btn-remove "+"onclick="+"deleteRow("+i+")"+">Delete</button>";   C1
+                    //aaaaaaaaacell3.innerHTML = '<td><a class="btn icon-btn btn-delete"><span class="glyphicon btn-glyphicon glyphicon-trash img-circle text-danger"></span> Delete</a></td>';   //C2
+                    cell4.innerHTML = '<td class="text-center" style="width: 25px">\n' +
+                        '                        <a data-toggle="modal" onclick="deleteFile(' + res.fileId + ')" data-target="#delete-popup-folder" class="btn icon-btn" id="' + res.folderId + '">\n' +
+                        '                            <i class="fa fa-trash-o cl-force" aria-hidden="true"></i>\n' +
+                        '                        </a>\n' +
+                        '                    </td>';
+                }
+
+                $("#closess1").click();
+
+            },
+            error: function (response) {
+                // TODO
+            }
+        };
+        $(this).ajaxSubmit(options);
+        return false;
+    });
+
+    $('#uploadFile').submit(function () {
+        // prepare Options Object
+        var options = {
+            beforeSubmit: function () {
+                $(this).addClass('loading');
+                $('#uploadBox').html('<div class="progress progress-striped active"><div class="progress-bar" id="progressBar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"><span class="sr-only">0%</span></div></div>');
+            },
+            uploadProgress: function (event, position, total, percentComplete) {
+                if (percentComplete == 100) {
+                    $('#progressBar').css('width', percentComplete + '%').html('Processing...');
+                } else {
+                    $('#progressBar').css('width', percentComplete + '%').html(percentComplete + '%');
+                }
+            },
+            success: function (res) {
+                var addFileToFronend = function () {
                     var folderList = [];
                     var fileList = [];
-                        var name = document.getElementById("folder-name").value;
-                        var folder = [];
+                    var nameOr = res.fileOriginalName;
+                    var namePh = res.filePhysicalName;
+                    var folder = [];
 
-                        folder.push(name);
+                    folder.push(nameOr);
+                    folder.push(namePh);
+                    folderList.push(folder);
 
-                        folderList.push(folder);
+                    var table = document.getElementById("folderList");
+                    for (var i = 0; i < folderList.length; i++) {
 
-                        var table = document.getElementById("folderList");
-                        for(var i =0; i<folderList.length;i++){
+                        var rowCount = table.rows.length;
+                        var row = table.insertRow(rowCount);
+                        var cell1 = row.insertCell(0);
+                        var cell2 = row.insertCell(1);
+                        var cell3 = row.insertCell(2);
+                        var cell4 = row.insertCell(3);
+                        cell1.innerHTML = '<td class="row sorting_1">\n' +
+                            '                        <div class="col-md-2"><i class="fa fa-file-o" aria-hidden="true"></i></div>\n' +
+                            '                        <a href="/files/' + nameOr + '">\n' +
+                            '                            <div class="col-md-6">' + folderList[i][0] + '</div>\n' +
+                            '                        </a>\n' +
+                            '                    </td>';
 
-                            var rowCount = table.rows.length;
-                            var row = table.insertRow(rowCount);
-                            var cell1 = row.insertCell(0);
-                            var cell2 = row.insertCell(1);
-                            var cell3 = row.insertCell(2);
-                            var cell4 = row.insertCell(3);
-                            cell1.innerHTML = '<td class="row sorting_1">\n' +
-                                '                        <div class="col-md-2"><i class="fa fa-folder-open-o" aria-hidden="true"></i></div>\n' +
-                                '                        <a href="/home/'+ res.folderId + '">\n' +
-                                '                            <div class="col-md-6">' + folderList[i][0] + '</div>\n' +
-                                '                        </a>\n' +
-                                '                    </td>';
-                            cell2.innerHTML = '<td></td>';
-                            cell3.innerHTML = '<td></td>';
-                            //cell4.innerHTML = "<button id="+"btn-remove "+"onclick="+"deleteRow("+i+")"+">Delete</button>";   C1
-                            //aaaaaaaaacell3.innerHTML = '<td><a class="btn icon-btn btn-delete"><span class="glyphicon btn-glyphicon glyphicon-trash img-circle text-danger"></span> Delete</a></td>';   //C2
-                            cell4.innerHTML = '<td class="text-center" style="width: 25px">\n' +
-                                '                        <a data-toggle="modal" onclick="deleteFile(' + res.fileId +')" data-target="#delete-popup-folder" class="btn icon-btn" id="'+res.folderId+'">\n' +
-                                '                            <i class="fa fa-trash-o cl-force" aria-hidden="true"></i>\n' +
-                                '                        </a>\n' +
-                                '                    </td>';
-                        }
-
-                        $("#closess1").click();
-
-                },
-                error: function (response) {
-                    // TODO
-                }
-            };
-            $(this).ajaxSubmit(options);
-            return false;
-        });
-
-        $('#uploadFile').submit(function () {
-            // prepare Options Object
-            var options = {
-                beforeSubmit: function() {
-                    $(this).addClass('loading');
-                    $('#uploadBox').html('<div class="progress progress-striped active"><div class="progress-bar" id="progressBar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"><span class="sr-only">0%</span></div></div>');
-                },
-                uploadProgress: function(event, position, total, percentComplete) {
-                    if (percentComplete == 100) {
-                        $('#progressBar').css('width', percentComplete + '%').html('Processing...');
-                    } else {
-                        $('#progressBar').css('width', percentComplete + '%').html(percentComplete + '%');
+                        cell2.innerHTML = '<td><a href="/files/' + namePh + '">' + folderList[i][1] + '</td>';
+                        cell3.innerHTML = '<td class="text-center" style="width: 25px; text-align: center">\n' +
+                            '                        <a data-toggle="modal" data-target="#delete-popup-file" class="btn icon-btn" id=""\n' +
+                            '                           onclick="share()">\n' +
+                            '                            <i class="fa fa-share-square-o" aria-hidden="true"></i>\n' +
+                            '                        </a>\n' +
+                            '                    </td>';
+                        //cell4.innerHTML = "<button id="+"btn-remove "+"onclick="+"deleteRow("+i+")"+">Delete</button>";   C1
+                        //aaaaaaaaacell3.innerHTML = '<td><a class="btn icon-btn btn-delete"><span class="glyphicon btn-glyphicon glyphicon-trash img-circle text-danger"></span> Delete</a></td>';   //C2
+                        cell4.innerHTML = '<td class="text-center" style="width:25px">\n' +
+                            '                        <a data-toggle="modal" onclick="deleteFile(' + res.fileId + ')" data-target="#delete-popup-folder" class="btn icon-btn" id="' + res.fileId + '">\n' +
+                            '                            <i class="fa fa-trash-o cl-force" aria-hidden="true"></i>\n' +
+                            '                        </a>\n' +
+                            '                        \n' +
+                            '                    </td>';
                     }
-                },
-                success: function (res) {
-                    var addFileToFronend = function () {
-                        var folderList = [];
-                        var fileList = [];
-                        var nameOr = res.fileOriginalName;
-                        var namePh = res.filePhysicalName;
-                        var folder = [];
-
-                        folder.push(nameOr);
-                        folder.push(namePh);
-                        folderList.push(folder);
-
-                        var table = document.getElementById("folderList");
-                        for(var i =0; i<folderList.length;i++) {
-
-                            var rowCount = table.rows.length;
-                            var row = table.insertRow(rowCount);
-                            var cell1 = row.insertCell(0);
-                            var cell2 = row.insertCell(1);
-                            var cell3 = row.insertCell(2);
-                            var cell4 = row.insertCell(3);
-                            cell1.innerHTML = '<td class="row sorting_1">\n' +
-                                '                        <div class="col-md-2"><i class="fa fa-file-o" aria-hidden="true"></i></div>\n' +
-                                '                        <a href="/files/' + nameOr + '">\n' +
-                                '                            <div class="col-md-6">' + folderList[i][0] + '</div>\n' +
-                                '                        </a>\n' +
-                                '                    </td>';
-
-                            cell2.innerHTML = '<td><a href="/files/' + namePh + '">' + folderList[i][1] + '</td>';
-                            cell3.innerHTML = '<td class="text-center" style="width: 25px; text-align: center">\n' +
-                                '                        <a data-toggle="modal" data-target="#delete-popup-file" class="btn icon-btn" id=""\n' +
-                                '                           onclick="share()">\n' +
-                                '                            <i class="fa fa-share-square-o" aria-hidden="true"></i>\n' +
-                                '                        </a>\n' +
-                                '                    </td>';
-                            //cell4.innerHTML = "<button id="+"btn-remove "+"onclick="+"deleteRow("+i+")"+">Delete</button>";   C1
-                            //aaaaaaaaacell3.innerHTML = '<td><a class="btn icon-btn btn-delete"><span class="glyphicon btn-glyphicon glyphicon-trash img-circle text-danger"></span> Delete</a></td>';   //C2
-                            cell4.innerHTML = '<td class="text-center" style="width:25px">\n' +
-                                '                        <a data-toggle="modal" onclick="deleteFile(' + res.fileId + ')" data-target="#delete-popup-folder" class="btn icon-btn" id="' + res.fileId + '">\n' +
-                                '                            <i class="fa fa-trash-o cl-force" aria-hidden="true"></i>\n' +
-                                '                        </a>\n' +
-                                '                        \n' +
-                                '                    </td>';
-                        }
-                    }
-                    addFileToFronend();
-                    $("#closess").click();
-//                    colsePopup();
-                    window.alert("yeah");
-
-                    /*Add file to fronend*/
-
-                },
-                error: function (response) {
-                    $("#closess").click();
-//                    colsePopup();
-                    window.alert("Có lỗi rồi man!!!");
-
                 }
-            };
+                addFileToFronend();
+                $("#closess").click();
+//                    colsePopup();
+                window.alert("yeah");
 
-            $(this).ajaxSubmit(options);
-            return false;
+                /*Add file to fronend*/
+
+            },
+            error: function (response) {
+                $("#closess").click();
+//                    colsePopup();
+                window.alert("Có lỗi rồi man!!!");
+
+            }
+        };
+
+        $(this).ajaxSubmit(options);
+        return false;
+    });
+
+    function deleteRowFolder(folderId) {
+        $.ajax({
+            url: "${contextPath}/folders/" + folderId,
+            type: 'DELETE',
+            success: function (response) {
+                var row = document.getElementById(folderId);
+                var a = row.parentNode.parentNode;
+                var b = a.parentNode;
+                b.removeChild(a);
+            },
+            error: function (response) {
+                // TODO
+            }
         });
+    }
 
-        function deleteRowFolder(folderId) {
-            $.ajax({
-                url: "${contextPath}/folders/" + folderId,
-                type: 'DELETE',
-                success: function (response) {
-                    var row = document.getElementById(folderId);
-                    var a = row.parentNode.parentNode;
-                    var b = a.parentNode;
-                    b.removeChild(a);
-                },
-                error: function (response) {
-                    // TODO
-                }
-            });
-        }
-
-        function deleteFile(fileId) {
-            $.ajax({
-                url: "${contextPath}/files/" + fileId,
-                type: 'DELETE',
-                success: function (response) {
-                    //var deleteData = document.getElementById("folderList");
+    function deleteFile(fileId) {
+        $.ajax({
+            url: "${contextPath}/files/" + fileId,
+            type: 'DELETE',
+            success: function (response) {
+                //var deleteData = document.getElementById("folderList");
 //                    var row = document.getElementById(fileId);
 //                    var a = row.parentNode.parentNode.nodeName;
 //                    console.log(a);
 //                    var table = document.getElementById("cha");
 //                    table.removeChild(a); aaaaaaaaaaaaaaaaaaaaaaa
-                    var row = document.getElementById(fileId);
-                    var a = row.parentNode.parentNode;
-                    var b = a.parentNode;
-                    b.removeChild(a);
-                    //row.style.display='none';
-                },
-                error: function (response) {
-                    window.alert("co lỗi rồi man!");
-                }
-            });
-        }
+                var row = document.getElementById(fileId);
+                var a = row.parentNode.parentNode;
+                var b = a.parentNode;
+                b.removeChild(a);
+                //row.style.display='none';
+            },
+            error: function (response) {
+                window.alert("co lỗi rồi man!");
+            }
+        });
+    }
 
-        function copyToClipboard(element) {
-            var $temp = $("<input>");
-            $("body").append($temp);
-            $temp.val($(element).text()).select();
-            document.execCommand("copy");
-            $temp.remove();
-        }
+    function copyToClipboard(element) {
+        var $temp = $("<input>");
+        $("body").append($temp);
+        $temp.val($(element).text()).select();
+        document.execCommand("copy");
+        $temp.remove();
+    }
 
 
 </script>
