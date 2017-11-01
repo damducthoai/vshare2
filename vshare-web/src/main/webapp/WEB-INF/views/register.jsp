@@ -28,7 +28,7 @@
     <div class="row">
         <div class="box-wmc co-bd-01">
             <div class="wrap-title-mc">
-                <div class="title-mc">Thông tin đăng ký</div>
+                <div class="title-mc">Info's register</div>
             </div>
             <div class="row form-group">
                 <form:form action="registration" method="post" enctype="application/x-www-form-urlencoded"
