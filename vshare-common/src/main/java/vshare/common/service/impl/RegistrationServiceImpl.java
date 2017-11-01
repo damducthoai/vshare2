@@ -21,7 +21,7 @@ public class RegistrationServiceImpl implements RegistrationService {
     @Value("${default.user.storage.size}")
     Long defaultStorageSize;
 
-    @Autowired
+    @Resource(name = "userRepository")
     UserRepository userRepository;
 
     @Autowired
@@ -36,7 +36,8 @@ public class RegistrationServiceImpl implements RegistrationService {
         boolean success = false;
         ActionResult result;
 
-        if (userRepository.findByUserName(info.getUserName()) != null) {
+        UserEntity tmp = userRepository.findByUserName(info.getUserName());
+        if (tmp != null) {
             msg = String.format("%s already used", info.getUserName());
         }
         if (!info.getUserPassword().equals(info.getUserConfirmPassword())) {

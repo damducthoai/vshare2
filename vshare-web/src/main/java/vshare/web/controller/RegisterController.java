@@ -27,15 +27,15 @@ public class RegisterController extends BaseController {
     @PostMapping
     String doRegister(@Valid @ModelAttribute("user") RegisterInfo info, BindingResult result) {
         String view = "login";
-        if(userRepository.findByUserName(info.getUserName()) == null){
+        //if(userRepository.findByUserName(info.getUserName()) == null){
             if (result.hasErrors()) {
                 view = "registration";
             } else {
                 if (!createAccount(info).isSuccess()) view = "registration";
             }
-        }else{
-            view = "registration";
-        }
+//        }else{
+//            view = "registration";
+//        }
         return "redirect:/" + view;
     }
 }

@@ -47,6 +47,10 @@
                                 </tr>
 
                                 <tr>
+                                    <td>Point</td>
+                                    <td>${premiumData.point}</td>
+                                </tr>
+                                <tr>
                                     <td>Premium expired</td>
                                     <td>${premiumData.dueTo}</td>
                                 </tr>
