@@ -116,7 +116,7 @@
                                         <div class="col-md-6">${file.fileOriginalName}</div>
                                     </a>
                                 </td>
-                                <td><a href="${contextPath}/files/${file.filePhysicalName}">${file.filePhysicalName}</a>
+                                <td><a href="${contextPath}/files/${file.filePhysicalName}">${file.fileSize} Byte</a>
                                 </td>
                                 <td class="" style="width: 25px">
                                     <a data-toggle="modal" data-target="#share-popup-file" class="btn icon-btn"
