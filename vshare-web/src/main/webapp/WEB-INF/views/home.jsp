@@ -24,7 +24,7 @@
 
     <link href="${contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
     <link href="${contextPath}/resources/css/common.css" rel="stylesheet">
-    <title>Server List</title>
+    <title>Home</title>
     <script src="${contextPath}/resources/js/jquery-3.2.1.min.js"></script>
     <script src="${contextPath}/resources/js/bootstrap.min.js"></script>
     <%--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.js"></script>--%>
@@ -34,7 +34,7 @@
     <%--<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>--%>
     <%--<script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>--%>
     <%--Progess--%>
-    <script type="text/javascript" src="http://malsup.github.io/jquery.form.js"></script>
+    <script type="text/javascript" src="${contextPath}/resources/malsup.github.io/jquery.form.js"></script>
     <script>
         $(document).ready(function () {
             $('#folderList').DataTable();
@@ -367,10 +367,11 @@
                     var fileList = [];
                     var nameOr = res.fileOriginalName;
                     var namePh = res.filePhysicalName;
+                    var size = res.fileSize;
                     var folder = [];
 
                     folder.push(nameOr);
-                    folder.push(namePh);
+                    folder.push(size);
                     folderList.push(folder);
 
                     var table = document.getElementById("folderList");
@@ -389,7 +390,7 @@
                             '                        </a>\n' +
                             '                    </td>';
 
-                        cell2.innerHTML = '<td><a href="/files/' + namePh + '">' + folderList[i][1] + '</td>';
+                        cell2.innerHTML = '<td><a href="/files/' + namePh + '">' + folderList[i][1] + ' Byte</td>';
                         cell3.innerHTML = '<td class="text-center" style="width: 25px; text-align: center">\n' +
                             '                        <a data-toggle="modal" data-target="#delete-popup-file" class="btn icon-btn" id=""\n' +
                             '                           onclick="share()">\n' +
@@ -409,7 +410,7 @@
                 addFileToFronend();
                 $("#closess").click();
 //                    colsePopup();
-                window.alert("yeah");
+                window.alert("Upload file success!");
 
                 /*Add file to fronend*/
 
@@ -417,7 +418,7 @@
             error: function (response) {
                 $("#closess").click();
 //                    colsePopup();
-                window.alert("Có lỗi rồi man!!!");
+                window.alert("Something wrong!!!");
 
             }
         };
