@@ -16,12 +16,12 @@
 <head>
     <title>Home</title>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <link href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css" rel="stylesheet">
+
+    <link href="${contextPath}/resources/css/datatable/dataTables.bootstrap.css" rel="stylesheet">
     <%--<link href="${contextPath}/resources/css/datatable/dataTables.bootstrap.css" type="text/css" media="screen" rel="stylesheet">--%>
     <%--<link href="${contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">--%>
-
+    <link href="${contextPath}/resources/css/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet">
     <link href="${contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
     <link href="${contextPath}/resources/css/common.css" rel="stylesheet">
     <title>Home</title>
