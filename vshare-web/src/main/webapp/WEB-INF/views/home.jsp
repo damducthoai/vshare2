@@ -27,8 +27,8 @@
     <title>Server List</title>
     <script src="${contextPath}/resources/js/jquery-3.2.1.min.js"></script>
     <script src="${contextPath}/resources/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.js"></script>
-
+    <%--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.js"></script>--%>
+    <script src="${contextPath}/resources/js/jquery.form.js"></script>
     <script src="${contextPath}/resources/js/datatable/jquery.dataTables.min.js"></script>
     <script src="${contextPath}/resources/js/datatable/dataTables.bootstrap.min.js"></script>
     <%--<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>--%>
