@@ -22,17 +22,17 @@
     <%--<link href="${contextPath}/resources/css/datatable/dataTables.bootstrap.css" type="text/css" media="screen" rel="stylesheet">--%>
     <%--<link href="${contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">--%>
 
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
     <link href="${contextPath}/resources/css/common.css" rel="stylesheet">
     <title>Server List</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="${contextPath}/resources/js/jquery-3.2.1.min.js"></script>
+    <script src="${contextPath}/resources/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.js"></script>
-    <%--<script src="${contextPath}/resources/js/datatable/dataTables.bootstrap.min.js"></script>--%>
-    <%--<script src="${contextPath}/resources/js/datatable/jquery.dataTables.min.js"></script>--%>
-    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
 
+    <script src="${contextPath}/resources/js/datatable/jquery.dataTables.min.js"></script>
+    <script src="${contextPath}/resources/js/datatable/dataTables.bootstrap.min.js"></script>
+    <%--<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>--%>
+    <%--<script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>--%>
     <%--Progess--%>
     <script type="text/javascript" src="http://malsup.github.io/jquery.form.js"></script>
     <script>

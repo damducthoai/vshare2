@@ -17,7 +17,6 @@ public class IpServiceImpl implements IpService {
                 remoteAddr = request.getRemoteAddr();
             }
         }
-
         return remoteAddr;
     }
 }
